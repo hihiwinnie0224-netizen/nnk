@@ -24,22 +24,33 @@
         /* 模擬 App 畫面優化 */
         .app-screen {
             background: #ffffff;
-            border: 12px solid #1e293b;
-            border-radius: 3.5rem;
+            border: 10px solid #1e293b;
+            border-radius: 3rem;
             position: relative;
-            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.2);
         }
         .app-header {
             background: var(--union-blue);
             color: white;
-            padding: 3rem 1.5rem 4.5rem 1.5rem;
-            border-radius: 2.5rem 2.5rem 0 0;
+            padding: 2.5rem 1.25rem 4rem 1.25rem;
+            border-radius: 2.3rem 2.3rem 0 0;
         }
         .interest-card {
             margin-top: -3rem;
             background: white;
             border-radius: 1.5rem;
             box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 手機選單動畫 */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.active {
+            max-height: 450px;
+            border-bottom: 1px solid #f1f5f9;
         }
 
         section { scroll-margin-top: 80px; }
@@ -58,14 +69,32 @@
                     </div>
                 </a>
             </div>
+
             <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
                 <a href="tutorial.html" class="hover:text-union-blue transition">開戶教學</a>
                 <a href="strategy.html" class="hover:text-union-blue transition">利息攻略</a>
                 <a href="faq.html" class="hover:text-union-blue transition">真心話與F&Q</a>
                 <a href="compare.html" class="hover:text-union-blue transition">數位帳戶比較</a>
-                <a href="#test-report" class="hover:text-union-blue transition text-union-blue font-bold">利息實測</a>
+                <a href="index.html#test" class="text-union-blue font-bold">利息實測</a>
             </div>
-            <a href="你的推薦連結" target="_blank" class="bg-union-red text-white px-5 py-2 rounded-md text-sm font-bold hover:bg-red-700 shadow-md transition">立即線上開戶</a>
+
+            <div class="flex items-center gap-2">
+                <a href="你的推薦連結" target="_blank" class="hidden sm:block bg-union-red text-white px-5 py-2 rounded-md text-sm font-bold hover:bg-red-700 shadow-md transition">立即開戶</a>
+                <button id="menu-btn" class="md:hidden text-slate-600 p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden bg-white px-4">
+            <div class="flex flex-col space-y-4 py-6 text-base font-bold text-slate-700">
+                <a href="tutorial.html" class="hover:text-union-blue border-b border-slate-50 pb-2">開戶教學</a>
+                <a href="strategy.html" class="hover:text-union-blue border-b border-slate-50 pb-2">利息攻略</a>
+                <a href="faq.html" class="hover:text-union-blue border-b border-slate-50 pb-2">真心話與F&Q</a>
+                <a href="compare.html" class="hover:text-union-blue border-b border-slate-50 pb-2">數位帳戶比較</a>
+                <a href="index.html#test" class="text-union-blue border-b border-slate-50 pb-2">利息實測</a>
+                <a href="你的推薦連結" target="_blank" class="bg-union-red text-white text-center py-3 rounded-md shadow-lg">立即線上開戶</a>
+            </div>
         </div>
     </nav>
 
@@ -74,11 +103,11 @@
             <span class="inline-block border border-green-200 bg-green-50 text-green-600 px-4 py-1 rounded-full text-xs font-bold tracking-wide mb-8 uppercase">
                 Verification Passed
             </span>
-            <h1 class="text-3xl md:text-5xl font-black mt-4 leading-tight tracking-tight text-slate-900">
+            <h1 class="text-3xl md:text-5xl font-black mt-4 leading-tight tracking-tight text-slate-900 px-4">
                 有圖有真相！<br>
                 <span class="text-union-blue">2026/03 利息撥付實測</span>
             </h1>
-            <p class="mt-8 text-slate-500 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
+            <p class="mt-8 text-slate-500 text-sm md:text-base max-w-lg mx-auto leading-relaxed px-6">
                 很多網友問我：15% 是真的嗎？任務好解嗎？<br>
                 今天直接把我的帳戶（隱碼後）曬給大家看。
             </p>
@@ -87,62 +116,62 @@
 
     <main id="test-report" class="max-w-4xl mx-auto py-16 px-6">
         
-        <div class="app-screen max-w-[340px] mx-auto mb-20 overflow-hidden -mt-24 relative z-10">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#1e293b] rounded-b-3xl z-20"></div>
+        <div class="app-screen max-w-[320px] mx-auto mb-20 overflow-hidden -mt-24 relative z-10 scale-95 md:scale-100">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#1e293b] rounded-b-2xl z-20"></div>
             
             <div class="app-header text-center">
-                <p class="text-xs opacity-70 mb-1 font-medium tracking-wide">New New Bank 總餘額</p>
-                <p class="text-3xl font-black tracking-tight">TWD 101,274</p>
+                <p class="text-[10px] opacity-70 mb-1 font-medium tracking-wide">New New Bank 總餘額</p>
+                <p class="text-2xl font-black tracking-tight">TWD 101,274</p>
             </div>
 
-            <div class="px-5">
-                <div class="interest-card p-6 border border-slate-50">
+            <div class="px-4">
+                <div class="interest-card p-5 border border-slate-50">
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">交易明細</span>
+                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">交易明細</span>
                         <i class="fa-solid fa-magnifying-glass text-slate-300 text-xs"></i>
                     </div>
                     
-                    <div class="space-y-8">
+                    <div class="space-y-6">
                         <div class="flex justify-between items-start">
-                            <div class="flex gap-4">
-                                <div class="w-10 h-10 bg-blue-50 text-union-blue rounded-full flex items-center justify-center text-sm">
+                            <div class="flex gap-3">
+                                <div class="w-9 h-9 bg-blue-50 text-union-blue rounded-full flex items-center justify-center text-xs shrink-0">
                                     <i class="fa-solid fa-piggy-bank"></i>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold text-slate-800">活期儲蓄存款利息</p>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">2026/03/21 23:59</p>
+                                    <p class="text-xs font-bold text-slate-800">活期儲蓄存款利息</p>
+                                    <p class="text-[9px] text-slate-400 mt-0.5">2026/03/21 23:59</p>
                                 </div>
                             </div>
-                            <span class="text-green-600 font-black text-sm">+$1,274</span>
+                            <span class="text-green-600 font-black text-xs">+$1,274</span>
                         </div>
 
                         <div class="flex justify-between items-start opacity-40">
-                            <div class="flex gap-4">
-                                <div class="w-10 h-10 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center text-sm">
+                            <div class="flex gap-3">
+                                <div class="w-9 h-9 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center text-xs shrink-0">
                                     <i class="fa-solid fa-arrow-right-to-bracket"></i>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold text-slate-800">跨行轉入</p>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">2026/03/05 14:20</p>
+                                    <p class="text-xs font-bold text-slate-800">跨行轉入</p>
+                                    <p class="text-[9px] text-slate-400 mt-0.5">2026/03/05 14:20</p>
                                 </div>
                             </div>
-                            <span class="text-slate-800 font-black text-sm">+$20,000</span>
+                            <span class="text-slate-800 font-black text-xs">+$20,000</span>
                         </div>
                     </div>
 
-                    <div class="mt-10 pt-5 border-t border-slate-50 text-center">
-                        <p class="text-[10px] text-union-blue font-bold tracking-widest cursor-pointer uppercase">
+                    <div class="mt-10 pt-4 border-t border-slate-50 text-center">
+                        <p class="text-[9px] text-union-blue font-bold tracking-widest cursor-pointer uppercase">
                             查看更多歷史明細 <i class="fa-solid fa-chevron-right ml-1"></i>
                         </p>
                     </div>
                 </div>
             </div>
             
-            <div class="flex justify-around py-8 mt-6 border-t border-slate-50 text-slate-300 text-sm">
+            <div class="flex justify-around py-6 mt-6 border-t border-slate-50 text-slate-300 text-xs">
                 <i class="fa-solid fa-house text-union-blue"></i>
                 <i class="fa-solid fa-wallet"></i>
-                <div class="w-10 h-10 bg-union-blue rounded-full -mt-3 shadow-lg shadow-blue-200 flex items-center justify-center text-white">
-                    <i class="fa-solid fa-qrcode text-lg"></i>
+                <div class="w-9 h-9 bg-union-blue rounded-full -mt-3 shadow-lg shadow-blue-200 flex items-center justify-center text-white">
+                    <i class="fa-solid fa-qrcode text-base"></i>
                 </div>
                 <i class="fa-solid fa-chart-line"></i>
                 <i class="fa-solid fa-user"></i>
@@ -156,7 +185,7 @@
                 </h3>
                 <div class="space-y-4 text-sm leading-relaxed text-slate-600">
                     <p>我在 2/25 開戶成功，並立刻從他行轉入 <strong class="text-slate-900 font-bold">$100,000</strong>。</p>
-                    <div class="bg-slate-50 p-5 rounded-2xl font-mono text-[11px] border border-slate-100">
+                    <div class="bg-slate-50 p-5 rounded-2xl font-mono text-[11px] border border-slate-100 overflow-x-auto">
                         <span class="text-slate-400">// 計算邏輯</span><br>
                         $100,000 × 15% ÷ 365天 × 31天 = $1,274<br>
                         <span class="text-union-blue font-bold">本月實領利息：$1,274</span>
@@ -184,37 +213,58 @@
             </section>
         </div>
 
-        <div class="bg-slate-900 rounded-[2.5rem] p-12 text-white text-center relative overflow-hidden shadow-2xl">
-            <h3 class="text-2xl font-black mb-6 italic tracking-tight relative z-10">別再看我的截圖了，快去領你自己的！</h3>
-            <a href="你的官方推薦連結" target="_blank" class="inline-block bg-union-red text-white px-12 py-5 rounded-md font-black text-xl shadow-xl hover:bg-red-700 transition transform hover:-translate-y-1 relative z-10">
+        <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white text-center relative overflow-hidden shadow-2xl mb-12">
+            <h3 class="text-xl md:text-2xl font-black mb-6 italic tracking-tight relative z-10 px-4">別再看我的截圖了，快去領你自己的！</h3>
+            <a href="你的官方推薦連結" target="_blank" class="inline-block bg-union-red text-white px-10 md:px-12 py-5 rounded-md font-black text-lg md:text-xl shadow-xl hover:bg-red-700 transition transform hover:-translate-y-1 relative z-10">
                 立即領取 $1,274 利息
             </a>
-            <p class="mt-8 text-slate-400 text-xs font-medium relative z-10 uppercase tracking-widest">
+            <p class="mt-8 text-slate-400 text-[10px] md:text-xs font-medium relative z-10 uppercase tracking-widest">
                 <i class="fa-solid fa-shield-halved mr-2 text-union-blue"></i> 存款享中央存款保險 300 萬保障
             </p>
         </div>
 
     </main>
 
-    <footer class="bg-white py-16 px-4 border-t border-slate-50 text-slate-400">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <footer class="bg-white py-12 md:py-16 px-6 border-t border-slate-50 text-slate-400">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
             <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-300">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-300">
                     <i class="fa-solid fa-user"></i>
                 </div>
-                <div>
-                    <h4 class="font-bold text-slate-700">[你的暱稱] 的理財筆記</h4>
-                    <p class="text-[10px] font-medium tracking-widest uppercase">Finance Professional Lab</p>
+                <div class="text-left">
+                    <h4 class="font-bold text-slate-700 text-sm md:text-base">[你的暱稱] 的理財筆記</h4>
+                    <p class="text-[9px] md:text-[10px] font-medium tracking-widest uppercase">Finance Professional Lab</p>
                 </div>
             </div>
-            <div class="text-center md:text-right">
-                <p class="text-[10px] leading-relaxed font-bold uppercase tracking-tighter">
+            <div>
+                <p class="text-[9px] md:text-[10px] leading-relaxed font-bold uppercase tracking-tighter md:text-right">
                     © 2026 Finance Lab · Union Bank Digital Services Guide<br>
-                    * 謹慎理財 信用至上 · 本頁實測為 2026/03 之數據記錄 *
+                    <span class="text-slate-300 font-normal">* 謹慎理財 信用至上 · 本頁實測為 2026/03 之數據記錄 *</span>
                 </p>
             </div>
         </div>
     </footer>
+
+    <a href="你的推薦連結" target="_blank" class="fixed bottom-6 right-6 bg-union-red text-white p-3 md:p-4 rounded-full shadow-2xl hover:bg-red-700 transition-all z-50 hover:scale-110 flex items-center gap-2 px-5 md:px-6">
+        <i class="fa-solid fa-bolt-lightning"></i>
+        <span class="font-black tracking-widest text-sm md:text-base">立即領 15%</span>
+    </a>
+
+    <script>
+        // 選單邏輯
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    </script>
 
 </body>
 </html>
