@@ -19,6 +19,7 @@
         .hero-gradient { background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%); }
         .bg-union-blue { background-color: var(--union-blue); }
         .text-union-blue { color: var(--union-blue); }
+        .border-union-blue { border-color: var(--union-blue); }
         .bg-union-red { background-color: var(--union-red); }
         
         .best-tag {
@@ -29,6 +30,17 @@
         /* 表格圓角補丁 */
         .table-container { border-radius: 1rem; overflow: hidden; }
         section { scroll-margin-top: 80px; }
+
+        /* 手機選單動畫邏輯 */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.active {
+            max-height: 450px;
+            border-bottom: 1px solid #f1f5f9;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-800">
@@ -44,14 +56,32 @@
                     </div>
                 </a>
             </div>
+
             <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
                 <a href="tutorial.html" class="hover:text-union-blue transition">開戶教學</a>
                 <a href="strategy.html" class="hover:text-union-blue transition">利息攻略</a>
                 <a href="faq.html" class="hover:text-union-blue transition">真心話與F&Q</a>
-                <a href="#compare-table" class="hover:text-union-blue transition text-union-blue font-bold">數位帳戶比較</a>
+                <a href="compare.html" class="hover:text-union-blue transition text-union-blue font-bold">數位帳戶比較</a>
                 <a href="index.html#test" class="hover:text-union-blue transition">利息實測</a>
             </div>
-            <a href="你的推薦連結" target="_blank" class="bg-union-red text-white px-5 py-2 rounded-md text-sm font-bold hover:bg-red-700 shadow-md transition">立即線上開戶</a>
+
+            <div class="flex items-center gap-2">
+                <a href="你的推薦連結" target="_blank" class="hidden sm:block bg-union-red text-white px-5 py-2 rounded-md text-sm font-bold hover:bg-red-700 shadow-md transition">立即開戶</a>
+                <button id="menu-btn" class="md:hidden text-slate-600 p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden bg-white px-4">
+            <div class="flex flex-col space-y-4 py-6 text-base font-bold text-slate-700">
+                <a href="tutorial.html" class="hover:text-union-blue border-b border-slate-50 pb-2">開戶教學</a>
+                <a href="strategy.html" class="hover:text-union-blue border-b border-slate-50 pb-2">利息攻略</a>
+                <a href="faq.html" class="hover:text-union-blue border-b border-slate-50 pb-2">真心話與F&Q</a>
+                <a href="compare.html" class="text-union-blue border-b border-slate-50 pb-2">數位帳戶比較</a>
+                <a href="index.html#test" class="hover:text-union-blue border-b border-slate-50 pb-2">利息實測</a>
+                <a href="你的推薦連結" target="_blank" class="bg-union-red text-white text-center py-3 rounded-md shadow-lg">立即線上開戶</a>
+            </div>
         </div>
     </nav>
 
@@ -152,7 +182,7 @@
             </div>
         </section>
 
-        <div class="bg-union-blue rounded-[2.5rem] p-12 text-white text-center relative overflow-hidden shadow-2xl">
+        <div class="bg-union-blue rounded-[2.5rem] p-12 text-white text-center relative overflow-hidden shadow-2xl mb-16">
             <div class="absolute -top-10 -left-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
             <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-union-red/20 rounded-full blur-3xl"></div>
             
@@ -171,25 +201,46 @@
 
     </main>
 
-    <footer class="bg-white py-16 px-4 border-t border-slate-50 text-slate-400">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <footer class="bg-white py-12 md:py-16 px-6 border-t border-slate-50 text-slate-400">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
             <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-300">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-300">
                     <i class="fa-solid fa-user"></i>
                 </div>
-                <div>
-                    <h4 class="font-bold text-slate-700">[你的暱稱] 的理財筆記</h4>
-                    <p class="text-[10px] font-medium tracking-widest uppercase">Finance Professional Lab</p>
+                <div class="text-left">
+                    <h4 class="font-bold text-slate-700 text-sm md:text-base">[你的暱稱] 的理財筆記</h4>
+                    <p class="text-[9px] md:text-[10px] font-medium tracking-widest uppercase">Finance Professional Lab</p>
                 </div>
             </div>
-            <div class="text-center md:text-right">
-                <p class="text-[10px] leading-relaxed font-bold uppercase tracking-tighter">
+            <div>
+                <p class="text-[9px] md:text-[10px] leading-relaxed font-bold uppercase tracking-tighter md:text-right">
                     © 2026 Finance Lab · Union Bank Digital Services Guide<br>
-                    * 謹慎理財 信用至上 · 數據僅供參考請以官網為準 *
+                    <span class="text-slate-300 font-normal">謹慎理財 信用至上 · 數據僅供參考請以官網為準</span>
                 </p>
             </div>
         </div>
     </footer>
+
+    <a href="你的推薦連結" target="_blank" class="fixed bottom-6 right-6 bg-union-red text-white p-3 md:p-4 rounded-full shadow-2xl hover:bg-red-700 transition-all z-50 hover:scale-110 flex items-center gap-2 px-5 md:px-6">
+        <i class="fa-solid fa-bolt-lightning"></i>
+        <span class="font-black tracking-widest text-sm md:text-base">立即領 15%</span>
+    </a>
+
+    <script>
+        // 選單邏輯
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    </script>
 
 </body>
 </html>
