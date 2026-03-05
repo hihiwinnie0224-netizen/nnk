@@ -148,7 +148,7 @@
             </div>
         </div>
 
-        <div class="space-y-20 md:space-y-24 relative px-2">
+        <div class="space-y-20 md:space-y-24 relative px-2 mb-16">
             
             <div class="relative pl-12 md:pl-16 step-line">
                 <div class="absolute left-0 top-0 bg-union-blue text-white w-8 h-8 md:w-10 md:h-10 rounded-md flex items-center justify-center font-bold z-10 shadow-lg shadow-blue-100 text-sm md:text-base">01</div>
@@ -221,12 +221,32 @@
         </div>
     </main>
 
-    <footer class="bg-white py-8 border-t border-slate-50 text-center text-slate-400 text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase px-4">
-        © 2026 Finance Lab · Union Bank Digital Services Guide
+    <footer class="bg-white py-12 md:py-16 px-6 border-t border-slate-50 text-slate-400">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-300">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="text-left">
+                    <h4 class="font-bold text-slate-700 text-sm md:text-base">[你的暱稱] 的理財筆記</h4>
+                    <p class="text-[9px] md:text-[10px] font-medium tracking-widest uppercase">Finance Professional Lab</p>
+                </div>
+            </div>
+            <div>
+                <p class="text-[9px] md:text-[10px] leading-relaxed font-bold uppercase tracking-tighter md:text-right">
+                    © 2026 Finance Lab · Union Bank Digital Services Guide<br>
+                    <span class="text-slate-300 font-normal">謹慎理財 信用至上 · 活動詳情請以官網公告為準</span>
+                </p>
+            </div>
+        </div>
     </footer>
 
+    <a href="你的推薦連結" target="_blank" class="fixed bottom-6 right-6 bg-union-red text-white p-3 md:p-4 rounded-full shadow-2xl hover:bg-red-700 transition-all z-50 hover:scale-110 flex items-center gap-2 px-5 md:px-6">
+        <i class="fa-solid fa-bolt-lightning"></i>
+        <span class="font-black tracking-widest text-sm md:text-base">立即領 15%</span>
+    </a>
+
     <script>
-        // 選單邏輯
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = menuBtn.querySelector('i');
@@ -240,7 +260,6 @@
             }
         });
 
-        // 複製代碼功能
         function copyCode() {
             const code = document.getElementById('promo-code').innerText;
             navigator.clipboard.writeText(code).then(() => {
