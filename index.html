@@ -86,7 +86,7 @@
         </div>
     </nav>
 
-    <section class="hero-gradient pt-12 md:pt-20 pb-20 md:pb-28 px-4 border-b border-slate-50">
+    <header class="hero-gradient pt-12 md:pt-20 pb-20 md:pb-28 px-4 border-b border-slate-50">
         <div class="max-w-4xl mx-auto text-center">
             <span class="bg-union-orange text-white px-4 py-1.5 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest badge-glow inline-block mb-6 md:mb-8">
                 🔥 2026 數位帳戶天花板
@@ -112,9 +112,9 @@
                 「本國 18 歲以上成年人且非聯邦既有存戶即可申辦」
             </p>
         </div>
-    </section>
+    </header>
 
-    <section class="max-w-6xl mx-auto -mt-10 md:-mt-16 px-4 relative z-10">
+    <section class="max-w-6xl mx-auto -mt-10 md:-mt-16 px-4 relative z-10 mb-20">
         <div class="bg-white rounded-2xl shadow-2xl shadow-slate-200 p-6 md:p-10 border border-slate-100 grid md:grid-cols-3 gap-6 md:gap-10">
             <div class="flex flex-col items-center md:items-start space-y-2">
                 <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-union-blue mb-2">
@@ -140,6 +140,26 @@
         </div>
     </section>
 
+    <footer class="bg-white py-12 md:py-16 px-6 border-t border-slate-50 text-slate-400">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-300">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="text-left">
+                    <h4 class="font-bold text-slate-700 text-sm md:text-base">[你的暱稱] 的理財筆記</h4>
+                    <p class="text-[9px] md:text-[10px] font-medium tracking-widest uppercase">Finance Professional Lab</p>
+                </div>
+            </div>
+            <div>
+                <p class="text-[9px] md:text-[10px] leading-relaxed font-bold uppercase tracking-tighter md:text-right">
+                    © 2026 Finance Lab · Union Bank Digital Services Guide<br>
+                    <span class="text-slate-300 font-normal">謹慎理財 信用至上 · 活動詳情請以官網公告為準</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
     <a href="你的推薦連結" target="_blank" class="fixed bottom-6 right-6 bg-union-red text-white p-3 md:p-4 rounded-full shadow-2xl hover:bg-red-700 transition-all z-50 hover:scale-110 flex items-center gap-2 px-5 md:px-6">
         <i class="fa-solid fa-bolt-lightning"></i>
         <span class="font-black tracking-widest text-sm md:text-base">立即領 15%</span>
@@ -152,8 +172,6 @@
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-            
-            // 切換圖示：漢堡鈕變叉叉
             if (mobileMenu.classList.contains('active')) {
                 menuIcon.classList.remove('fa-bars');
                 menuIcon.classList.add('fa-xmark');
@@ -163,7 +181,6 @@
             }
         });
 
-        // 點擊選單連結後自動關閉選單 (優化體驗)
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
