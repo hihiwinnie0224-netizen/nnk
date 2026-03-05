@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 數位帳戶大補帖 | 15% 活儲到底贏多少？ | 理財研究室</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        
+        :root {
+            --union-blue: #00479d;
+            --union-red: #e60012;
+            --union-orange: #f39800;
+        }
+
+        .hero-gradient { background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%); }
+        .bg-union-blue { background-color: var(--union-blue); }
+        .text-union-blue { color: var(--union-blue); }
+        .bg-union-red { background-color: var(--union-red); }
+        
+        .best-tag {
+            background: linear-gradient(135deg, #ffed4a 0%, #f1c40f 100%);
+            color: #744210;
+        }
+
+        /* 表格圓角補丁 */
+        .table-container { border-radius: 1rem; overflow: hidden; }
+        section { scroll-margin-top: 80px; }
+    </style>
+</head>
+<body class="bg-white text-slate-800">
+
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-union-blue rounded-sm flex items-center justify-center text-white font-bold text-xl">U</div>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-bold leading-none text-union-blue">理財研究室</span>
+                        <span class="text-[10px] text-slate-400 tracking-tighter uppercase">Professional Finance Lab</span>
+                    </div>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
+                <a href="tutorial.html" class="hover:text-union-blue transition">開戶教學</a>
+                <a href="strategy.html" class="hover:text-union-blue transition">利息攻略</a>
+                <a href="faq.html" class="hover:text-union-blue transition">真心話與F&Q</a>
+                <a href="#compare-table" class="hover:text-union-blue transition text-union-blue font-bold">數位帳戶比較</a>
+                <a href="index.html#test" class="hover:text-union-blue transition">利息實測</a>
+            </div>
+            <a href="你的推薦連結" target="_blank" class="bg-union-red text-white px-5 py-2 rounded-md text-sm font-bold hover:bg-red-700 shadow-md transition">立即線上開戶</a>
+        </div>
+    </nav>
+
+    <header class="hero-gradient pt-16 pb-20 px-4 border-b border-slate-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="inline-block border border-blue-200 bg-blue-50 text-union-blue px-4 py-1 rounded-full text-xs font-bold tracking-wide mb-8 uppercase">
+                Market Comparison 2026
+            </span>
+            <h1 class="text-3xl md:text-5xl font-black mt-4 leading-tight tracking-tight text-slate-900">
+                別再傻存 0.7%！<br>
+                <span class="text-union-blue">2026 熱門數位帳戶對照</span>
+            </h1>
+            <p class="mt-8 text-slate-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                市場利率變動極快，研究員幫你整理了目前台灣前四大熱門數位帳戶。直接看結論：<span class="text-union-red font-bold">New New Bank 依然是 2026 年新戶的首選天花板。</span>
+            </p>
+        </div>
+    </header>
+
+    <main id="compare-table" class="max-w-5xl mx-auto py-16 px-6">
+        
+        <div class="bg-white rounded-3xl shadow-2xl shadow-slate-200 border border-slate-100 overflow-hidden mb-20 -mt-24 relative z-10">
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-union-blue text-white">
+                            <th class="p-6 text-sm font-bold tracking-widest border-r border-white/10 uppercase">銀行名稱</th>
+                            <th class="p-6 text-sm font-bold tracking-widest border-r border-white/10 uppercase">新戶最高利率</th>
+                            <th class="p-6 text-sm font-bold tracking-widest border-r border-white/10 uppercase">高利額度</th>
+                            <th class="p-6 text-sm font-bold tracking-widest uppercase">達成難度</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-blue-50/50 group">
+                            <td class="p-6 border-b border-slate-100">
+                                <div class="flex flex-col items-center">
+                                    <span class="font-black text-slate-900 text-lg">New New Bank</span>
+                                    <span class="best-tag text-[10px] px-3 py-0.5 rounded-full mt-2 animate-pulse font-black italic">WINNER TOP 1</span>
+                                </div>
+                            </td>
+                            <td class="p-6 border-b border-slate-100">
+                                <span class="text-4xl font-black text-union-blue">15%</span>
+                            </td>
+                            <td class="p-6 border-b border-slate-100 font-bold text-slate-700 text-lg">10 萬</td>
+                            <td class="p-6 border-b border-slate-100">
+                                <span class="text-xs bg-green-500 text-white px-3 py-1.5 rounded-full font-bold shadow-sm">極低 (開戶即享)</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-6 border-b border-slate-100 font-bold text-slate-500 italic">台新 Richart</td>
+                            <td class="p-6 border-b border-slate-100 text-2xl font-bold text-slate-400">3.2%</td>
+                            <td class="p-6 border-b border-slate-100 text-slate-500 font-medium">10 萬</td>
+                            <td class="p-6 border-b border-slate-100">
+                                <span class="text-[11px] bg-slate-100 text-slate-400 px-3 py-1 rounded-full font-bold uppercase tracking-tighter">普通 (需外幣任務)</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-6 border-b border-slate-100 font-bold text-slate-500 italic">LINE Bank</td>
+                            <td class="p-6 border-b border-slate-100 text-2xl font-bold text-slate-400">1.5%</td>
+                            <td class="p-6 border-b border-slate-100 text-slate-500 font-medium">5 萬</td>
+                            <td class="p-6 border-b border-slate-100">
+                                <span class="text-[11px] bg-slate-100 text-slate-400 px-3 py-1 rounded-full font-bold uppercase tracking-tighter">低 (無腦領)</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-6 border-b border-slate-100 font-bold text-slate-500 italic">國泰 Cube</td>
+                            <td class="p-6 border-b border-slate-100 text-2xl font-bold text-slate-400">3.0%</td>
+                            <td class="p-6 border-b border-slate-100 text-slate-500 font-medium">5 萬</td>
+                            <td class="p-6 border-b border-slate-100">
+                                <span class="text-[11px] bg-slate-100 text-slate-400 px-3 py-1 rounded-full font-bold uppercase tracking-tighter">中 (需跨App任務)</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <section class="grid md:grid-cols-3 gap-8 mb-20">
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center group hover:shadow-md transition">
+                <div class="w-14 h-14 bg-blue-50 text-union-blue text-2xl mb-6 rounded-full flex items-center justify-center mx-auto group-hover:bg-union-blue group-hover:text-white transition duration-500">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h4 class="font-bold text-slate-800 mb-3 text-lg">絕對利率霸主</h4>
+                <p class="text-sm text-slate-500 leading-relaxed font-medium">New New Bank 的 15% 是市場均值的 5 倍以上。同樣存 10 萬，一個月利息抵別家五個月。</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center group hover:shadow-md transition">
+                <div class="w-14 h-14 bg-blue-50 text-union-blue text-2xl mb-6 rounded-full flex items-center justify-center mx-auto group-hover:bg-union-blue group-hover:text-white transition duration-500">
+                    <i class="fa-solid fa-unlock-keyhole"></i>
+                </div>
+                <h4 class="font-bold text-slate-800 mb-3 text-lg">開戶門檻最友善</h4>
+                <p class="text-sm text-slate-500 leading-relaxed font-medium">不需換匯、不需解複雜 App 任務，只要開戶審核通過，下個月直接領高利息。</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center group hover:shadow-md transition">
+                <div class="w-14 h-14 bg-blue-50 text-union-blue text-2xl mb-6 rounded-full flex items-center justify-center mx-auto group-hover:bg-union-blue group-hover:text-white transition duration-500">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                </div>
+                <h4 class="font-bold text-slate-800 mb-3 text-lg">緊急預備金首選</h4>
+                <p class="text-sm text-slate-500 leading-relaxed font-medium">10 萬額度適合放緊急生活費，不僅流動性高，還能幫你每月創造 $1,250 的被動收入。</p>
+            </div>
+        </section>
+
+        <div class="bg-union-blue rounded-[2.5rem] p-12 text-white text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute -top-10 -left-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-union-red/20 rounded-full blur-3xl"></div>
+            
+            <h3 class="text-2xl md:text-3xl font-black mb-6 tracking-tight relative z-10">數字不會騙人，還在等什麼？</h3>
+            <p class="text-blue-100 mb-10 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-medium relative z-10">
+                趁著 2026 年這波 15% 優惠尚未額滿，現在就加入領息行列。<br>
+                點擊下方按鈕，5 分鐘內完成數位帳戶申辦。
+            </p>
+            <a href="你的官方推薦連結" target="_blank" class="inline-block bg-white text-union-blue px-12 py-5 rounded-md font-black text-xl hover:bg-slate-100 transition shadow-xl transform hover:scale-105 relative z-10">
+                立即領取 15% 高利禮遇
+            </a>
+            <p class="mt-8 text-[10px] text-blue-300 uppercase tracking-[0.2em] font-bold italic relative z-10">
+                * 各行利率隨時變動，數據採集自 2026/03 各銀行官網 *
+            </p>
+        </div>
+
+    </main>
+
+    <footer class="bg-white py-16 px-4 border-t border-slate-50 text-slate-400">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-300">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-700">[你的暱稱] 的理財筆記</h4>
+                    <p class="text-[10px] font-medium tracking-widest uppercase">Finance Professional Lab</p>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-[10px] leading-relaxed font-bold uppercase tracking-tighter">
+                    © 2026 Finance Lab · Union Bank Digital Services Guide<br>
+                    * 謹慎理財 信用至上 · 數據僅供參考請以官網為準 *
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
