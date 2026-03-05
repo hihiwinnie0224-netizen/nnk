@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New New Bank 線上開戶導引 | 2026 最新圖解教學</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        
+        :root {
+            --union-blue: #00479d;
+            --union-red: #e60012;
+            --union-orange: #f39800;
+        }
+
+        .hero-gradient { background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%); }
+        .bg-union-blue { background-color: var(--union-blue); }
+        .text-union-blue { color: var(--union-blue); }
+        .border-union-blue { border-color: var(--union-blue); }
+        .bg-union-red { background-color: var(--union-red); }
+
+        /* 步驟連貫線 */
+        .step-line::before { 
+            content: ''; 
+            position: absolute; 
+            left: 19px; 
+            top: 45px; 
+            bottom: -20px; 
+            width: 2px; 
+            background: #e2e8f0; 
+            border-left: 1px dashed #cbd5e1;
+        }
+        
+        /* 避免被導覽列遮住內容 */
+        section { scroll-margin-top: 80px; }
+    </style>
+</head>
+<body class="bg-white text-slate-800">
+
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-union-blue rounded-sm flex items-center justify-center text-white font-bold text-xl">U</div>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-bold leading-none text-union-blue">理財研究室</span>
+                        <span class="text-[10px] text-slate-400 tracking-tighter uppercase">Professional Finance Lab</span>
+                    </div>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
+                <a href="index.html#tutorial" class="hover:text-union-blue transition">開戶教學</a>
+                <a href="index.html#strategy" class="hover:text-union-blue transition">利息攻略</a>
+                <a href="index.html#faq" class="hover:text-union-blue transition">真心話與F&Q</a>
+                <a href="index.html#compare" class="hover:text-union-blue transition">數位帳戶比較</a>
+                <a href="index.html#test" class="hover:text-union-blue transition">利息實測</a>
+            </div>
+            <a href="你的推薦連結" target="_blank" class="bg-union-red text-white px-5 py-2 rounded-md text-sm font-bold hover:bg-red-700 shadow-md transition">立即線上開戶</a>
+        </div>
+    </nav>
+
+    <header class="hero-gradient pt-16 pb-20 px-4 border-b border-slate-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="inline-block border border-blue-200 bg-blue-50 text-union-blue px-4 py-1 rounded-full text-xs font-bold tracking-wide mb-8">
+                STEP-BY-STEP GUIDE
+            </span>
+            <h1 class="text-3xl md:text-4xl font-bold mt-4 leading-tight tracking-tight text-slate-900">
+                New New Bank 線上開戶圖解<br>
+                <span class="text-union-blue font-bold">5 分鐘完成配置，開啟優利禮遇</span>
+            </h1>
+            <p class="mt-8 text-slate-500 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
+                本指南旨在協助您在 5-10 分鐘內完成申請。請確保您已年滿 18 歲，並準備妥當身分證明文件與他行臨櫃帳號以便驗證。
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto py-16 px-6">
+        
+        <div class="bg-white border border-slate-100 p-8 rounded-2xl shadow-xl shadow-slate-100 mb-20 -mt-24 relative z-10">
+            <div class="flex items-center gap-3 mb-8 pb-4 border-b border-slate-50">
+                <div class="w-10 h-10 bg-blue-50 text-union-blue rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-file-invoice text-xl"></i>
+                </div>
+                <h3 class="font-bold text-slate-800 text-lg">
+                    申辦前準備事項 <span class="text-xs font-normal text-slate-400 ml-1 uppercase">Preparations</span>
+                </h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="flex items-start gap-4">
+                    <div class="mt-1 text-union-blue text-lg"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <p class="font-bold text-slate-800 text-sm">身分證明文件</p>
+                        <p class="text-slate-400 text-xs mt-1">身分證正本及第二證件 (健保卡/駕照)</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="mt-1 text-union-blue text-lg"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <p class="font-bold text-slate-800 text-sm">身分驗證帳號</p>
+                        <p class="text-slate-400 text-xs mt-1">本人於他行臨櫃開立之台幣帳號</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="mt-1 text-union-blue text-lg"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <p class="font-bold text-slate-800 text-sm">本人手機號碼</p>
+                        <p class="text-slate-400 text-xs mt-1">需可接收簡訊驗證碼 (OTP)</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="mt-1 text-union-blue text-lg"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <p class="font-bold text-slate-800 text-sm">良好拍攝環境</p>
+                        <p class="text-slate-400 text-xs mt-1">光線充足，避免證件反光造成審核失敗</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-24 relative">
+            
+            <div class="relative pl-16 step-line">
+                <div class="absolute left-0 top-0 bg-union-blue text-white w-10 h-10 rounded-md flex items-center justify-center font-bold z-10 shadow-lg shadow-blue-100">01</div>
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-slate-900">進入開戶頁面並啟動驗證</h3>
+                    <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest font-bold">Identity Verification</p>
+                </div>
+                <p class="text-slate-600 mb-8 text-sm leading-relaxed">
+                    點擊本頁按鈕前往 New New Bank 申辦網頁。輸入手機號碼並通過 <strong>OTP 簡訊驗證</strong>，確保申辦環境安全且具備隱私性。
+                </p>
+                <div class="bg-slate-50 border border-slate-100 p-12 rounded-xl flex flex-col items-center justify-center text-slate-300">
+                    <i class="fa-solid fa-mobile-screen-button text-5xl mb-4 opacity-50"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em]">[ 官方開戶驗證畫面 示意 ]</span>
+                </div>
+            </div>
+
+            <div class="relative pl-16 step-line">
+                <div class="absolute left-0 top-0 bg-union-blue text-white w-10 h-10 rounded-md flex items-center justify-center font-bold z-10 shadow-lg shadow-blue-100">02</div>
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-slate-900">選擇新戶禮遇及輸入推薦代碼</h3>
+                    <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest font-bold">Reward Selection</p>
+                </div>
+                <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                    這是最重要的步驟！請務必輸入推薦代碼以確保符合 <strong>15% 優惠資格</strong>。2026 方案包含多項好禮，送出後將無法變更。
+                </p>
+                <div class="p-8 bg-white border border-union-blue/20 rounded-xl flex flex-col md:flex-row justify-between items-center gap-6 shadow-md shadow-blue-50">
+                    <div>
+                        <p class="text-[10px] text-union-blue font-bold tracking-widest mb-1 uppercase">專屬推薦代碼 (點擊可複製)</p>
+                        <p class="text-2xl font-bold text-slate-900 tracking-tight">NEWBANK2026</p>
+                    </div>
+                    <button class="bg-union-blue text-white px-8 py-3 rounded-md text-xs font-bold hover:bg-blue-800 transition shadow-sm">
+                        點我複製
+                    </button>
+                </div>
+                <div class="mt-4 flex items-center gap-2 text-[11px] text-union-red font-bold">
+                    <i class="fa-solid fa-circle-exclamation"></i> 提示：新戶回饋僅限於此步驟完成選擇，漏填無法補報
+                </div>
+            </div>
+
+            <div class="relative pl-16">
+                <div class="absolute left-0 top-0 bg-union-blue text-white w-10 h-10 rounded-md flex items-center justify-center font-bold z-10 shadow-lg shadow-blue-100">03</div>
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-slate-900">身分證明文件拍攝</h3>
+                    <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest font-bold">Document Upload</p>
+                </div>
+                <p class="text-slate-600 mb-8 text-sm leading-relaxed">
+                    拍攝時請確保文件置於深色平坦背景，並避開光源直射（以免產生白色反光點）。影像需清晰完整，四角皆需入鏡，以加速 AI 自動辨識進度。
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-50 p-6 rounded-lg border border-slate-100 text-center">
+                        <i class="fa-solid fa-camera text-union-blue/30 text-2xl mb-2"></i>
+                        <p class="text-[10px] text-slate-500 font-bold">光線均勻無陰影</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg border border-slate-100 text-center">
+                        <i class="fa-solid fa-id-card text-union-blue/30 text-2xl mb-2"></i>
+                        <p class="text-[10px] text-slate-500 font-bold">文字對焦需清晰</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-32 pt-16 border-t border-slate-100">
+            <h2 class="text-2xl font-bold mb-10 text-slate-900 flex items-center gap-3">
+                <span class="w-1.5 h-6 bg-union-blue rounded-full"></span>
+                開戶實務建議與規範
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 bg-[#f8fbff] rounded-xl border border-blue-50">
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-union-blue text-sm"></i> 帳戶類別限制
+                    </h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        建議使用「他行實體臨櫃帳戶」驗證，開立後享完整轉帳權限。若用數位帳戶驗證則為「第三類」，後續需升級。
+                    </p>
+                </div>
+                <div class="p-6 bg-[#f8fbff] rounded-xl border border-blue-50">
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-union-blue text-sm"></i> 計息起始日
+                    </h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        成功開戶後，新戶優利專案通常自次月 21 日起算。請密切留意聯邦發送之開戶成功簡訊通知。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-24 text-center bg-slate-900 rounded-3xl py-14 px-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-union-blue opacity-10 rounded-full -mr-16 -mt-16"></div>
+            
+            <h3 class="text-white text-2xl font-bold mb-8 relative z-10">
+                準備好讓您的資產增值了嗎？
+            </h3>
+            <a href="你的官方推薦連結" target="_blank" class="inline-block bg-union-red text-white px-12 py-5 rounded-md font-bold text-lg shadow-lg hover:bg-red-700 transition w-full md:w-auto relative z-10">
+                前往官方網頁線上申辦
+            </a>
+            <div class="mt-8 pt-8 border-t border-white/5 text-slate-500 text-[10px] leading-relaxed relative z-10">
+                <p class="font-bold mb-2 text-slate-400 tracking-widest uppercase">謹慎理財 信用至上</p>
+                本網頁內容由理財研究室彙整，僅供申請參考。活動規則請依聯邦銀行官方網站最新公告為準。
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white py-12 border-t border-slate-50 text-center text-slate-400 text-[10px] font-bold tracking-[0.3em] uppercase">
+        © 2026 Finance Lab · Union Bank Digital Services Guide
+    </footer>
+
+</body>
+</html>
