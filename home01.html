@@ -39,10 +39,6 @@ body {
 ::-webkit-scrollbar-track { background: var(--sky); }
 ::-webkit-scrollbar-thumb { background: var(--brand); border-radius: 3px; }
 
-/* ── CURSOR ── */
-#cd { width: 9px; height: 9px; background: var(--brand); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform .1s; }
-#cr { width: 36px; height: 36px; border: 1.5px solid rgba(0,174,239,.45); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all .16s ease; }
-
 /* ── CANVAS ── */
 #bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
@@ -335,11 +331,20 @@ nav.solid { box-shadow: 0 2px 24px rgba(0,120,180,.1); background: rgba(255,255,
 .tbtn.on { background: var(--brand); color: #fff; box-shadow: 0 4px 14px rgba(0,174,239,.28); }
 .tpane { display: none; }
 .tpane.on { display: block; }
-.bgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+.bgrid { display: grid; gap: 15px; }
+#ta .bgrid { grid-template-columns: repeat(3, 1fr); }
+#tb .bgrid { grid-template-columns: repeat(3, 1fr); }
+@media(max-width:800px) {
+  #ta .bgrid, #tb .bgrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width:520px) {
+  #ta .bgrid, #tb .bgrid { grid-template-columns: 1fr; }
+}
 .bc {
   background: var(--sky); border: 1px solid rgba(0,174,239,.1);
-  border-radius: 20px; padding: 24px 20px;
+  border-radius: 20px; padding: 26px 22px;
   transition: all .32s cubic-bezier(.4,0,.2,1); cursor: pointer; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
 }
 .bc::after {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2.5px;
@@ -362,7 +367,7 @@ nav.solid { box-shadow: 0 2px 24px rgba(0,120,180,.1); background: rgba(255,255,
 .bc-more {
   display: inline-flex; align-items: center; gap: 5px; color: var(--brand);
   font-size: 11.5px; font-weight: 600; border: none; background: none;
-  cursor: pointer; margin-top: 12px; font-family: inherit; padding: 0;
+  cursor: pointer; margin-top: auto; padding-top: 14px; font-family: inherit;
   transition: gap .2s; opacity: .7;
 }
 .bc-more:hover { gap: 9px; opacity: 1; }
@@ -579,8 +584,6 @@ footer { background: var(--text); color: rgba(255,255,255,.45); padding: 48px 52
 <body>
 
 <canvas id="bg"></canvas>
-<div id="cd"></div>
-<div id="cr"></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -743,6 +746,7 @@ footer { background: var(--text); color: rgba(255,255,255,.45); padding: 48px 52
         <div class="bc rv d3"><div class="bc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00AEEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div><div class="bc-name">美金結匯</div><div class="bc-rate">3.5<small>分</small></div><div class="bc-note">最高折讓</div><button class="bc-more">更多詳情 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
         <div class="bc rv d4"><div class="bc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00AEEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8a2 2 0 00-2 2v2h12V5a2 2 0 00-2-2z"/></svg></div><div class="bc-name">跨提跨轉</div><div class="bc-rate">0<small>元</small></div><div class="bc-note">手續費（限次數/通路）</div><button class="bc-more">更多詳情 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
         <div class="bc rv d5"><div class="bc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00AEEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="bc-name">萊刷聯邦</div><div class="bc-rate">5<small>%</small></div><div class="bc-note">不限金額現折</div><button class="bc-more">更多詳情 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
+        <div class="bc rv d5"><div class="bc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00AEEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8a2 2 0 00-2 2v2h12V5a2 2 0 00-2-2z"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg></div><div class="bc-name">開戶禮</div><div class="bc-rate" style="font-size:20px;line-height:1.6">3 重</div><div class="bc-note">iPASS・萊爾富・MaiCoin</div><button class="bc-more">更多詳情 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
       </div>
     </div>
 
@@ -1010,16 +1014,6 @@ footer { background: var(--text); color: rgba(255,255,255,.45); padding: 48px 52
   }
   draw();
 })();
-
-/* ── CURSOR ── */
-const cd = document.getElementById('cd'), cr = document.getElementById('cr');
-let mx2=0, my2=0, rx=0, ry=0;
-document.addEventListener('mousemove', e => { mx2=e.clientX; my2=e.clientY; cd.style.left=mx2+'px'; cd.style.top=my2+'px'; });
-(function loop(){ rx+=(mx2-rx)*.13; ry+=(my2-ry)*.13; cr.style.left=rx+'px'; cr.style.top=ry+'px'; requestAnimationFrame(loop); })();
-document.querySelectorAll('a,button,.bc,.rpill,.scard,.gcard,.cstat').forEach(el => {
-  el.addEventListener('mouseenter', () => { cr.style.width='50px'; cr.style.height='50px'; cr.style.borderColor='rgba(0,174,239,.65)'; });
-  el.addEventListener('mouseleave', () => { cr.style.width='36px'; cr.style.height='36px'; cr.style.borderColor='rgba(0,174,239,.45)'; });
-});
 
 /* ── NAV ── */
 const nav = document.getElementById('nav');
