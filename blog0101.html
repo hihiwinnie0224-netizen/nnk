@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聯邦 New New Bank 10% 活存全攻略 — New New Bank</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;600;700;900&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #f4f7fb;
+  --bg2:      #eaeff8;
+  --surface:  #ffffff;
+  --ink:      #0f1c2e;
+  --ink2:     #1e3352;
+  --muted:    #6b7fa0;
+  --border:   rgba(15,28,46,0.09);
+  --mint:     #00b09b;
+  --mint2:    #00c9b1;
+  --mintbg:   rgba(0,176,155,0.08);
+  --mintbdr:  rgba(0,176,155,0.2);
+  --amber:    #e9a800;
+  --amberbg:  rgba(233,168,0,0.08);
+  --amberbdr: rgba(233,168,0,0.25);
+  --sky:      #1d6fe8;
+  --skybg:    rgba(29,111,232,0.07);
+  --skybdr:   rgba(29,111,232,0.2);
+  --rose:     #d93450;
+  --rosebg:   rgba(217,52,80,0.07);
+  --shadow:   0 2px 14px rgba(15,28,46,0.07);
+  --shadow2:  0 8px 40px rgba(15,28,46,0.1);
+  --r:        14px;
+  --r2:       22px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans TC', sans-serif; background: var(--bg); color: var(--ink); overflow-x: hidden; line-height: 1; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--mint2); border-radius: 2px; }
+a { text-decoration: none; color: inherit; }
+button { font-family: 'Noto Sans TC', sans-serif; cursor: pointer; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  height: 60px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 10px rgba(15,28,46,0.06);
+}
+.nav-logo img { height: 30px; display: block; }
+.nav-back { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 13px; font-weight: 500; transition: color .2s; }
+.nav-back:hover { color: var(--mint); }
+.nav-back svg { transition: transform .2s; }
+.nav-back:hover svg { transform: translateX(-3px); }
+
+/* ===== PROGRESS ===== */
+#progress { position: fixed; top: 60px; left: 0; right: 0; z-index: 850; height: 3px; background: var(--border); }
+#progress-bar { height: 100%; background: linear-gradient(90deg, var(--mint2), var(--sky)); width: 0%; transition: width .1s; }
+
+/* ===== HERO ===== */
+.article-hero {
+  min-height: 86vh; display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; overflow: hidden;
+  background: var(--ink2);
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 78% 25%, rgba(0,201,177,0.3) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 60% at 12% 78%, rgba(29,111,232,0.2) 0%, transparent 55%),
+    linear-gradient(155deg, #0a1f3d 0%, #162f5c 55%, #0d2248 100%);
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 80% at 65% 40%, black 20%, transparent 80%);
+}
+.hero-fade {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 200px; z-index: 1;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+}
+
+/* spinning orb */
+.hero-orb {
+  position: absolute; top: 8%; right: 8%; z-index: 2;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(0,201,177,0.45), rgba(29,111,232,0.3), rgba(0,201,177,0.1), rgba(0,201,177,0.45));
+  display: flex; align-items: center; justify-content: center;
+  animation: spinOrb 22s linear infinite;
+}
+@keyframes spinOrb { to { transform: rotate(360deg); } }
+.hero-orb-inner {
+  position: absolute; inset: 10px; border-radius: 50%;
+  background: rgba(10,28,58,0.84); border: 1px solid rgba(0,201,177,0.28);
+  backdrop-filter: blur(10px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  animation: spinOrb 22s linear infinite reverse;
+}
+.orb-num {
+  font-family: 'Outfit', sans-serif; font-size: 68px; font-weight: 900; line-height: 1;
+  background: linear-gradient(135deg, #00ffe8, #60d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: spinOrb 22s linear infinite;
+}
+.orb-lbl { font-size: 12px; color: rgba(0,220,190,0.85); font-weight: 600; margin-top: 5px; animation: spinOrb 22s linear infinite; }
+
+/* hero content */
+.hero-content { position: relative; z-index: 3; padding: 0 64px 80px; max-width: 860px; animation: heroIn .8s both; }
+@keyframes heroIn { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+
+.hero-labels { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.lbl { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 800; letter-spacing: .11em; padding: 5px 14px; border-radius: 99px; }
+.lbl-cover { background: linear-gradient(135deg, #00c9b1, #38c6f0); color: #082035; }
+.lbl-hot { background: rgba(217,52,80,0.16); border: 1px solid rgba(217,52,80,0.28); color: #f9a8b8; }
+.lbl-new { background: rgba(233,168,0,0.18); border: 1px solid rgba(233,168,0,0.3); color: #fcd34d; }
+.blink { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: blink 1.4s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+.hero-title { font-family: 'Noto Serif TC', serif; font-size: clamp(26px, 4vw, 50px); font-weight: 900; color: #fff; line-height: 1.32; margin-bottom: 18px; }
+.hero-title .hl { background: linear-gradient(120deg, #00ffe8, #60d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-excerpt { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.85; max-width: 600px; margin-bottom: 28px; }
+.hero-meta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.meta-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: rgba(255,255,255,0.42); }
+.meta-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.18); }
+
+/* ===== LAYOUT ===== */
+.article-wrap {
+  display: grid; grid-template-columns: 1fr 296px; gap: 40px;
+  max-width: 1120px; margin: 0 auto; padding: 60px 32px 120px; align-items: start;
+}
+.article-body { min-width: 0; }
+
+/* ===== INTRO ===== */
+.intro-block {
+  background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--mint2);
+  border-radius: var(--r); padding: 26px 30px; margin-bottom: 48px; box-shadow: var(--shadow);
+  opacity: 0; transform: translateY(18px); transition: opacity .6s, transform .6s;
+}
+.intro-block.vis { opacity: 1; transform: translateY(0); }
+.intro-block p { font-size: 15px; color: #3b4f68; line-height: 1.9; }
+.intro-block strong { color: var(--mint); }
+
+/* ===== HEADINGS ===== */
+.art-h2 {
+  font-family: 'Noto Serif TC', serif; font-size: 23px; font-weight: 900; color: var(--ink);
+  margin: 52px 0 16px; display: flex; align-items: center; gap: 12px;
+  opacity: 0; transform: translateY(16px); transition: opacity .55s, transform .55s;
+}
+.art-h2.vis { opacity: 1; transform: translateY(0); }
+.art-h2::before { content: ''; display: block; width: 4px; height: 26px; border-radius: 2px; flex-shrink: 0; background: linear-gradient(to bottom, var(--mint2), var(--sky)); }
+
+.art-p {
+  font-size: 15px; color: #3b4f68; line-height: 1.95; margin-bottom: 18px;
+  opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s;
+}
+.art-p.vis { opacity: 1; transform: translateY(0); }
+.art-p strong { color: var(--ink); }
+.art-p .hl { color: var(--mint); font-weight: 700; }
+.art-p .amber { color: var(--amber); font-weight: 700; }
+
+/* ===== RATE SPOTLIGHT ===== */
+.rate-spotlight {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2);
+  padding: 36px 40px; margin: 28px 0;
+  display: grid; grid-template-columns: repeat(3,1fr);
+  box-shadow: var(--shadow2); position: relative; overflow: hidden;
+  opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s;
+}
+.rate-spotlight.vis { opacity: 1; transform: translateY(0); }
+.rate-spotlight::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--mint2), var(--sky), var(--amber)); }
+.rs-item { padding: 0 28px; text-align: center; border-right: 1px solid var(--border); }
+.rs-item:first-child { padding-left: 0; }
+.rs-item:last-child { border-right: none; }
+.rs-label { font-size: 10.5px; color: var(--muted); font-weight: 600; letter-spacing: .06em; margin-bottom: 14px; }
+.rs-num { font-family: 'Outfit', sans-serif; font-size: 50px; font-weight: 900; line-height: 1; margin-bottom: 8px; }
+.rs-num.mint { background: linear-gradient(135deg, var(--mint), var(--mint2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.rs-num.amber { background: linear-gradient(135deg, var(--amber), #e07000); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.rs-num.sky { background: linear-gradient(135deg, var(--sky), var(--mint)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.rs-sub { font-size: 12px; color: var(--muted); line-height: 1.65; }
+
+/* ===== KEY POINTS ===== */
+.keypoints { display: flex; flex-direction: column; gap: 14px; margin: 24px 0 48px; }
+.kp {
+  display: grid; grid-template-columns: 50px 1fr; gap: 16px; align-items: start;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2);
+  padding: 22px 26px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+  opacity: 0; transform: translateX(-20px); transition: opacity .55s, transform .55s, box-shadow .25s;
+}
+.kp.vis { opacity: 1; transform: translateX(0); }
+.kp:hover { box-shadow: var(--shadow2); }
+.kp::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; opacity: 0; transition: opacity .3s; }
+.kp:nth-child(1)::before { background: linear-gradient(to bottom, var(--mint2), var(--sky)); }
+.kp:nth-child(2)::before { background: linear-gradient(to bottom, var(--amber), #e07000); }
+.kp:nth-child(3)::before { background: linear-gradient(to bottom, var(--sky), var(--mint)); }
+.kp:hover::before { opacity: 1; }
+.kp-num { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-size: 19px; font-weight: 900; flex-shrink: 0; }
+.kp:nth-child(1) .kp-num { background: var(--mintbg); color: var(--mint); border: 1px solid var(--mintbdr); }
+.kp:nth-child(2) .kp-num { background: var(--amberbg); color: var(--amber); border: 1px solid var(--amberbdr); }
+.kp:nth-child(3) .kp-num { background: var(--skybg); color: var(--sky); border: 1px solid var(--skybdr); }
+.kp-title { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 7px; }
+.kp-desc { font-size: 13.5px; color: #3b4f68; line-height: 1.85; }
+.kp-tag { display: inline-block; margin-top: 9px; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 99px; }
+.kp:nth-child(1) .kp-tag { background: var(--mintbg); color: var(--mint); }
+.kp:nth-child(2) .kp-tag { background: var(--amberbg); color: var(--amber); }
+.kp:nth-child(3) .kp-tag { background: var(--skybg); color: var(--sky); }
+
+/* ===== CALLOUT ===== */
+.callout {
+  border-radius: var(--r); padding: 18px 22px; margin: 22px 0;
+  display: flex; gap: 14px; align-items: flex-start;
+  opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s;
+}
+.callout.vis { opacity: 1; transform: translateY(0); }
+.callout.tip   { background: var(--mintbg);  border: 1px solid var(--mintbdr); }
+.callout.warn  { background: var(--amberbg); border: 1px solid var(--amberbdr); }
+.callout.alert { background: var(--rosebg);  border: 1px solid rgba(217,52,80,0.2); }
+.callout-ico { flex-shrink: 0; margin-top: 1px; }
+.callout-title { font-size: 13px; font-weight: 800; margin-bottom: 5px; }
+.callout.tip  .callout-title { color: var(--mint); }
+.callout.warn .callout-title { color: var(--amber); }
+.callout.alert .callout-title { color: var(--rose); }
+.callout-text { font-size: 13.5px; color: #3b4f68; line-height: 1.8; }
+
+/* ===== LIMIT TABLE ===== */
+.limit-table {
+  width: 100%; border-collapse: collapse; margin: 18px 0 32px;
+  background: var(--surface); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow);
+  opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s;
+}
+.limit-table.vis { opacity: 1; transform: translateY(0); }
+.limit-table th, .limit-table td { padding: 13px 18px; font-size: 13.5px; border-bottom: 1px solid var(--border); text-align: left; }
+.limit-table th { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .05em; background: var(--bg2); }
+.limit-table td { color: #3b4f68; }
+.limit-table td:last-child { font-weight: 700; color: var(--mint); font-family: 'Outfit', sans-serif; font-size: 14px; }
+.limit-table tr:last-child td { border-bottom: none; }
+.limit-table tr:hover td { background: var(--bg); }
+
+/* ===== FLOW STEPS ===== */
+.flow-steps { margin: 26px 0 40px; display: flex; flex-direction: column; }
+.flow-step { display: grid; grid-template-columns: 42px 1fr; gap: 16px; opacity: 0; transform: translateY(18px); transition: opacity .5s, transform .5s; }
+.flow-step.vis { opacity: 1; transform: translateY(0); }
+.flow-step:nth-child(2){transition-delay:.1s} .flow-step:nth-child(3){transition-delay:.2s} .flow-step:nth-child(4){transition-delay:.3s} .flow-step:nth-child(5){transition-delay:.4s}
+.fs-left { display: flex; flex-direction: column; align-items: center; }
+.fs-dot { width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 900; background: var(--mintbg); border: 1.5px solid var(--mintbdr); color: var(--mint); z-index: 1; }
+.fs-line { width: 2px; flex: 1; min-height: 20px; background: linear-gradient(to bottom, var(--mintbdr), transparent); margin: 4px 0; }
+.flow-step:last-child .fs-line { display: none; }
+.fs-right { padding: 4px 0 26px; }
+.fs-title { font-size: 14.5px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+.fs-desc { font-size: 13.5px; color: #3b4f68; line-height: 1.8; }
+.fs-tag { display: inline-block; margin-top: 8px; font-size: 9.5px; font-weight: 700; color: var(--mint); background: var(--mintbg); padding: 3px 10px; border-radius: 99px; }
+
+/* ===== VERDICT ===== */
+.verdict {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2);
+  padding: 38px 42px; margin: 32px 0; box-shadow: var(--shadow2); position: relative; overflow: hidden;
+  opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s;
+}
+.verdict.vis { opacity: 1; transform: translateY(0); }
+.verdict::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--mint2), var(--sky)); }
+.verdict-eyebrow { font-size: 10.5px; color: var(--mint); font-weight: 700; letter-spacing: .1em; margin-bottom: 10px; }
+.verdict-title { font-family: 'Noto Serif TC', serif; font-size: 21px; font-weight: 900; color: var(--ink); margin-bottom: 22px; }
+.verdict-scores { display: flex; flex-direction: column; gap: 13px; margin-bottom: 22px; }
+.vscore { display: flex; align-items: center; gap: 14px; }
+.vscore-label { font-size: 13px; color: var(--muted); min-width: 88px; }
+.vscore-bar { flex: 1; height: 6px; background: var(--bg2); border-radius: 3px; overflow: hidden; }
+.vscore-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--mint2), var(--sky)); transition: width 1.2s cubic-bezier(.25,.46,.45,.94); }
+.vscore-val { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: var(--mint); min-width: 36px; text-align: right; }
+.verdict-text { font-size: 14px; color: #3b4f68; line-height: 1.85; }
+.verdict-cta {
+  margin-top: 26px; display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--mint2), #38bdf8); color: #fff; font-weight: 800; font-size: 14px;
+  padding: 13px 28px; border-radius: 99px; border: none;
+  box-shadow: 0 5px 22px rgba(0,176,155,0.26); transition: transform .2s, box-shadow .2s;
+}
+.verdict-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 34px rgba(0,176,155,0.36); }
+
+/* ===== SIDEBAR ===== */
+.sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 16px; }
+.s-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 22px; box-shadow: var(--shadow); }
+.s-card-title { font-size: 10px; color: var(--muted); font-weight: 700; letter-spacing: .08em; margin-bottom: 14px; }
+
+.qc-rate { font-family: 'Outfit', sans-serif; font-size: 54px; font-weight: 900; line-height: 1; background: linear-gradient(135deg, var(--mint), var(--sky)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 4px; }
+.qc-sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+.qc-rows { display: flex; flex-direction: column; gap: 9px; }
+.qc-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+.qc-row:last-child { border-bottom: none; }
+.qc-key { color: var(--muted); }
+.qc-val { font-weight: 700; color: var(--ink); font-family: 'Outfit', sans-serif; }
+.qc-btn { width: 100%; margin-top: 16px; background: linear-gradient(135deg, var(--mint2), #38bdf8); color: #fff; font-weight: 800; font-size: 13px; padding: 12px; border-radius: 12px; border: none; box-shadow: 0 4px 14px rgba(0,176,155,0.2); transition: transform .2s, box-shadow .2s; }
+.qc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(0,176,155,0.32); }
+
+.toc-list { list-style: none; display: flex; flex-direction: column; }
+.toc-item a { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--border); transition: color .2s; }
+.toc-item:last-child a { border-bottom: none; }
+.toc-item a::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: background .2s; }
+.toc-item a:hover, .toc-item a.active { color: var(--mint); }
+.toc-item a:hover::before, .toc-item a.active::before { background: var(--mint); }
+
+.author-inner { display: flex; align-items: center; gap: 13px; }
+.author-ava { width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--mint2), var(--sky)); display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 16px; color: #fff; }
+.author-name { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.author-role { font-size: 11px; color: var(--muted); }
+
+.share-btns { display: flex; gap: 8px; }
+.share-btn { flex: 1; padding: 9px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--muted); font-size: 12px; transition: all .2s; }
+.share-btn:hover { border-color: var(--mintbdr); color: var(--mint); background: var(--mintbg); }
+
+/* ===== DL BAR + TOP ===== */
+#dl-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 800;
+  background: rgba(255,255,255,0.95); border-top: 1px solid var(--border); backdrop-filter: blur(20px);
+  padding: 12px 24px; display: flex; justify-content: center;
+  box-shadow: 0 -4px 24px rgba(15,28,46,0.08);
+  animation: barIn .6s 1s both;
+}
+@keyframes barIn { from{transform:translateY(100%)} to{transform:translateY(0)} }
+.dl-inner { display: flex; align-items: center; gap: 16px; }
+.dl-txt { font-size: 13px; color: var(--muted); }
+.dl-txt strong { color: var(--ink); }
+.dl-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--mint2), #38bdf8); color: #fff; font-weight: 800; font-size: 14px; padding: 11px 28px; border-radius: 99px; border: none; box-shadow: 0 4px 18px rgba(0,176,155,0.26); transition: transform .2s; }
+.dl-btn:hover { transform: scale(1.03); }
+
+#top-btn { position: fixed; bottom: 70px; right: 24px; z-index: 800; width: 44px; height: 44px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); color: var(--mint); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow2); opacity: 0; transform: translateY(8px); transition: opacity .3s, transform .3s; }
+#top-btn.vis { opacity: 1; transform: translateY(0); }
+#top-btn:hover { background: var(--mintbg); border-color: var(--mintbdr); }
+
+/* ===== FOOTER ===== */
+footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 48px 40px 100px; }
+.foot-inner { max-width: 1120px; margin: 0 auto; }
+.foot-logo img { height: 26px; margin-bottom: 18px; opacity: .55; }
+.foot-legal { font-size: 11.5px; color: var(--muted); line-height: 2.1; max-width: 680px; }
+.foot-legal .head { font-size: 11px; color: var(--ink); font-weight: 700; letter-spacing: .06em; margin-bottom: 8px; }
+.foot-copy { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 11.5px; color: #b0bbcc; }
+
+/* ===== ANIMATE UTILITY ===== */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s, transform .65s; }
+.reveal.vis { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .hero-content { padding: 0 22px 60px; }
+  .hero-orb { width: 160px; height: 160px; top: 72px; right: 14px; }
+  .orb-num { font-size: 44px; }
+  .article-wrap { grid-template-columns: 1fr; padding: 40px 20px 100px; gap: 28px; }
+  .sidebar { position: static; }
+  .rate-spotlight { grid-template-columns: 1fr; gap: 18px; }
+  .rs-item { border-right: none; border-bottom: 1px solid var(--border); padding: 0 0 18px; text-align: left; }
+  .rs-item:last-child { border-bottom: none; padding-bottom: 0; }
+  footer { padding: 40px 20px 100px; }
+  .dl-txt { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="https://newnewbank.com.tw/images/UBOT-logo_.png" alt="New New Bank"></div>
+  <a class="nav-back" href="#">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    返回首頁
+  </a>
+</nav>
+
+<div id="progress"><div id="progress-bar"></div></div>
+
+<!-- HERO -->
+<section class="article-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-fade"></div>
+
+  <div class="hero-orb">
+    <div class="hero-orb-inner">
+      <div class="orb-num">10%</div>
+      <div class="orb-lbl">活存利率</div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-labels">
+      <span class="lbl lbl-cover">
+        <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        COVER STORY
+      </span>
+      <span class="lbl lbl-hot"><span class="blink"></span>熱門評測</span>
+      <span class="lbl lbl-new">新戶必看</span>
+    </div>
+
+    <h1 class="hero-title">
+      聯邦 New New Bank<br>
+      <span class="hl">10% 活存全攻略</span>：<br>新戶必看這 3 點
+    </h1>
+
+    <p class="hero-excerpt">
+      2026 年數位帳戶競爭激烈，聯邦銀行依然祭出 10% 高利活存。本文實測完整開戶流程、確認利息的領取條件，以及隱藏限額細節，讓你一次搞懂。
+    </p>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        2026.03.24
+      </div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        閱讀 6 分鐘
+      </div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        實測報告
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<div class="article-wrap">
+  <article class="article-body">
+
+    <div class="intro-block" id="intro">
+      <p>在數位銀行高利活存戰場上，聯邦 New New Bank 的 <strong>10% 活存</strong>一直是討論熱點。但很多人在開戶後才發現：利率不是自動達到 10%，背後有幾個必要條件。本篇文章根據實際開戶、領息過程，整理出三個新戶最常忽略的關鍵，讓你開戶就有感，一分錢也不漏。</p>
+    </div>
+
+    <h2 class="art-h2" id="s1">重點一：10% 的利率從哪來？</h2>
+
+    <p class="art-p">很多人看到「最高 15%」的標語，以為一開戶就能自動享有。實際上，<span class="hl">10% 是多重優惠疊加的結果</span>，需要逐層達成條件。以下是完整的利率結構拆解：</p>
+
+    <div class="rate-spotlight" id="rs">
+      <div class="rs-item">
+        <div class="rs-label">基礎活儲利率</div>
+        <div class="rs-num mint">0.8<span style="font-size:26px">%</span></div>
+        <div class="rs-sub">一般帳戶即享<br>無條件限制</div>
+      </div>
+      <div class="rs-item">
+        <div class="rs-label">新戶加碼利率</div>
+        <div class="rs-num amber">+9.2<span style="font-size:26px">%</span></div>
+        <div class="rs-sub">達成指定條件<br>限前 3 個月</div>
+      </div>
+      <div class="rs-item">
+        <div class="rs-label">合計最高利率</div>
+        <div class="rs-num sky">10<span style="font-size:26px">%</span></div>
+        <div class="rs-sub">新戶限定<br>有上限金額</div>
+      </div>
+    </div>
+
+    <p class="art-p">這裡有個重要觀念：新戶加碼利率<span class="amber">並非永久</span>，而是限定在開戶後的特定期間內。過了優惠期，利率會回到一般水準。因此，<strong>開戶的時機點非常重要</strong>，建議在資金準備好後再開戶，不要讓優惠期空轉。</p>
+
+    <div class="callout tip" id="c1">
+      <div class="callout-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00b09b" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="callout-body">
+        <div class="callout-title">小提示</div>
+        <div class="callout-text">新戶優惠期通常從「開戶日」開始計算，而非首次存款日。建議在準備好存款後再完成開戶申請，確保優惠期內資金完整在帳。</div>
+      </div>
+    </div>
+
+    <h2 class="art-h2" id="s2">重點二：必須達成的 3 個條件</h2>
+
+    <p class="art-p">根據實測，要同時達到 10% 的活存利率，需要符合以下三個核心條件。每個條件都有對應的細節需要注意：</p>
+
+    <div class="keypoints" id="kp-wrap">
+      <div class="kp">
+        <div class="kp-num">1</div>
+        <div>
+          <div class="kp-title">完成開戶 + 綁定電子帳單</div>
+          <div class="kp-desc">在 New New Bank App 完成完整的帳戶設定，包含綁定手機號碼、設定電子帳單通知。這是最基礎的條件，幾乎所有人都能達成，但容易被忽略的是「電子帳單」這一步，很多人跳過了。</div>
+          <span class="kp-tag">基礎條件，必要</span>
+        </div>
+      </div>
+      <div class="kp">
+        <div class="kp-num">2</div>
+        <div>
+          <div class="kp-title">當月消費滿額 or 自動扣繳信用卡</div>
+          <div class="kp-desc">需透過 New New Bank 帳戶完成一定金額的消費，或設定聯邦信用卡的自動扣繳。其中，<strong>自動扣繳聯邦信用卡</strong>是最推薦的方式，不需額外花費，每月扣款成功即符合條件，同時還享有 15% 回饋加碼。</div>
+          <span class="kp-tag">每月需達成</span>
+        </div>
+      </div>
+      <div class="kp">
+        <div class="kp-num">3</div>
+        <div>
+          <div class="kp-title">存款金額在上限內</div>
+          <div class="kp-desc">10% 高利活存並非無上限，優惠利率<strong style="color:var(--rose)">僅適用於特定金額以內的存款</strong>。超過上限的部分，將以一般利率計算。建議先確認當月的優惠上限再決定存入金額。</div>
+          <span class="kp-tag">隱藏細節，最關鍵</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="art-h2" id="s3">重點三：隱藏限額細節一覽</h2>
+
+    <p class="art-p">這是最多人踩坑的地方。以下是根據官方公告整理的各項限額細節，開戶前務必看清楚：</p>
+
+    <table class="limit-table" id="ltable">
+      <thead>
+        <tr><th>項目</th><th>說明</th><th>上限 / 條件</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>高利活存適用上限</td><td>超過上限金額以一般利率計算</td><td>依活動期間公告</td></tr>
+        <tr><td>新戶信用卡扣款回饋</td><td>每次扣款成功享 15% 回饋</td><td>每次上限 300 元</td></tr>
+        <tr><td>信用卡回饋次數</td><td>每人限領次數</td><td>限領 3 次</td></tr>
+        <tr><td>跨行提款免費次數</td><td>每月跨行 ATM 提款免手續費</td><td>限次數依帳戶等級</td></tr>
+        <tr><td>開戶禮總值</td><td>iPASS + 萊爾富購物金 + USDT</td><td>最高約 750 元</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn" id="c2">
+      <div class="callout-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e9a800" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <div class="callout-body">
+        <div class="callout-title">注意事項</div>
+        <div class="callout-text">信用卡扣款回饋（15%）的「每人限領3次」，是計算<strong style="color:var(--ink)">每次成功扣款的筆數</strong>，而非月份。每次上限 300 元，三次合計最多回饋 900 元。</div>
+      </div>
+    </div>
+
+    <h2 class="art-h2" id="s4">實測開戶流程：5 分鐘完成</h2>
+
+    <p class="art-p">實際測試開戶流程，從下載 App 到帳號完整啟用，全程在 5 分鐘內完成。以下是每個步驟的實際體驗：</p>
+
+    <div class="flow-steps" id="flow">
+      <div class="flow-step"><div class="fs-left"><div class="fs-dot">1</div><div class="fs-line"></div></div><div class="fs-right"><div class="fs-title">下載 App 並註冊帳號</div><div class="fs-desc">搜尋「New New Bank」下載後輸入手機號碼，收到驗證碼完成初步註冊。介面簡潔流暢。</div><span class="fs-tag">約 1 分鐘</span></div></div>
+      <div class="flow-step"><div class="fs-left"><div class="fs-dot">2</div><div class="fs-line"></div></div><div class="fs-right"><div class="fs-title">身份驗證（雙證件）</div><div class="fs-desc">拍攝身分證正反面及第二證件，進行臉部辨識比對。光線充足環境下驗證流程極為順暢。</div><span class="fs-tag">約 2 分鐘</span></div></div>
+      <div class="flow-step"><div class="fs-left"><div class="fs-dot">3</div><div class="fs-line"></div></div><div class="fs-right"><div class="fs-title">填寫個人資料 + 設定</div><div class="fs-desc">填寫基本資料、設定密碼，並完成電子帳單設定。<strong>不要跳過電子帳單</strong>，這是部分優惠的必要條件。</div><span class="fs-tag">約 1.5 分鐘</span></div></div>
+      <div class="flow-step"><div class="fs-left"><div class="fs-dot">4</div><div class="fs-line"></div></div><div class="fs-right"><div class="fs-title">設定聯邦信用卡自動扣繳</div><div class="fs-desc">在帳戶設定中綁定聯邦信用卡自動扣繳，下次帳單到期時系統自動扣款並觸發 15% 回饋資格。</div><span class="fs-tag">建議優先完成</span></div></div>
+      <div class="flow-step"><div class="fs-left"><div class="fs-dot">5</div><div class="fs-line"></div></div><div class="fs-right"><div class="fs-title">存入資金，開始享有 10% 利率</div><div class="fs-desc">開戶完成後即可存入資金，優惠利率從存款當天開始計算。建議在優惠上限金額內集中存入。</div><span class="fs-tag">立即生效</span></div></div>
+    </div>
+
+    <div class="callout alert" id="c3">
+      <div class="callout-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d93450" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="callout-body">
+        <div class="callout-title">安全提醒</div>
+        <div class="callout-text">避免您的帳戶成為詐騙集團犯罪工具，請勿隨意將帳戶資料或提款卡交予不明人士。合法機構不會要求您提供帳戶給他人使用。</div>
+      </div>
+    </div>
+
+    <div class="verdict" id="verdict">
+      <div class="verdict-eyebrow">實測總結</div>
+      <div class="verdict-title">值得開嗎？編輯給分</div>
+      <div class="verdict-scores">
+        <div class="vscore"><div class="vscore-label">利率競爭力</div><div class="vscore-bar"><div class="vscore-fill" data-w="92" style="width:0%"></div></div><div class="vscore-val">9.2</div></div>
+        <div class="vscore"><div class="vscore-label">開戶便利性</div><div class="vscore-bar"><div class="vscore-fill" data-w="90" style="width:0%"></div></div><div class="vscore-val">9.0</div></div>
+        <div class="vscore"><div class="vscore-label">條件透明度</div><div class="vscore-bar"><div class="vscore-fill" data-w="78" style="width:0%"></div></div><div class="vscore-val">7.8</div></div>
+        <div class="vscore"><div class="vscore-label">整體回饋值</div><div class="vscore-bar"><div class="vscore-fill" data-w="88" style="width:0%"></div></div><div class="vscore-val">8.8</div></div>
+      </div>
+      <div class="verdict-text">整體而言，New New Bank 10% 活存在 2026 年數位帳戶市場中仍屬頂尖水準。開戶流程流暢，App 體驗良好。唯一需要注意的是<strong>優惠條件的疊加邏輯</strong>，只要提前搞懂三個關鍵點，幾乎所有新戶都能完整享有優惠。編輯評分：<strong style="color:var(--mint)">強力推薦開戶</strong>。</div>
+      <button class="verdict-cta" onclick="alert('前往 App Store / Google Play 下載')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 16V4M8 12l4 4 4-4"/><path d="M4 20h16"/></svg>
+        立即下載開戶
+      </button>
+    </div>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="s-card">
+      <div class="s-card-title">本文核心數字</div>
+      <div class="qc-rate">10%</div>
+      <div class="qc-sub">新戶活存年利率</div>
+      <div class="qc-rows">
+        <div class="qc-row"><span class="qc-key">信用卡回饋</span><span class="qc-val">15%</span></div>
+        <div class="qc-row"><span class="qc-key">單次回饋上限</span><span class="qc-val">$300</span></div>
+        <div class="qc-row"><span class="qc-key">可領次數</span><span class="qc-val">3 次</span></div>
+        <div class="qc-row"><span class="qc-key">開戶禮總值</span><span class="qc-val">~$750</span></div>
+      </div>
+      <button class="qc-btn" onclick="alert('前往下載 App')">立即開戶享優惠</button>
+    </div>
+
+    <div class="s-card">
+      <div class="s-card-title">文章目錄</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#s1" class="toc-link">10% 利率從哪來？</a></li>
+        <li class="toc-item"><a href="#s2" class="toc-link">必須達成的 3 個條件</a></li>
+        <li class="toc-item"><a href="#s3" class="toc-link">隱藏限額細節一覽</a></li>
+        <li class="toc-item"><a href="#s4" class="toc-link">實測開戶流程</a></li>
+      </ul>
+    </div>
+
+    <div class="s-card">
+      <div class="author-inner">
+        <div class="author-ava">K</div>
+        <div><div class="author-name">Kai Chen</div><div class="author-role">數位金融評測編輯</div></div>
+      </div>
+    </div>
+
+    <div class="s-card" style="text-align:center">
+      <div class="s-card-title">分享這篇文章</div>
+      <div class="share-btns">
+        <button class="share-btn" onclick="navigator.clipboard?.writeText(location.href)">複製連結</button>
+        <button class="share-btn">LINE</button>
+        <button class="share-btn">FB</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo"><img src="https://newnewbank.com.tw/images/UBOT-logo_.png" alt="New New Bank"></div>
+    <div class="foot-legal">
+      <div class="head">謹慎理財 信用至上</div>
+      銀行業務服務專線：(02)2545-1788　信用卡業務服務專線：(02)2545-5168、(07)226-9393<br>
+      循環利率：5%~15%　．　循環利率之基準日為104年9月1日<br>
+      預借現金手續費：預借金額×3.5%+100元　其他費用請至卡友服務查詢
+    </div>
+    <div class="foot-copy">© 聯邦銀行 All Rights Reserved．臺北市松山區民生東路三段109號</div>
+  </div>
+</footer>
+
+<div id="dl-bar">
+  <div class="dl-inner">
+    <div class="dl-txt">看完文章了嗎？<strong>立即開戶享新戶 10% 活存</strong></div>
+    <button class="dl-btn" onclick="alert('前往下載')">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 16V4M8 12l4 4 4-4"/><path d="M4 20h16"/></svg>
+      立即下載 App
+    </button>
+  </div>
+</div>
+
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+window.addEventListener('scroll', () => {
+  const el = document.documentElement;
+  const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('top-btn').classList.toggle('vis', el.scrollTop > 400);
+}, { passive: true });
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.1 });
+
+['#intro','#rs','#c1','#c2','#c3','#ltable','.art-h2','.art-p','.kp','.flow-step'].forEach(sel => {
+  document.querySelectorAll(sel).forEach(el => io.observe(el));
+});
+
+document.querySelectorAll('.kp').forEach((el, i) => { el.style.transitionDelay = (i * 0.12) + 's'; });
+document.querySelectorAll('.flow-step').forEach((el, i) => { el.style.transitionDelay = (i * 0.1) + 's'; });
+document.querySelectorAll('.art-p').forEach((el, i) => { el.style.transitionDelay = (i * 0.04) + 's'; });
+
+const vio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      e.target.querySelectorAll('.vscore-fill').forEach(b => {
+        setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 200);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+vio.observe(document.getElementById('verdict'));
+
+const sects = ['s1','s2','s3','s4'].map(id => document.getElementById(id)).filter(Boolean);
+const tocLinks = document.querySelectorAll('.toc-link');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sects.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur));
+}, { passive: true });
+</script>
+</body>
+</html>
