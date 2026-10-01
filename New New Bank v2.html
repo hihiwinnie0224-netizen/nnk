@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New New Bank | 一開戶就有感</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --b:#00AEEF; --bd:#0091C8; --bdk:#005E8A; --bpl:#E4F6FD; --blg:#C2EBFA;
+  --wh:#fff; --pg:#F6FBFE; --tx:#0A1E2D; --md:#2C5470; --mu:#82AABF;
+  --ink:2.5px solid var(--tx);
+  --disp:'Space Grotesk','Noto Sans TC',sans-serif;
+  --cn:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+body{font-family:var(--cn);background:var(--pg);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+::selection{background:var(--b);color:var(--tx)}
+:focus-visible{outline:3px solid var(--tx);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* grain */
+body::after{content:'';position:fixed;inset:0;z-index:800;pointer-events:none;opacity:.09;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.12 0 0 0 0 0.18 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
+
+/* cursor */
+.cur{position:fixed;left:0;top:0;z-index:900;width:34px;height:34px;margin:-17px 0 0 -17px;border:var(--ink);border-radius:50%;pointer-events:none;display:none;place-items:center;font:900 12px var(--cn);color:var(--tx);transition:width .22s,height .22s,margin .22s,background .22s;}
+.cur.grow{width:76px;height:76px;margin:-38px 0 0 -38px;background:var(--b)}
+@media (pointer:fine){.cur{display:grid}}
+
+/* top bar + dock */
+.top{position:fixed;left:0;right:0;top:0;z-index:700;display:flex;justify-content:space-between;align-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) 4vw 0;pointer-events:none}
+.top>*{pointer-events:auto}
+.logo{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
+.logo i{width:16px;height:16px;background:var(--b);border:var(--ink);border-radius:50%;display:block;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.35)}}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:var(--ink);border-radius:999px;background:var(--b);color:var(--tx);font-weight:900;font-size:16px;box-shadow:5px 5px 0 var(--tx);transition:transform .15s,box-shadow .15s,background .15s;will-change:transform}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--tx)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--tx)}
+.btn.w{background:#fff}
+.btn.sm{padding:9px 18px;font-size:14px;box-shadow:3px 3px 0 var(--tx)}
+.dock{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:700;display:flex;gap:2px;padding:5px;border:var(--ink);border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:4px 4px 0 var(--tx)}
+.dock a{padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;white-space:nowrap;transition:background .2s,color .2s}
+.dock a:hover{background:var(--bpl)}
+.dock a.on{background:var(--tx);color:#fff}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 5vw 9vh;overflow:hidden}
+.blob{position:absolute;right:-8vw;top:6vh;width:min(86vmin,980px);aspect-ratio:1;z-index:0}
+.hero-t{position:relative;z-index:2;font-family:var(--disp);font-weight:700;font-size:clamp(60px,14.6vw,320px);line-height:.86;letter-spacing:-.05em}
+.ln{display:block;overflow:hidden;padding:.02em 0 .06em;white-space:nowrap}
+.ln .c{display:inline-block;transform:translateY(112%);animation:up .9s cubic-bezier(.2,.9,.2,1) forwards}
+@keyframes up{to{transform:none}}
+.o{color:transparent;-webkit-text-stroke:max(2px,.012em) var(--tx)}
+.bl{color:var(--b);-webkit-text-stroke:max(2px,.012em) var(--tx)}
+.l2{display:flex;align-items:center;flex-wrap:wrap}
+.l2 .ln{display:inline-block}
+.tag{display:inline-block;margin-left:2.2vw;padding:.38em .8em;font-family:var(--cn);font-weight:900;font-size:clamp(14px,2.1vw,34px);letter-spacing:0;line-height:1.2;background:#fff;border:var(--ink);border-radius:999px;box-shadow:6px 6px 0 var(--b);transform:rotate(-5deg);white-space:normal;opacity:0;animation:fade .6s 1.5s forwards}
+@keyframes fade{to{opacity:1}}
+.hero-foot{position:relative;z-index:2;margin-top:4vh;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.hero-p{max-width:520px;font-size:clamp(16px,1.5vw,20px);font-weight:500;color:var(--md)}
+.hero-p b{color:var(--tx);font-weight:900}
+.hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.spin{position:absolute;z-index:3;right:7vw;top:17vh;width:clamp(120px,15vw,210px);aspect-ratio:1}
+.spin svg{position:absolute;inset:0;width:100%;height:100%;animation:rot 16s linear infinite;overflow:visible}
+.spin text{font:700 15px var(--disp);fill:var(--tx);letter-spacing:.04em}
+.spin b{position:absolute;inset:18%;display:flex;align-items:center;justify-content:center;background:var(--b);border:var(--ink);border-radius:50%;font:700 clamp(30px,4.4vw,64px)/1 var(--disp);letter-spacing:-.04em;box-shadow:4px 4px 0 var(--tx)}
+.spin b small{font-size:.5em;margin-left:2px}
+@keyframes rot{to{transform:rotate(360deg)}}
+.coin{position:absolute;z-index:3;display:grid;place-items:center;text-align:center;border:var(--ink);border-radius:50%;font:900 clamp(13px,1.5vw,20px)/1.15 var(--cn);box-shadow:4px 4px 0 var(--tx);transform:translate(var(--x,0),var(--y,0)) rotate(var(--r,0deg));will-change:transform}
+.coin.c1{width:clamp(78px,8.5vw,128px);aspect-ratio:1;background:#fff;right:30vw;top:14vh;--r:-12deg}
+.coin.c2{width:clamp(64px,7vw,104px);aspect-ratio:1;background:var(--tx);color:#fff;right:3vw;top:48vh;--r:10deg}
+.coin.c3{width:clamp(70px,7.6vw,112px);aspect-ratio:1;background:var(--bdk);color:#fff;right:2.5vw;bottom:24vh;--r:6deg}
+.coin b{display:block;font:700 1.9em/1 var(--disp);letter-spacing:-.04em}
+
+/* TAPES */
+.tapes{position:relative;height:300px;overflow:hidden;margin-top:-2px}
+.tape{position:absolute;left:-6%;width:112%;border-block:var(--ink);overflow:hidden;white-space:nowrap;padding:14px 0}
+.tape.a{top:40px;background:var(--tx);color:#fff;transform:rotate(2.6deg)}
+.tape.b{top:128px;background:#fff;transform:rotate(-2.6deg)}
+.tape-in{display:inline-flex;will-change:transform}
+.tape-in span{font:700 clamp(22px,3vw,40px)/1 var(--disp);letter-spacing:-.02em;padding-right:34px}
+.tape-in span.s{color:var(--b);padding-right:34px}
+
+/* STATEMENT */
+.stmt{padding:12vh 6vw 16vh}
+.stmt p{max-width:1250px;margin:auto;font-weight:900;font-size:clamp(30px,5.6vw,92px);line-height:1.18;letter-spacing:-.03em}
+.stmt .ch{color:var(--blg);transition:color .35s}
+.stmt .ch.on{color:var(--tx)}
+.stmt .ch.hi.on{color:var(--bd)}
+
+/* PLAYGROUND */
+.play{position:relative;background:var(--b);border-block:var(--ink);padding:10vh 4vw 14vh;overflow:hidden}
+.kick{display:inline-block;border:var(--ink);border-radius:999px;padding:6px 16px;font-weight:900;font-size:13px;background:#fff;transform:rotate(-2deg);margin-bottom:22px}
+.h2{font-weight:900;font-size:clamp(38px,6.6vw,118px);line-height:.98;letter-spacing:-.045em}
+.play-h{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:3.5vh}
+.play-h p{max-width:340px;font-weight:700;font-size:17px}
+.arena{position:relative;height:min(72vh,660px);min-height:480px;border:var(--ink);border-radius:36px;background:rgba(255,255,255,.14);overflow:hidden;touch-action:pan-y}
+.arena::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(10,30,45,.28) 1.6px,transparent 1.7px);background-size:26px 26px;pointer-events:none}
+.stk{position:absolute;left:0;top:0;width:var(--d,120px);height:var(--d,120px);border-radius:50%;display:grid;place-content:center;text-align:center;border:var(--ink);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;will-change:transform;box-shadow:5px 5px 0 rgba(10,30,45,.9)}
+.stk.drag{cursor:grabbing;box-shadow:9px 9px 0 rgba(10,30,45,.9);z-index:5}
+.stk::after{content:'';position:absolute;inset:6px;border:2px dashed currentColor;border-radius:50%;opacity:.35;transform:rotate(var(--rot,0deg));pointer-events:none}
+.stk b{font:700 calc(var(--d)*.27)/1 var(--disp);letter-spacing:-.05em}
+.stk b small{font-size:.5em;letter-spacing:0;margin-left:1px}
+.stk b.t{font:900 calc(var(--d)*.2)/1.1 var(--cn);letter-spacing:-.02em}
+.stk span{display:block;margin-top:.35em;font-weight:900;font-size:max(11px,calc(var(--d)*.095))}
+.stk.w{background:#fff;color:var(--tx)}
+.stk.d{background:var(--tx);color:#fff}
+.stk.k{background:var(--bdk);color:#fff}
+.stk.p{background:var(--bpl);color:var(--tx)}
+.arena.static{height:auto;min-height:0;display:flex;flex-wrap:wrap;gap:16px;padding:24px;justify-content:center}
+.arena.static .stk{position:relative}
+.play-bar{margin-top:22px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--tx);color:#fff;border-radius:22px;padding:16px 20px 16px 26px}
+.play-bar #pbT{font-weight:700;font-size:clamp(15px,1.6vw,20px);min-height:1.5em}
+.play-bar #pbT b{color:var(--b)}
+
+/* LIST */
+.list{padding:14vh 5vw 10vh;max-width:1500px;margin:auto}
+.grp{margin-top:7vh}
+.grp h3{display:flex;align-items:center;gap:14px;font-weight:900;font-size:clamp(22px,2.4vw,34px);margin-bottom:14px}
+.grp h3 em{font:700 14px var(--disp);font-style:normal;border:var(--ink);border-radius:999px;padding:2px 12px;background:#fff}
+.row{display:grid;grid-template-columns:1.2fr 1.6fr .9fr 44px;align-items:center;gap:18px;padding:20px 8px;border-top:var(--ink);position:relative;transition:background .25s,color .25s,padding .25s}
+.row:last-child{border-bottom:var(--ink)}
+.row .rn{font-weight:900;font-size:clamp(20px,2.3vw,32px);letter-spacing:-.02em}
+.row .rt{font-weight:500;font-size:15px;color:var(--md);transition:color .25s}
+.row .rv{font:700 clamp(36px,5vw,76px)/1 var(--disp);letter-spacing:-.05em;text-align:right;transition:transform .3s}
+.row .rv small{font-size:.42em;letter-spacing:0;margin-left:3px}
+.row .rv.t{font:900 clamp(24px,3vw,40px)/1.1 var(--cn);letter-spacing:-.03em}
+.row .ra{width:44px;height:44px;border:var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:900;transition:transform .3s,background .25s}
+a.row:hover{background:var(--b);padding-left:26px}
+a.row:hover .rt{color:var(--tx)}
+a.row:hover .ra{background:var(--tx);color:#fff;transform:rotate(45deg)}
+a.row:hover .rv{transform:scale(1.06)}
+.fine{margin-top:44px;font-size:13px;line-height:1.8;color:var(--md);max-width:860px;border-left:6px solid var(--b);padding-left:16px}
+.fine b{color:var(--tx)}
+
+/* CALC */
+.calc{background:var(--bpl);border-block:var(--ink);padding:14vh 5vw 14vh;position:relative;overflow:hidden}
+.calc-in{max-width:1300px;margin:auto}
+.big{font:700 clamp(84px,16vw,280px)/.86 var(--disp);letter-spacing:-.06em;margin:3vh 0 2vh;display:flex;align-items:flex-start}
+.big small{font-size:.22em;letter-spacing:-.02em;margin:.25em .12em 0 0;font-weight:700}
+.big.pop{animation:pop .25s}
+@keyframes pop{50%{transform:scale(1.02)}}
+.calc-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:5vw;align-items:start}
+.amt-l{font-weight:900;font-size:clamp(18px,2vw,26px);display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.amt-l b{font:700 clamp(28px,3.4vw,48px)/1 var(--disp);letter-spacing:-.04em}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:22px;margin:26px 0 14px;background:#fff;border:var(--ink);border-radius:999px;outline-offset:6px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:46px;height:46px;border-radius:50%;background:var(--b);border:var(--ink);box-shadow:3px 3px 0 var(--tx)}
+input[type=range]::-moz-range-thumb{width:42px;height:42px;border-radius:50%;background:var(--b);border:var(--ink);box-shadow:3px 3px 0 var(--tx)}
+.meter{height:30px;border:var(--ink);border-radius:999px;background:#fff;overflow:hidden;display:flex}
+.meter i{display:block;height:100%;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.meter .a{background:var(--b)}
+.meter .x{background:repeating-linear-gradient(45deg,var(--blg) 0 8px,#fff 8px 16px)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:14px;font-weight:700}
+.legend span::before{content:'';display:inline-block;width:14px;height:14px;border:2px solid var(--tx);border-radius:4px;margin-right:6px;vertical-align:-2px;background:var(--b)}
+.legend span.x::before{background:repeating-linear-gradient(45deg,var(--blg) 0 3px,#fff 3px 6px)}
+.note{background:#fff;border:var(--ink);border-radius:24px;padding:22px 24px;box-shadow:6px 6px 0 var(--tx);font-size:15px;color:var(--md)}
+.note b{color:var(--tx)}
+.note .usd{margin-top:14px;padding-top:14px;border-top:2px dashed var(--tx);font-weight:700;color:var(--tx)}
+.note .usd strong{font:700 30px var(--disp);letter-spacing:-.04em}
+.note small{display:block;margin-top:12px;font-size:12px;line-height:1.7}
+
+/* STEPS (horizontal) */
+.hs{position:relative;height:340vh}
+.hs-in{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hs-h{padding:0 6vw;margin-bottom:5vh;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.track{display:flex;gap:4vw;padding:20px 8vw;width:max-content;will-change:transform}
+.pan{position:relative;flex:0 0 min(78vw,620px);min-height:min(52vh,420px);background:#fff;border:var(--ink);border-radius:40px;padding:32px 34px;box-shadow:10px 10px 0 var(--tx);display:flex;flex-direction:column;justify-content:space-between}
+.pan:nth-child(1){transform:rotate(-2deg)}
+.pan:nth-child(2){transform:rotate(1.6deg);background:var(--b)}
+.pan:nth-child(3){transform:rotate(-1.2deg);background:var(--bpl)}
+.pan .n{font:700 clamp(100px,16vw,230px)/.8 var(--disp);letter-spacing:-.07em;color:transparent;-webkit-text-stroke:3px var(--tx)}
+.pan:nth-child(2) .n{-webkit-text-stroke-color:var(--tx);color:#fff}
+.pan h3{font-weight:900;font-size:clamp(26px,3.2vw,44px);letter-spacing:-.03em;margin-top:18px;line-height:1.15}
+.pan p{margin-top:10px;font-weight:500;font-size:clamp(15px,1.4vw,18px);max-width:460px}
+.pan:nth-child(2) p{font-weight:700}
+.hs-bar{margin:4vh 6vw 0;height:10px;border:var(--ink);border-radius:999px;background:#fff;overflow:hidden}
+.hs-bar i{display:block;height:100%;background:var(--b);transform-origin:left;transform:scaleX(0)}
+
+/* GO */
+.go{position:relative;background:var(--b);border-top:var(--ink);padding:16vh 5vw 14vh;text-align:center;overflow:hidden}
+.go h2{font-weight:900;font-size:clamp(56px,15vw,260px);line-height:.92;letter-spacing:-.06em}
+.go h2 .o2{color:transparent;-webkit-text-stroke:max(2px,.012em) var(--tx)}
+.go-btn{position:relative;margin:6vh auto 0;width:clamp(170px,17vw,240px);aspect-ratio:1;border-radius:50%;background:#fff;border:var(--ink);display:grid;place-items:center;font-weight:900;font-size:clamp(20px,2vw,28px);box-shadow:8px 8px 0 var(--tx);transition:transform .15s,box-shadow .15s;will-change:transform}
+.go-btn:hover{box-shadow:12px 12px 0 var(--tx)}
+.go-btn svg{position:absolute;inset:-26px;width:calc(100% + 52px);height:calc(100% + 52px);animation:rot 14s linear infinite}
+.go-btn svg text{font:700 14px var(--disp);fill:var(--tx);letter-spacing:.06em}
+.go-sub{margin-top:5vh;font-weight:700;max-width:620px;margin-inline:auto}
+
+/* FOOTER */
+footer{padding:9vh 5vw calc(110px + env(safe-area-inset-bottom,0px));position:relative;overflow:hidden;background:var(--pg)}
+.f-big{font:700 clamp(54px,15.6vw,320px)/.8 var(--disp);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:2px var(--tx);white-space:nowrap;margin-bottom:5vh}
+.f-cols{display:grid;grid-template-columns:1.2fr 1fr;gap:5vw;font-size:14px;color:var(--md);line-height:1.9}
+.f-cols h4{font-weight:900;color:var(--tx);font-size:16px;margin-bottom:6px}
+.f-cols a{border-bottom:2px solid var(--b)}
+.copy{margin-top:30px;font-size:13px;color:var(--mu)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:860px){
+  .row{grid-template-columns:1fr auto;gap:6px 14px;padding:18px 4px}
+  .row .rt{grid-column:1;grid-row:2}
+  .row .rv{grid-column:2;grid-row:1/3;align-self:center}
+  .row .ra{display:none}
+  .calc-grid,.f-cols{grid-template-columns:1fr}
+  .hero{padding-top:100px}
+  .hero-t{font-size:18.5vw}
+  .coin.c1{right:auto;left:5vw;top:15vh}
+  .coin.c3{display:none}
+  .spin{right:4vw;top:14vh}
+  .dock a{padding:9px 12px;font-size:13px}
+  .tapes{height:250px}
+  .tape.b{top:112px}
+  .arena{min-height:520px;height:72svh}
+  .tag{margin-left:0;margin-top:2vh}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .ln .c{transform:none}.tag{opacity:1}.rv{opacity:1;transform:none}
+  .hs{height:auto}.hs-in{position:relative;height:auto;padding:10vh 0}.track{width:auto;flex-direction:column;padding:20px 6vw}.pan{flex:1 1 auto}.hs-bar{display:none}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="logo" href="#top" aria-label="New New Bank"><i></i>New New Bank</a>
+  <a class="btn sm" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO">線上開戶 ↗</a>
+</header>
+
+<nav class="dock" aria-label="頁面導覽">
+  <a href="#play">優惠</a><a href="#list">一覽</a><a href="#calc">試算</a><a href="#steps">開戶</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <svg class="blob" viewBox="0 0 1000 1000" aria-hidden="true"><path id="blobP" fill="var(--blg)" stroke="var(--tx)" stroke-width="3"/></svg>
+  <div class="spin" aria-hidden="true">
+    <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs>
+      <text><textPath href="#circ" textLength="496" lengthAdjust="spacing">台幣活儲首月最高 10% ・ 一開戶就有感 ・ 24小時線上開戶 ・</textPath></text></svg>
+    <b>10<small>%</small></b>
+  </div>
+  <div class="coin c1" data-k="26" aria-hidden="true"><div>萊刷聯邦<br><b>現折5%</b></div></div>
+  <div class="coin c2" data-k="-34" aria-hidden="true"><div>基金下單<br><b>0元</b></div></div>
+  <div class="coin c3" data-k="18" aria-hidden="true"><div>美金結匯<br><b>3.5分</b></div></div>
+
+  <h1 class="hero-t" aria-label="New New Bank">
+    <span class="ln" data-split="NEW NEW"></span>
+    <span class="l2"><span class="ln bl" data-split="BANK" data-d="5"></span><span class="tag">數位理財・回饋放大・從現在開始</span></span>
+  </h1>
+  <div class="hero-foot">
+    <p class="hero-p">數位理財・回饋放大・從現在開始。<br>新戶首月台幣活儲最高 <b>10%</b>，美金定存最高 <b>10%</b>；24小時線上開戶，免出門、免臨櫃，<b>5 分鐘</b>完成申請。</p>
+    <div class="hero-btns">
+      <a class="btn" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO">立刻開戶 ↗</a>
+      <a class="btn w" href="#play" data-cur="↓">看優惠 ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- TAPES -->
+<div class="tapes" aria-hidden="true">
+  <div class="tape a"><div class="tape-in" id="tA"></div></div>
+  <div class="tape b"><div class="tape-in" id="tB"></div></div>
+</div>
+
+<!-- STATEMENT -->
+<section class="stmt" aria-label="一開戶就有感">
+  <p id="stmt"></p>
+</section>
+
+<!-- PLAYGROUND -->
+<section class="play" id="play">
+  <div class="play-h">
+    <div><span class="kick">帳戶優惠 ✦ 跨業務優惠 ✦ 開戶禮</span><h2 class="h2">抓住它，<br>丟出去。</h2></div>
+    <p>每一顆都是真的優惠。用手把它們甩來甩去，點住任何一顆就會顯示細節。</p>
+  </div>
+  <div class="arena" id="arena" role="group" aria-label="優惠互動區，所有優惠也列在下方的一覽中"></div>
+  <div class="play-bar">
+    <div id="pbT" aria-live="polite">點住任一顆，看優惠細節。</div>
+    <button class="btn w sm" id="shuffle" data-cur="↻">再丟一次 ↻</button>
+  </div>
+</section>
+
+<!-- LIST -->
+<section class="list" id="list">
+  <span class="kick">全部一覽</span>
+  <h2 class="h2">一次看完。</h2>
+  <div id="rows"></div>
+  <p class="fine"><b>＊台幣活儲 10% 僅限新戶首月</b>，為新戶限享一次，僅適用於成功開戶次一月份利息結算（結算開戶當月21日～次月20日），當期存款平均餘額 15 萬元以內；逾額部分及其他月份依牌告／舊戶利率計息。美金定存 10% 限以換匯新資金承作 3 個月期，活動期間每人限額 US$2,000。實際內容以聯邦銀行公告為準。</p>
+</section>
+
+<!-- CALC -->
+<section class="calc" id="calc">
+  <div class="calc-in">
+    <span class="kick">台幣活儲・首月試算</span>
+    <h2 class="h2">你放多少，<br>首月領多少？</h2>
+    <div class="big" id="big" aria-live="polite"><small>NT$</small><span id="bigN">1,250</span></div>
+    <div class="calc-grid">
+      <div>
+        <label class="amt-l" for="amt"><span>平均存款餘額</span><b id="amtV">NT$ 150,000</b></label>
+        <input type="range" id="amt" min="10000" max="300000" step="10000" value="150000">
+        <div class="meter" aria-hidden="true"><i class="a" id="mA"></i><i class="x" id="mX"></i></div>
+        <div class="legend"><span>15 萬內享 10%</span><span class="x">逾額・依牌告利率</span></div>
+      </div>
+      <div class="note">
+        <b>只有第一個月。</b>第 2 個月起，以及超過 15 萬的部分，一律依牌告利率計息，這裡不列入試算。
+        <div class="usd">美金定存 US$2,000 × 3 個月<br>約可領 <strong>US$50</strong></div>
+        <small>＊試算僅供參考，實際利息依銀行結算為準。台幣活儲 10% 僅適用新戶成功開戶次一月份利息結算；美金定存限 3 個月期新資金。</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="hs" id="steps" aria-label="開戶三步驟">
+  <div class="hs-in">
+    <div class="hs-h">
+      <div><span class="kick">24 小時線上開戶</span><h2 class="h2" style="font-size:clamp(36px,6vw,96px)">三步，搞定。</h2></div>
+    </div>
+    <div class="track" id="track">
+      <article class="pan"><div class="n">01</div><div><h3>準備手機與雙證件</h3><p>本國 18 歲以上成年人、非聯邦銀行既有存戶即可申辦。備妥本國國民身分證，以及第二證件（如駕照、健保卡、護照）。</p></div></article>
+      <article class="pan"><div class="n">02</div><div><h3>線上完成身分驗證</h3><p>以聯邦信用卡（正卡且開卡滿六個月）或他行存款帳戶（限臨櫃開立之本人帳戶）驗證，再依步驟填寫、上傳證件。</p></div></article>
+      <article class="pan"><div class="n">03</div><div><h3>等通知，就開始用</h3><p>審核約 2–5 個工作天，通過後即可登入 New New Bank APP 使用各項服務。</p></div></article>
+    </div>
+    <div class="hs-bar" aria-hidden="true"><i id="hsB"></i></div>
+  </div>
+</section>
+
+<!-- GO -->
+<section class="go" id="go">
+  <h2>一開戶<br><span class="o2">就有感</span></h2>
+  <a class="go-btn" id="goBtn" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO" aria-label="線上開戶">
+    <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="c2" d="M100,100 m-92,0 a92,92 0 1,1 184,0 a92,92 0 1,1 -184,0"/></defs><text><textPath href="#c2" textLength="570" lengthAdjust="spacing">NEW NEW BANK ・ 線上開戶 ・ NEW NEW BANK ・ 線上開戶 ・</textPath></text></svg>
+    線上開戶 ↗
+  </a>
+  <p class="go-sub">貼心提醒：避免您的帳戶成為詐騙集團犯罪工具，請勿隨意將您的帳戶交予不明人士使用。</p>
+</section>
+</main>
+
+<footer>
+  <div class="f-big" aria-hidden="true">NEW NEW BANK</div>
+  <div class="f-cols">
+    <div>
+      <h4>謹慎理財 信用至上</h4>
+      ．銀行業務服務專線：<a href="tel:0225451788">(02)2545-1788</a><br>
+      ．信用卡業務服務專線：(02)2545-5168、(07)226-9393<br>
+      ．循環利率：5%~15%　．循環利率之基準日為104年9月1日<br>
+      ．預借現金手續費：預借金額×3.5%+100元
+    </div>
+    <div>
+      <h4>聯邦數位銀行 New New Bank</h4>
+      本國18歲以上成年人且非聯邦銀行既有存戶即可申辦。<br>
+      <a href="https://newnewbank.com.tw/" target="_blank" rel="noopener">newnewbank.com.tw</a>
+    </div>
+  </div>
+  <p class="copy">© 聯邦銀行 All Rights Reserved. 臺北市松山區民生東路三段109號</p>
+</footer>
+
+<script>
+(function(){
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const fine=matchMedia('(pointer:fine)').matches;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const L='https://newnewbank.com.tw/';
+const q='?openExternalBrowser=1';
+
+/* ─── data: single source for stickers + rows ─── */
+const ITEMS=[
+ {g:'a',n:'台幣活儲',v:'10',u:'%',lab:'台幣活儲・首月',d:196,c:'w',note:'新戶首月・限額15萬，其他月份依牌告利率',info:'<b>台幣活儲</b>｜新戶首月最高 10%，限額 15 萬；其他月份依牌告利率計息。',h:'deposits.htm'},
+ {g:'a',n:'美金定存',v:'10',u:'%',lab:'美金定存',d:176,c:'d',note:'3個月期・新資金限額 US$2,000',info:'<b>美金定存</b>｜最高 10%，3 個月期新資金，限額 US$2,000。',h:'usdfixeddeposit.htm'},
+ {g:'a',n:'美金結匯',v:'3.5',u:'分',lab:'結匯折讓',d:146,c:'k',note:'最高折讓',info:'<b>美金結匯</b>｜最高折讓 3.5 分。',h:'foreignexchange.htm'},
+ {g:'a',n:'跨提跨轉',v:'0',u:'元',lab:'跨提跨轉',d:134,c:'p',note:'手續費（限次數／通路）',info:'<b>跨提跨轉</b>｜手續費 0 元（限次數／通路）。',h:'transferwithdrawal.htm'},
+ {g:'a',n:'萊刷聯邦',v:'5',u:'%',lab:'萊刷聯邦',d:146,c:'w',note:'不限金額現折',info:'<b>萊刷聯邦</b>｜不限金額現折 5%。',h:'DebitHiLife.htm'},
+ {g:'x',n:'自動扣繳聯邦卡',v:'10',u:'%',lab:'自扣回饋',d:156,c:'d',note:'享本人自扣金額回饋・每次上限300元，每人限領3次',info:'<b>自動扣繳聯邦卡</b>｜享本人自扣金額 10% 回饋，每次上限 300 元，每人限領 3 次。',h:'autopaycreditcardbill.htm'},
+ {g:'x',n:'基金下單',v:'0',u:'元',lab:'基金手續費',d:124,c:'k',note:'手續費',info:'<b>基金下單</b>｜手續費 0 元。',h:'fundfee.htm'},
+ {g:'x',n:'海外股票/ETF',v:'0.45',u:'%起',lab:'手續費最低',d:152,c:'p',note:'手續費最低',info:'<b>海外股票／ETF</b>｜手續費最低 0.45% 起。',h:'ETF.htm'},
+ {g:'x',n:'台股定期定額',v:'勁爆價',t:1,lab:'台股定期定額',d:132,c:'w',note:'手續費',info:'<b>台股定期定額</b>｜手續費勁爆價。'},
+ {g:'x',n:'e起貸',v:'268',u:'元',lab:'開辦費優惠',d:124,c:'d',note:'開辦費優惠',info:'<b>e起貸</b>｜開辦費優惠 268 元。',h:'eloan/index.htm'},
+ {g:'x',n:'保險扣繳',v:'500',u:'元',lab:'最高抽',d:124,c:'k',note:'最高抽',info:'<b>保險扣繳</b>｜最高抽 500 元。',h:'alert_reward_MSIG.htm'},
+ {g:'g',n:'iPASS MONEY 儲值金',v:'150',u:'元',lab:'iPASS 開戶禮',d:130,c:'p',note:'開戶禮・最高享',info:'<b>開戶禮</b>｜iPASS MONEY 儲值金最高享 150 元。',h:'ipassGift2026.htm'},
+ {g:'g',n:'萊爾富購物金',v:'200',u:'元',lab:'萊爾富 開戶禮',d:130,c:'w',note:'開戶禮',info:'<b>開戶禮</b>｜萊爾富購物金 200 元。',h:'HiLifeGift2026.htm'},
+ {g:'g',n:'MaiCoin 兌換序號（USDT）',v:'200',u:'元',lab:'MaiCoin 開戶禮',d:130,c:'d',note:'等值新台幣 200 元泰達幣（USDT）',info:'<b>開戶禮</b>｜MaiCoin 兌換序號，等值新台幣 200 元泰達幣（USDT）。',h:'MaiCoinGift2026.htm'}
+];
+
+/* ─── split headline letters ─── */
+$$('[data-split]').forEach(el=>{
+  const txt=el.dataset.split,base=+(el.dataset.d||0);el.textContent='';
+  [...txt].forEach((ch,i)=>{
+    const s=document.createElement('span');s.className='c';s.textContent=ch===' '?'\u00A0':ch;
+    s.style.animationDelay=(.15+(base+i)*.07)+'s';
+    if(el.dataset.split==='NEW NEW'&&i>=4)s.classList.add('o');
+    el.appendChild(s);
+  });
+});
+
+/* ─── tapes ─── */
+const TAPE=['10% 台幣活儲（首月）','10% 美金定存','現折 5% 萊刷聯邦','0 元 基金手續費','3.5 分 結匯折讓','0.45% 起 海外股票/ETF','268 元 e起貸','最高 500 元 保險扣繳'];
+function fillTape(el,rev){
+  const arr=rev?[...TAPE].reverse():TAPE;
+  let h='';for(let k=0;k<2;k++)arr.forEach(t=>{h+='<span>'+t+'</span><span class="s">✦</span>';});
+  el.innerHTML=h;
+}
+fillTape($('#tA'),false);fillTape($('#tB'),true);
+const tapes=[{el:$('#tA'),dir:1,pos:0},{el:$('#tB'),dir:-1,pos:0}];
+
+/* ─── statement ─── */
+const SEG=[['免出門、免臨櫃。準備好手機與雙證件，',0],['5 分鐘',1],['完成開戶申請。',0]];
+const stmt=$('#stmt'),chs=[];
+SEG.forEach(([t,hi])=>[...t].forEach(c=>{const s=document.createElement('span');s.className='ch'+(hi?' hi':'');s.textContent=c;stmt.appendChild(s);chs.push(s);}));
+let lastN=-1;
+
+/* ─── rows ─── */
+const GROUPS=[['a','帳戶優惠','5 項'],['x','跨業務優惠','6 項'],['g','開戶禮','3 項']];
+const rows=$('#rows');
+GROUPS.forEach(([k,title,cnt])=>{
+  const g=document.createElement('div');g.className='grp';
+  g.innerHTML='<h3>'+title+' <em>'+cnt+'</em></h3>';
+  ITEMS.filter(i=>i.g===k).forEach(i=>{
+    const tag=i.h?'a':'div';
+    const r=document.createElement(tag);r.className='row';
+    if(i.h){r.href=L+i.h+q;r.target='_blank';r.rel='noopener';r.setAttribute('data-cur','↗');}
+    r.innerHTML='<span class="rn">'+i.n+'</span><span class="rt">'+i.note+'</span><span class="rv'+(i.t?' t':'')+'">'+i.v+(i.u?'<small>'+i.u+'</small>':'')+'</span>'+(i.h?'<span class="ra" aria-hidden="true">→</span>':'<span class="ra" style="visibility:hidden"></span>');
+    g.appendChild(r);
+  });
+  rows.appendChild(g);
+});
+
+/* ─── playground ─── */
+const arena=$('#arena'),pbT=$('#pbT');
+const bodies=[];let AW=0,AH=0,K=1,started=false,inView=false;
+ITEMS.forEach((it,i)=>{
+  const el=document.createElement('div');
+  el.className='stk '+it.c;el.tabIndex=0;el.setAttribute('role','button');
+  el.setAttribute('aria-label',it.n+' '+it.v+(it.u||''));
+  el.setAttribute('data-cur','拖');
+  el.innerHTML='<b'+(it.t?' class="t"':'')+'>'+it.v+(it.u?'<small>'+it.u+'</small>':'')+'</b><span>'+it.lab+'</span>';
+  arena.appendChild(el);
+  bodies.push({el,it,d:it.d,r:it.d/2,x:0,y:-999,vx:0,vy:0,drag:false,tx:0,ty:0,ox:0,oy:0,rot:0,entered:false});
+  const show=()=>{pbT.innerHTML=it.info;};
+  el.addEventListener('mouseenter',show);el.addEventListener('focus',show);
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show();}});
+  el.addEventListener('pointerdown',e=>{
+    if(RM)return;
+    const b=bodies[i],r=arena.getBoundingClientRect();
+    b.drag=true;el.classList.add('drag');el.setPointerCapture(e.pointerId);
+    b.ox=e.clientX-r.left-b.x;b.oy=e.clientY-r.top-b.y;b.tx=b.x;b.ty=b.y;b.vx=b.vy=0;
+    show();e.preventDefault();
+  });
+  el.addEventListener('pointermove',e=>{
+    const b=bodies[i];if(!b.drag)return;
+    const r=arena.getBoundingClientRect();
+    b.tx=clamp(e.clientX-r.left-b.ox,b.r,AW-b.r);b.ty=clamp(e.clientY-r.top-b.oy,b.r,AH-b.r);
+  });
+  const up=()=>{const b=bodies[i];if(!b.drag)return;b.drag=false;el.classList.remove('drag');
+    b.vx=clamp(b.vx,-2800,2800);b.vy=clamp(b.vy,-2800,2800);};
+  el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);
+});
+function measure(){
+  if(RM){arena.classList.add('static');bodies.forEach(b=>{b.el.style.setProperty('--d',b.d*.9+'px');});return;}
+  const r=arena.getBoundingClientRect();AW=r.width;AH=r.height;
+  K=clamp(AW/900,.62,1);
+  bodies.forEach(b=>{b.r=b.d*K/2;b.el.style.setProperty('--d',(b.d*K)+'px');
+    if(b.x>AW-b.r)b.x=AW-b.r;if(b.y>AH-b.r)b.y=AH-b.r;});
+}
+function drop(){
+  bodies.forEach((b,i)=>{
+    b.x=b.r+Math.random()*(AW-2*b.r);b.y=-b.r*2-i*b.r*1.15;
+    b.vx=(Math.random()-.5)*500;b.vy=0;b.entered=false;b.drag=false;b.el.classList.remove('drag');
+  });
+  pbT.textContent='點住任一顆，看優惠細節。';
+}
+function physics(dt){
+  const S=3,h=dt/S,G=2300,E=.52;
+  for(let s=0;s<S;s++){
+    for(const b of bodies){
+      if(b.drag){
+        const nx=b.x+(b.tx-b.x)*Math.min(1,h*26),ny=b.y+(b.ty-b.y)*Math.min(1,h*26);
+        const ivx=(nx-b.x)/h,ivy=(ny-b.y)/h;
+        b.vx+=(ivx-b.vx)*.25;b.vy+=(ivy-b.vy)*.25;b.x=nx;b.y=ny;
+      }else{
+        b.vy+=G*h;b.vx*=.9994;b.x+=b.vx*h;b.y+=b.vy*h;
+        if(b.x<b.r){b.x=b.r;b.vx=-b.vx*E;}
+        if(b.x>AW-b.r){b.x=AW-b.r;b.vx=-b.vx*E;}
+        if(b.y>AH-b.r){b.y=AH-b.r;b.vy=-b.vy*.42;b.vx*=.982;if(Math.abs(b.vy)<60)b.vy=0;}
+        if(b.y>b.r)b.entered=true;
+        if(b.entered&&b.y<b.r){b.y=b.r;b.vy=-b.vy*E;}
+      }
+    }
+    for(let i=0;i<bodies.length;i++)for(let j=i+1;j<bodies.length;j++){
+      const a=bodies[i],c=bodies[j];
+      const dx=c.x-a.x,dy=c.y-a.y,min=a.r+c.r,d2=dx*dx+dy*dy;
+      if(d2>=min*min||d2===0)continue;
+      const dist=Math.sqrt(d2),nx=dx/dist,ny=dy/dist,ov=min-dist;
+      const ia=a.drag?0:1/(a.r*a.r),ic=c.drag?0:1/(c.r*c.r),sum=ia+ic;
+      if(!sum)continue;
+      a.x-=nx*ov*ia/sum;a.y-=ny*ov*ia/sum;c.x+=nx*ov*ic/sum;c.y+=ny*ov*ic/sum;
+      const rv=(c.vx-a.vx)*nx+(c.vy-a.vy)*ny;
+      if(rv<0){const j2=-(1+E)*rv/sum;a.vx-=j2*ia*nx;a.vy-=j2*ia*ny;c.vx+=j2*ic*nx;c.vy+=j2*ic*ny;}
+    }
+  }
+  for(const b of bodies){
+    b.rot+=b.vx*dt/b.r*57.3*.6;
+    const tilt=clamp(b.vx*.012,-9,9);
+    b.el.style.transform='translate3d('+(b.x-b.r)+'px,'+(b.y-b.r)+'px,0) rotate('+tilt+'deg)';
+    b.el.style.setProperty('--rot',b.rot+'deg');
+  }
+}
+$('#shuffle').addEventListener('click',()=>{if(!RM)drop();});
+new ResizeObserver(measure).observe(arena);
+measure();
+new IntersectionObserver(es=>{es.forEach(e=>{
+  inView=e.isIntersecting;
+  if(inView&&!started&&!RM){started=true;measure();drop();}
+});},{threshold:0,rootMargin:'0px 0px -30% 0px'}).observe(arena);
+
+/* ─── blob ─── */
+const blobP=$('#blobP');
+let bmx=0,bmy=0,tmx=0,tmy=0;
+function blobPath(t){
+  const N=10,pts=[];
+  for(let i=0;i<N;i++){
+    const a=i/N*Math.PI*2,r=330*(1+.1*Math.sin(t*1.1+i*1.7)+.07*Math.sin(t*.7+i*2.9));
+    pts.push([500+bmx*60+Math.cos(a)*r,500+bmy*60+Math.sin(a)*r]);
+  }
+  let d='M'+((pts[0][0]+pts[N-1][0])/2)+','+((pts[0][1]+pts[N-1][1])/2);
+  for(let i=0;i<N;i++){const p=pts[i],n=pts[(i+1)%N];d+=' Q'+p[0]+','+p[1]+' '+((p[0]+n[0])/2)+','+((p[1]+n[1])/2);}
+  return d+'Z';
+}
+blobP.setAttribute('d',blobPath(0));
+
+/* ─── pointer: cursor + parallax ─── */
+const cur=$('#cur');let cx=-100,cy=-100,px=-100,py=-100;
+if(fine){
+  addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;tmx=px/innerWidth-.5;tmy=py/innerHeight-.5;},{passive:true});
+  document.addEventListener('pointerover',e=>{const t=e.target.closest&&e.target.closest('[data-cur]');if(t){cur.textContent=t.dataset.cur;cur.classList.add('grow');}else{cur.textContent='';cur.classList.remove('grow');}});
+}
+const coins=$$('.coin');
+/* magnets */
+if(fine&&!RM){
+  $$('.btn,.go-btn').forEach(el=>{
+    el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.translate=((e.clientX-(r.left+r.width/2))*.22)+'px '+((e.clientY-(r.top+r.height/2))*.28)+'px';});
+    el.addEventListener('pointerleave',()=>{el.style.translate='';});
+  });
+}
+
+/* ─── calc ─── */
+const amt=$('#amt'),amtV=$('#amtV'),bigN=$('#bigN'),mA=$('#mA'),mX=$('#mX'),bigBox=$('#big');
+let shown=1250,target=1250;
+function calc(){
+  const a=+amt.value,el=Math.min(a,150000);
+  target=Math.round(el*.10/12);
+  amtV.textContent='NT$ '+a.toLocaleString('en-US');
+  mA.style.width=(el/300000*100)+'%';mX.style.width=((a-el)/300000*100)+'%';
+  bigBox.classList.remove('pop');void bigBox.offsetWidth;bigBox.classList.add('pop');
+  if(RM){shown=target;bigN.textContent=target.toLocaleString('en-US');}
+}
+amt.addEventListener('input',calc);calc();bigN.textContent=(1250).toLocaleString('en-US');
+
+/* ─── steps / nav / reveal ─── */
+const hs=$('#steps'),track=$('#track'),hsB=$('#hsB');
+$$('.play-h,.list .grp,.calc-grid,.hs-h').forEach(e=>e.classList.add('rv'));
+const rvIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvIO.unobserve(e.target);}}),{threshold:.12});
+$$('.rv').forEach(e=>rvIO.observe(e));
+const links=$$('.dock a'),secs=links.map(a=>$(a.getAttribute('href')));
+const navIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',$(a.getAttribute('href'))===e.target));}}),{rootMargin:'-45% 0px -45% 0px'});
+secs.forEach(s=>s&&navIO.observe(s));
+
+/* ─── master loop ─── */
+let last=performance.now(),sy=scrollY,vel=0;
+function tick(now){
+  const dt=Math.min(.033,(now-last)/1000);last=now;
+  vel+=((scrollY-sy)-vel)*.2;sy=scrollY;
+  if(!RM){
+    /* blob */
+    bmx+=(tmx-bmx)*.04;bmy+=(tmy-bmy)*.04;
+    if(scrollY<innerHeight*1.3)blobP.setAttribute('d',blobPath(now/1000));
+    /* coins */
+    coins.forEach(c=>{const k=+c.dataset.k;c.style.setProperty('--x',(bmx*k)+'px');c.style.setProperty('--y',(bmy*k)+'px');});
+    /* tapes */
+    tapes.forEach(t=>{
+      const w=t.el.scrollWidth/2;if(!w)return;
+      t.pos=((t.pos+t.dir*(80+Math.abs(vel)*16)*dt)%w+w)%w;
+      t.el.style.transform='translate3d('+(-t.pos)+'px,0,0)';
+    });
+    /* physics */
+    if(started&&inView)physics(dt);
+    /* steps */
+    const r=hs.getBoundingClientRect(),tot=hs.offsetHeight-innerHeight;
+    if(r.bottom>0&&r.top<innerHeight){
+      const p=clamp(-r.top/tot),dist=Math.max(0,track.scrollWidth-innerWidth);
+      track.style.transform='translate3d('+(-p*dist)+'px,0,0)';hsB.style.transform='scaleX('+p+')';
+    }
+    /* tween number */
+    if(shown!==target){shown+=(target-shown)*Math.min(1,dt*12);if(Math.abs(target-shown)<.5)shown=target;bigN.textContent=Math.round(shown).toLocaleString('en-US');}
+  }
+  /* statement fill */
+  const sr=stmt.getBoundingClientRect(),p=clamp((innerHeight*.88-sr.top)/(sr.height+innerHeight*.35));
+  const n=RM?chs.length:Math.floor(p*chs.length*1.04);
+  if(n!==lastN){chs.forEach((c,i)=>c.classList.toggle('on',i<n));lastN=n;}
+  /* cursor */
+  if(fine){cx+=(px-cx)*.22;cy+=(py-cy)*.22;cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)';}
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
