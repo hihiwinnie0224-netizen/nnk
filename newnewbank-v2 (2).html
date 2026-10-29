@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New New Bank | 一開戶就有感</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  /* 介面配色：青藍 RGB 66,189,216 (C65 Y15)／灰 RGB 114,113,113 (K70)／白 */
+  --b:#42BDD8; --bd:#1F8FA9; --bdk:#727171; --bpl:#E6F7FB; --blg:#C5ECF5;
+  --wh:#fff; --pg:#F7FCFD; --tx:#2B2A2A; --md:#5C5B5B; --mu:#727171;
+  --ink:2.5px solid var(--tx);
+  --disp:'Space Grotesk','Noto Sans TC',sans-serif;
+  --cn:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+body{font-family:var(--cn);background:var(--pg);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+::selection{background:var(--b);color:var(--tx)}
+:focus-visible{outline:3px solid var(--tx);outline-offset:3px}
+
+/* grain */
+body::after{content:'';position:fixed;inset:0;z-index:800;pointer-events:none;opacity:.08;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.16 0 0 0 0 0.16 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
+
+/* cursor */
+.cur{position:fixed;left:0;top:0;z-index:900;width:34px;height:34px;margin:-17px 0 0 -17px;border:var(--ink);border-radius:50%;pointer-events:none;display:none;place-items:center;font:900 12px var(--cn);color:var(--tx);transition:width .22s,height .22s,margin .22s,background .22s;}
+.cur.grow{width:76px;height:76px;margin:-38px 0 0 -38px;background:var(--b)}
+@media (pointer:fine){.cur{display:grid}}
+
+/* top bar + dock */
+.top{position:fixed;left:0;right:0;top:0;z-index:700;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 4vw 0;pointer-events:none}
+.top>*{pointer-events:auto}
+.logo{display:flex;align-items:center;justify-content:center;min-width:128px;min-height:52px;padding:8px 18px;background:#fff;border:var(--ink);border-radius:999px;box-shadow:4px 4px 0 var(--tx)}
+.logo img{display:block;height:32px;width:auto;max-width:100%;font-size:0;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:var(--ink);border-radius:999px;background:var(--b);color:var(--tx);font-weight:900;font-size:16px;box-shadow:5px 5px 0 var(--tx);transition:transform .15s,box-shadow .15s,background .15s;will-change:transform}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--tx)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--tx)}
+.btn.w{background:#fff}
+.btn.sm{padding:11px 20px;font-size:16px;box-shadow:3px 3px 0 var(--tx)}
+.btn.lg{padding:17px 34px;font-size:21px;box-shadow:6px 6px 0 var(--tx)}
+.btn.lg:hover{box-shadow:9px 9px 0 var(--tx)}
+.dock{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:700;display:flex;gap:6px;width:min(680px,calc(100% - 24px));padding:7px;border:var(--ink);border-radius:999px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:5px 5px 0 var(--tx)}
+.dock a{flex:1;text-align:center;padding:15px 8px;border-radius:999px;font-weight:900;font-size:20px;line-height:1.2;white-space:nowrap;transition:background .2s,color .2s}
+.dock a:hover{background:var(--bpl)}
+.dock a.on{background:var(--tx);color:#fff}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:112px 5vw max(124px,14vh);overflow:hidden}
+.blob{position:absolute;right:-8vw;top:6vh;width:min(86vmin,980px);aspect-ratio:1;z-index:0}
+.hero-t{position:relative;z-index:2;font-family:var(--cn);font-weight:900;font-size:clamp(52px,min(9.4vw,15.5vh),190px);line-height:1;letter-spacing:-.04em}
+.ln{display:block;overflow:hidden;padding:.04em .04em .08em;white-space:nowrap}
+.ln .c{display:inline-block;transform:translateY(115%);animation:up .9s cubic-bezier(.2,.9,.2,1) forwards}
+@keyframes up{to{transform:none}}
+.ln.o{color:var(--bdk)}
+.ln.bl{color:var(--b);text-shadow:.035em .035em 0 var(--tx)}
+.l2{display:flex;align-items:center;flex-wrap:wrap}
+.l2 .ln{display:inline-block}
+.tag{display:inline-block;margin-left:2.2vw;padding:.4em .9em;font-family:var(--cn);font-weight:900;font-size:clamp(16px,1.9vw,30px);letter-spacing:0;line-height:1.2;background:#fff;border:var(--ink);border-radius:999px;box-shadow:6px 6px 0 var(--b);transform:rotate(-4deg);white-space:normal;opacity:0;animation:fade .6s 1.5s forwards;-webkit-text-stroke:0}
+@keyframes fade{to{opacity:1}}
+.hero-foot{position:relative;z-index:2;margin-top:4vh;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.hero-p{max-width:600px;font-size:clamp(18px,1.7vw,23px);font-weight:500;color:var(--md);line-height:1.7}
+.hero-p b{color:var(--tx);font-weight:900}
+.hero-p .nw{margin:0 6px 0 0;font-size:16px;transform:rotate(-3deg)}
+.hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.hero-btns .btn{padding:16px 30px;font-size:19px}
+.spin{position:absolute;z-index:3;right:7vw;top:15vh;width:clamp(120px,15vw,210px);aspect-ratio:1}
+.spin svg{position:absolute;inset:0;width:100%;height:100%;animation:rot 16s linear infinite;overflow:visible}
+.spin text{font:700 15px var(--cn);fill:var(--tx);letter-spacing:.04em}
+.spin b{position:absolute;inset:18%;display:flex;align-items:center;justify-content:center;background:var(--b);border:var(--ink);border-radius:50%;font:700 clamp(28px,4vw,58px)/1 var(--disp);letter-spacing:-.04em;box-shadow:4px 4px 0 var(--tx)}
+.spin b small{font-size:.5em;margin-left:2px}
+@keyframes rot{to{transform:rotate(360deg)}}
+.coin{--s:clamp(98px,9vw,134px);position:absolute;z-index:3;width:var(--s);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:calc(var(--s)*.06);border:var(--ink);border-radius:50%;box-shadow:4px 4px 0 var(--tx);transform:translate(var(--x,0),var(--y,0)) rotate(var(--r,0deg));will-change:transform;text-align:center}
+.coin i{font-style:normal;font-weight:900;font-size:calc(var(--s)*.135);line-height:1.1;white-space:nowrap}
+.coin b{font:700 calc(var(--s)*.3)/1 var(--disp);letter-spacing:-.04em}
+.coin b small{font-size:.55em;margin-left:1px;letter-spacing:0}
+.coin.c1{background:#fff;right:31vw;top:13vh;--r:-10deg}
+.coin.c2{background:var(--tx);color:#fff;right:2.5vw;top:46vh;--r:9deg}
+.coin.c3{background:var(--bdk);color:#fff;right:2.5vw;bottom:24vh;--r:6deg}
+
+/* TAPES */
+.tapes{position:relative;height:300px;overflow:hidden;margin-top:-2px}
+.tape{position:absolute;left:-6%;width:112%;border-block:var(--ink);overflow:hidden;white-space:nowrap;padding:14px 0}
+.tape.a{top:40px;background:var(--bdk);color:#fff;transform:rotate(2.6deg)}
+.tape.b{top:128px;background:#fff;transform:rotate(-2.6deg)}
+.tape-in{display:inline-flex;will-change:transform}
+.tape-in span{font:700 clamp(22px,3vw,40px)/1 var(--cn);letter-spacing:-.02em;padding-right:34px}
+.tape.a .tape-in span.s{color:var(--blg)}
+.tape-in span.s{color:var(--b)}
+
+/* STATEMENT */
+.stmt{padding:10vh 6vw 12vh}
+.stmt p{max-width:1100px;margin:auto;font-weight:900;font-size:clamp(24px,3.5vw,54px);line-height:1.4;letter-spacing:-.02em}
+.stmt .ch{color:var(--blg);transition:color .35s}
+.stmt .ch.on{color:var(--tx)}
+.stmt .ch.hi.on{color:var(--bd)}
+
+/* PLAYGROUND */
+.play{position:relative;background:var(--b);border-block:var(--ink);padding:10vh 4vw 14vh;overflow:hidden}
+.kick{display:inline-block;border:var(--ink);border-radius:999px;padding:7px 18px;font-weight:900;font-size:16px;background:#fff;transform:rotate(-2deg);margin-bottom:22px}
+.h2{font-weight:900;font-size:clamp(38px,6.6vw,118px);line-height:.98;letter-spacing:-.045em}
+.h2.sm{font-size:clamp(32px,4.6vw,64px)}
+.play-h{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:3.5vh}
+.play-h p{max-width:380px;font-weight:700;font-size:19px;line-height:1.6}
+.arena{position:relative;height:min(72vh,660px);min-height:480px;border:var(--ink);border-radius:36px;background:rgba(255,255,255,.16);overflow:hidden;touch-action:pan-y}
+.arena::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(43,42,42,.28) 1.6px,transparent 1.7px);background-size:26px 26px;pointer-events:none}
+.stk{position:absolute;left:0;top:0;width:var(--d,120px);height:var(--d,120px);border-radius:50%;display:grid;place-content:center;text-align:center;border:var(--ink);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;will-change:transform;box-shadow:5px 5px 0 rgba(43,42,42,.9)}
+.stk.drag{cursor:grabbing;box-shadow:9px 9px 0 rgba(43,42,42,.9);z-index:5}
+.stk::after{content:'';position:absolute;inset:6px;border:2px dashed currentColor;border-radius:50%;opacity:.35;transform:rotate(var(--rot,0deg));pointer-events:none}
+.stk b{font:700 calc(var(--d)*.27)/1 var(--disp);letter-spacing:-.05em}
+.stk b small{font-size:.5em;letter-spacing:0;margin-left:1px}
+.stk span{display:block;margin-top:.35em;font-weight:900;font-size:max(11px,calc(var(--d)*.095));line-height:1.2}
+.stk .nw{position:absolute;top:3%;right:2%;margin:0;padding:2px 10px;border-radius:999px;background:var(--tx);color:#fff;font-size:max(11px,calc(var(--d)*.07));transform:rotate(12deg);z-index:2}
+.stk.w{background:#fff;color:var(--tx)}
+.stk.d{background:var(--tx);color:#fff}
+.stk.k{background:var(--bdk);color:#fff}
+.stk.p{background:var(--bpl);color:var(--tx)}
+.arena.static{height:auto;min-height:0;display:flex;flex-wrap:wrap;gap:16px;padding:24px;justify-content:center}
+.arena.static .stk{position:relative}
+.play-bar{margin-top:22px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--bdk);color:#fff;border-radius:22px;padding:16px 20px 16px 26px}
+.play-bar #pbT{font-weight:700;font-size:clamp(17px,1.7vw,22px);min-height:1.5em;flex:1 1 280px}
+.play-bar #pbT b{color:var(--blg)}
+.play-bar .acts{display:flex;gap:12px;flex-wrap:wrap}
+
+/* LIST */
+.list{padding:12vh 5vw 8vh;max-width:1400px;margin:auto}
+.grp{margin-top:6vh}
+.grp h3{display:flex;align-items:center;gap:14px;font-weight:900;font-size:clamp(26px,2.8vw,40px);margin-bottom:22px}
+.grp h3 em{font:700 16px var(--cn);font-style:normal;border:var(--ink);border-radius:999px;padding:3px 14px;background:#fff}
+.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.oc{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:250px;width:100%;padding:24px;text-align:left;background:#fff;border:var(--ink);border-radius:28px;box-shadow:6px 6px 0 var(--tx);transition:transform .2s,box-shadow .2s,background .2s}
+button.oc:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 var(--tx);background:var(--bpl)}
+.oc.hot{background:var(--b)}
+button.oc.hot:hover{background:var(--blg)}
+.oc .oh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.oc .on{font-weight:900;font-size:clamp(21px,2vw,28px);line-height:1.25}
+.nw{display:inline-block;font-style:normal;font-weight:900;font-size:14px;line-height:1.3;padding:2px 10px;border-radius:999px;background:var(--tx);color:#fff;vertical-align:middle;margin-left:6px;transform:rotate(-4deg)}
+.oc .oa{flex:0 0 auto;width:42px;height:42px;border:var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:22px;line-height:1;background:#fff;transition:transform .25s}
+button.oc:hover .oa{transform:rotate(90deg);background:var(--tx);color:#fff}
+.oc .ov{font:700 clamp(54px,5.8vw,88px)/1 var(--disp);letter-spacing:-.05em}
+.oc .ov small{font-size:.4em;letter-spacing:0;margin-left:3px}
+.pre{display:block;font:900 clamp(16px,1.4vw,19px)/1.2 var(--cn);letter-spacing:0;margin-bottom:8px;color:var(--md)}
+.oc.hot .pre{color:var(--tx)}
+.oc .ot{font-size:17px;color:var(--md);font-weight:500;line-height:1.55}
+.oc.hot .ot{color:var(--tx)}
+.od{display:inline-block;margin-top:8px;font:700 14px var(--cn);color:var(--tx);border:2px solid var(--tx);border-radius:999px;padding:1px 12px;background:rgba(255,255,255,.7)}
+.oc.cta{grid-column:span 2;background:var(--bdk);color:#fff;justify-content:center;align-items:flex-start;gap:12px}
+.oc.cta .on{font-size:clamp(24px,2.4vw,34px)}
+.oc.cta .ot{color:#fff;font-size:19px}
+.oc.cta .btn{margin-top:6px}
+.fine{margin-top:52px;font-size:16px;line-height:1.9;color:var(--md);max-width:920px;border-left:6px solid var(--b);padding-left:18px}
+.fine b{color:var(--tx)}
+
+/* DIALOG */
+dialog{border:var(--ink);border-radius:30px;padding:0;width:min(700px,calc(100% - 24px));max-height:calc(100svh - 24px);overflow:auto;background:#fff;color:var(--tx);box-shadow:10px 10px 0 var(--tx);margin:auto}
+dialog::backdrop{background:rgba(43,42,42,.6)}
+.dwrap{padding:28px 30px 30px}
+.dtop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+.dtop .kick{margin:0}
+.dx{padding:12px 22px;border:var(--ink);border-radius:999px;background:#fff;font-weight:900;font-size:18px;box-shadow:3px 3px 0 var(--tx)}
+.dx:hover{background:var(--bpl)}
+dialog h3{font-weight:900;font-size:clamp(28px,4vw,40px);line-height:1.2;margin-top:10px}
+.dv{font:700 clamp(64px,10vw,104px)/1 var(--disp);letter-spacing:-.05em;margin:10px 0 4px}
+.dv small{font-size:.4em;letter-spacing:0;margin-left:3px}
+.dv .pre{font-size:20px;margin-bottom:6px}
+.dp{display:inline-block;font:900 17px var(--cn);border:var(--ink);border-radius:999px;padding:5px 16px;background:var(--bpl);margin:10px 0 6px}
+.dl{margin:14px 0 22px 1.2em;font-size:19px;line-height:1.85}
+.dl li{margin-bottom:8px}
+
+/* CALC */
+.calc{background:var(--bpl);border-block:var(--ink);padding:12vh 5vw 14vh;position:relative;overflow:hidden}
+.calc-in{max-width:1300px;margin:auto}
+.seg{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 4px}
+.seg button{padding:14px 24px;border:var(--ink);border-radius:999px;background:#fff;font-weight:900;font-size:clamp(17px,1.6vw,21px);box-shadow:4px 4px 0 var(--tx);transition:transform .15s,box-shadow .15s,background .15s}
+.seg button:hover{transform:translate(-1px,-1px)}
+.seg button.on{background:var(--b);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--tx)}
+.seg em{font-style:normal;background:var(--tx);color:#fff;border-radius:999px;padding:1px 10px;font-size:.72em;margin-left:6px;vertical-align:2px}
+.big{font:700 clamp(84px,15vw,260px)/.86 var(--disp);letter-spacing:-.06em;margin:4vh 0 1.5vh;display:flex;align-items:flex-start}
+.big small{font-size:.22em;letter-spacing:-.02em;margin:.25em .12em 0 0;font-weight:700}
+.big.pop{animation:pop .25s}
+@keyframes pop{50%{transform:scale(1.02)}}
+.big-sub{font-weight:900;font-size:clamp(18px,2vw,26px);margin:0 0 4vh;color:var(--md)}
+.calc-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:5vw;align-items:start}
+.amt-l{font-weight:900;font-size:clamp(18px,2vw,26px);display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.amt-l b{font:700 clamp(28px,3.4vw,48px)/1 var(--disp);letter-spacing:-.04em}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:22px;margin:26px 0 14px;background:#fff;border:var(--ink);border-radius:999px;outline-offset:6px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:54px;height:54px;border-radius:50%;background:var(--b);border:var(--ink);box-shadow:3px 3px 0 var(--tx)}
+input[type=range]::-moz-range-thumb{width:50px;height:50px;border-radius:50%;background:var(--b);border:var(--ink);box-shadow:3px 3px 0 var(--tx)}
+.meter{height:30px;border:var(--ink);border-radius:999px;background:#fff;overflow:hidden;display:flex}
+.meter i{display:block;height:100%;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.meter .a{background:var(--b)}
+.meter .x{background:repeating-linear-gradient(45deg,var(--blg) 0 8px,#fff 8px 16px)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:17px;font-weight:700}
+.legend span::before{content:'';display:inline-block;width:14px;height:14px;border:2px solid var(--tx);border-radius:4px;margin-right:6px;vertical-align:-2px;background:var(--b)}
+.legend span.x::before{background:repeating-linear-gradient(45deg,var(--blg) 0 3px,#fff 3px 6px)}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.chips button{padding:11px 20px;border:var(--ink);border-radius:999px;background:#fff;font-weight:900;font-size:19px;transition:background .15s,transform .15s}
+.chips button:hover{transform:translateY(-2px)}
+.chips button.on{background:var(--b)}
+.note{background:#fff;border:var(--ink);border-radius:24px;padding:24px 26px;box-shadow:6px 6px 0 var(--tx);font-size:18px;line-height:1.7;color:var(--md)}
+.note b{color:var(--tx)}
+.note .usd{margin-top:14px;padding-top:14px;border-top:2px dashed var(--tx);font-weight:700;color:var(--tx);font-size:17px}
+.note .usd strong{font:700 26px var(--disp);letter-spacing:-.03em}
+.note small{display:block;margin-top:14px;font-size:14px;line-height:1.7}
+
+/* STEPS */
+.steps{padding:9vh 5vw 10vh;max-width:1400px;margin:auto}
+.sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:4vh}
+.pan{background:#fff;border:var(--ink);border-radius:26px;padding:24px;box-shadow:6px 6px 0 var(--tx)}
+.pan:nth-child(2){background:var(--b)}
+.pan:nth-child(3){background:var(--bpl)}
+.pan .n{width:56px;height:56px;border:var(--ink);border-radius:50%;display:grid;place-items:center;font:700 26px var(--disp);background:#fff;margin-bottom:14px}
+.pan h3{font-weight:900;font-size:clamp(22px,2vw,28px);line-height:1.3}
+.pan p{margin-top:8px;font-size:18px;font-weight:500;line-height:1.7}
+.pan:nth-child(2) p{font-weight:700}
+
+/* GO */
+.go{position:relative;background:var(--b);border-top:var(--ink);padding:16vh 5vw 14vh;text-align:center;overflow:hidden}
+.go h2{font-weight:900;font-size:clamp(56px,15vw,260px);line-height:.92;letter-spacing:-.06em}
+.go h2 .o2{color:#fff;-webkit-text-stroke:max(3px,.02em) var(--tx);paint-order:stroke fill;text-shadow:.05em .05em 0 var(--tx)}
+.go-btn{position:relative;margin:6vh auto 0;width:clamp(170px,17vw,240px);aspect-ratio:1;border-radius:50%;background:#fff;border:var(--ink);display:grid;place-items:center;font-weight:900;font-size:clamp(20px,2vw,28px);box-shadow:8px 8px 0 var(--tx);transition:transform .15s,box-shadow .15s;will-change:transform}
+.go-btn:hover{box-shadow:12px 12px 0 var(--tx)}
+.go-btn svg{position:absolute;inset:-46px;width:calc(100% + 92px);height:calc(100% + 92px);animation:rot 14s linear infinite;overflow:visible;pointer-events:none}
+.go-btn svg text{font:700 13px var(--cn);fill:var(--tx);letter-spacing:.06em;stroke:var(--b);stroke-width:4px;paint-order:stroke fill;stroke-linejoin:round}
+.go-sub{margin-top:6vh;font-weight:700;font-size:18px;line-height:1.7;max-width:640px;margin-inline:auto}
+
+/* FOOTER */
+footer{padding:9vh 5vw calc(130px + env(safe-area-inset-bottom,0px));position:relative;overflow:hidden;background:var(--pg)}
+.f-logo{display:inline-flex;align-items:center;justify-content:center;min-width:200px;min-height:84px;padding:14px 30px;background:#fff;border:var(--ink);border-radius:999px;box-shadow:6px 6px 0 var(--tx);margin-bottom:5vh}
+.f-logo img{display:block;height:56px;width:auto;max-width:100%;font-size:0;color:transparent}
+.f-cols{display:grid;grid-template-columns:1.2fr 1fr;gap:5vw;font-size:16px;color:var(--md);line-height:1.9}
+.f-cols h4{font-weight:900;color:var(--tx);font-size:18px;margin-bottom:6px}
+.f-cols a{border-bottom:2px solid var(--b)}
+.copy{margin-top:30px;font-size:14px;color:var(--md)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:860px){
+  .calc-grid,.f-cols{grid-template-columns:1fr}
+  .hero{padding-top:104px}
+  .hero-t{font-size:min(17vw,19vh)}
+  .coin.c1{right:auto;left:5vw;top:12vh}
+  .coin.c2,.coin.c3{display:none}
+  .spin{right:4vw;top:14vh}
+  .tapes{height:250px}
+  .tape.b{top:112px}
+  .arena{min-height:520px;height:72svh}
+  .tag{margin-left:0;margin-top:2vh}
+}
+@media (max-width:760px){
+  .offers,.sgrid{grid-template-columns:1fr;gap:16px}
+  .oc{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;min-height:0;padding:18px}
+  .oc .oh{display:contents}
+  .oc .on{grid-column:1;grid-row:1}
+  .oc .oa{display:none}
+  .oc .ot{grid-column:1;grid-row:2}
+  .oc .ov{grid-column:2;grid-row:1/3;text-align:right;font-size:clamp(44px,13vw,60px)}
+  .oc .pre{margin-bottom:4px;font-size:15px}
+  .oc.cta{display:flex;flex-direction:column;align-items:flex-start;padding:22px;grid-column:auto}
+  .pan{display:grid;grid-template-columns:auto 1fr;gap:0 16px;padding:20px}
+  .pan .n{margin:0}
+  .list{padding-top:9vh}
+  .dwrap{padding:20px 18px 24px}
+}
+@media (max-width:560px){
+  .top{padding-left:12px;padding-right:12px}
+  .logo{min-width:104px;min-height:46px;padding:6px 14px}
+  .logo img{height:26px}
+  .btn.lg{padding:12px 20px;font-size:18px;box-shadow:4px 4px 0 var(--tx)}
+  .dock{gap:3px;padding:5px}
+  .dock a{font-size:18px;padding:14px 2px}
+  .hero-btns{width:100%}
+  .hero-btns .btn{flex:1;justify-content:center;padding:15px 12px;font-size:18px}
+  .play-bar{padding:16px}
+  .play-bar .acts{width:100%}
+  .play-bar .acts .btn{flex:1;justify-content:center}
+  .seg button{flex:1 1 100%;text-align:center}
+  .chips button{font-size:18px;padding:11px 16px}
+  .note{font-size:17px}
+  .f-logo{min-width:0;width:100%}
+  /* ── 手機版優化 ── */
+  .hero{padding:92px 5vw 116px}
+  .hero-p{font-size:17px;line-height:1.65}
+  .spin{width:92px;right:3vw;top:11vh}
+  .coin.c1{--s:84px;top:12vh;left:4vw}
+  .tag{font-size:15px;box-shadow:4px 4px 0 var(--b)}
+  .tapes{height:200px}
+  .tape.a{top:28px}.tape.b{top:96px}
+  .tape-in span{font-size:20px;padding-right:22px}
+  .stmt{padding:6vh 6vw 8vh}
+  .stmt p{font-size:clamp(22px,6.4vw,30px);line-height:1.5}
+  .play{padding:8vh 4vw 12vh}
+  .play-h{margin-bottom:2.5vh}
+  .play-h p{font-size:17px}
+  .arena{border-radius:24px;min-height:600px;height:78svh}
+  .play-bar{border-radius:18px}
+  .play-bar #pbT{font-size:17px}
+  .kick{font-size:15px;padding:6px 14px}
+  .list{padding:8vh 4.5vw 5vh}
+  .grp{margin-top:4vh}
+  .grp h3{font-size:24px}
+  .oc{border-radius:22px;box-shadow:4px 4px 0 var(--tx)}
+  .oc .on{font-size:20px}
+  .oc .ot{font-size:15px}
+  .fine{font-size:14px;line-height:1.8;margin-top:36px}
+  .calc{padding:8vh 5vw 12vh}
+  .seg{gap:10px}
+  .seg button{padding:12px 16px;font-size:17px}
+  .big{font-size:clamp(72px,24vw,110px);margin:3vh 0 1vh}
+  .big-sub{font-size:17px;margin-bottom:3vh}
+  .calc-grid{gap:28px}
+  input[type=range]{margin:20px 0 12px}
+  .chips button{font-size:17px;padding:10px 14px}
+  .note{padding:20px 18px;border-radius:20px;box-shadow:4px 4px 0 var(--tx);font-size:16px}
+  .steps{padding:7vh 5vw 8vh}
+  .pan{border-radius:20px;box-shadow:4px 4px 0 var(--tx)}
+  .pan h3{font-size:20px}
+  .pan p{font-size:16px}
+  .go{padding:12vh 5vw 11vh}
+  .go h2{font-size:clamp(52px,19vw,110px)}
+  .go-sub{font-size:16px}
+  dialog{border-radius:22px;box-shadow:6px 6px 0 var(--tx);width:calc(100% - 16px)}
+  dialog h3{font-size:26px}
+  .dl{font-size:17px;line-height:1.75}
+  .dv{font-size:clamp(56px,18vw,80px)}
+  footer{padding:7vh 5vw calc(120px + env(safe-area-inset-bottom,0px))}
+  .f-cols{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .ln .c{transform:none}.tag{opacity:1}.rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="logo" href="#top" aria-label="聯邦數位銀行 New New Bank"><img src="https://newnewbank.com.tw/images/UBOT-logo_.png" alt="New New Bank"></a>
+  <a class="btn lg" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO">線上開戶 ↗</a>
+</header>
+
+<nav class="dock" aria-label="頁面導覽">
+  <a href="#play">優惠</a><a href="#list">一覽</a><a href="#calc">試算</a><a href="#steps">開戶</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <svg class="blob" viewBox="0 0 1000 1000" aria-hidden="true"><path id="blobP" fill="var(--blg)" stroke="var(--tx)" stroke-width="3"/></svg>
+  <div class="spin" aria-hidden="true">
+    <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs>
+      <text><textPath href="#circ" textLength="496" lengthAdjust="spacing">新活動 ・ 台幣定儲最高 2.3% ・ 13 個月期 ・ 限新資金 ・</textPath></text></svg>
+    <b>2.3<small>%</small></b>
+  </div>
+  <div class="coin c1" data-k="26" aria-hidden="true"><i>基金手續費</i><b>0<small>元</small></b></div>
+  <div class="coin c2" data-k="-34" aria-hidden="true"><i>聯邦卡自扣</i><b>10<small>%</small></b></div>
+  <div class="coin c3" data-k="18" aria-hidden="true"><i>跨提跨轉</i><b>0<small>元</small></b></div>
+
+  <h1 class="hero-t" aria-label="數位理財，回饋放大，從現在開始">
+    <span class="ln" data-split="數位理財"></span>
+    <span class="ln o" data-split="回饋放大" data-d="4"></span>
+    <span class="l2"><span class="ln bl" data-split="從現在開始" data-d="8"></span><span class="tag">24 小時線上開戶・5 分鐘完成</span></span>
+  </h1>
+  <div class="hero-foot">
+    <p class="hero-p"><span class="nw">新活動</span> 台幣定儲最高 <b>2.3%</b><br>台幣活儲新戶最高 <b>10%</b>・美金定存最高 <b>10%</b><br>免出門、免臨櫃，<b>5 分鐘</b>完成開戶申請</p>
+    <div class="hero-btns">
+      <a class="btn" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO">立刻開戶 ↗</a>
+      <a class="btn w" href="#play" data-cur="↓">看優惠 ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- TAPES -->
+<div class="tapes" aria-hidden="true">
+  <div class="tape a"><div class="tape-in" id="tA"></div></div>
+  <div class="tape b"><div class="tape-in" id="tB"></div></div>
+</div>
+
+<!-- STATEMENT -->
+<section class="stmt" aria-label="一開戶就有感">
+  <p id="stmt"></p>
+</section>
+
+<!-- PLAYGROUND -->
+<section class="play" id="play">
+  <div class="play-h">
+    <div><span class="kick">最新活動 116/1/1–6/30</span><h2 class="h2">抓住它，<br>丟出去。</h2></div>
+    <p>每一顆都是真的優惠。用手把它們甩來甩去，點住任何一顆就會顯示細節。</p>
+  </div>
+  <div class="arena" id="arena" role="group" aria-label="優惠互動區，所有優惠也列在下方的一覽中"></div>
+  <div class="play-bar">
+    <div id="pbT" aria-live="polite">點住任一顆，看優惠細節。</div>
+    <div class="acts">
+      <button class="btn w sm" id="more" hidden>看完整辦法 ＋</button>
+      <a class="btn w sm" href="#list">不想玩？看一覽 ↓</a>
+      <button class="btn w sm" id="shuffle" data-cur="↻">再丟一次 ↻</button>
+    </div>
+  </div>
+</section>
+
+<!-- LIST -->
+<section class="list" id="list">
+  <span class="kick">全部一覽</span>
+  <h2 class="h2">一次看完。</h2>
+  <div id="rows"></div>
+  <p class="fine"><b>活動期間：116/1/1–6/30（六個月）</b>；台幣活儲為 116/1/21–116/7/20（六個月）；普發 1 萬登記抽獎實際依政府頒布為準。台幣活儲新戶 10% 僅適用 1 個月（限額 15 萬），其他月份依牌告利率計息；舊戶 1.5%，限額 100 萬。各項優惠的完整條件請點選卡片查看，實際內容以聯邦銀行公告為準。</p>
+</section>
+
+<!-- CALC -->
+<section class="calc" id="calc">
+  <div class="calc-in">
+    <span class="kick">利息試算</span>
+    <h2 class="h2">你放多少，<br>能領多少？</h2>
+    <div class="seg" id="seg" role="group" aria-label="選擇試算項目">
+      <button type="button" data-m="td">台幣定儲<em>新</em></button>
+      <button type="button" data-m="nw">台幣活儲・新戶</button>
+      <button type="button" data-m="od">台幣活儲・舊戶</button>
+    </div>
+    <div class="big" id="big" aria-live="polite"><small>NT$</small><span id="bigN">0</span></div>
+    <div class="big-sub" id="bigSub"></div>
+    <div class="calc-grid">
+      <div>
+        <label class="amt-l" for="amt"><span>存款金額</span><b id="amtV">NT$ 0</b></label>
+        <input type="range" id="amt" min="10000" max="300000" step="10000" value="150000">
+        <div class="meter" aria-hidden="true"><i class="a" id="mA"></i></div>
+        <div class="chips" id="chips" role="group" aria-label="快速選擇金額"></div>
+        <div class="legend"><span id="legA"></span></div>
+      </div>
+      <div class="note">
+        <div id="noteMain"></div>
+        <div class="usd">美金定存・限新資金<br>3 個月期 US$2,000，約可領 <strong>US$50</strong><br>6 個月期 US$3,000，約可領 <strong>US$90</strong></div>
+        <small>＊試算僅供參考，實際利息依銀行結算為準。各項活動條件請見上方「全部一覽」。</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps" id="steps" aria-label="開戶三步驟">
+  <span class="kick">24 小時線上開戶</span>
+  <h2 class="h2 sm">三步，搞定。</h2>
+  <div class="sgrid">
+    <article class="pan"><div class="n">1</div><div><h3>準備手機與雙證件</h3><p>本國 18 歲以上成年人、非聯邦銀行既有存戶即可申辦。備妥本國國民身分證，以及第二證件（如駕照、健保卡、護照）。</p></div></article>
+    <article class="pan"><div class="n">2</div><div><h3>線上完成身分驗證</h3><p>以聯邦信用卡（正卡且開卡滿六個月）或他行存款帳戶（限臨櫃開立之本人帳戶）驗證，再依步驟填寫、上傳證件。</p></div></article>
+    <article class="pan"><div class="n">3</div><div><h3>等通知，就開始用</h3><p>審核約 2–5 個工作天，通過後即可登入 NNB APP 使用各項服務。</p></div></article>
+  </div>
+</section>
+
+<!-- GO -->
+<section class="go" id="go">
+  <h2>一開戶<br><span class="o2">就有感</span></h2>
+  <a class="go-btn" id="goBtn" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO" aria-label="線上開戶">
+    <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="c2" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs><text><textPath href="#c2" textLength="490" lengthAdjust="spacing">線上開戶 ・ 5 分鐘完成 ・ 線上開戶 ・ 5 分鐘完成 ・</textPath></text></svg>
+    線上開戶 ↗
+  </a>
+  <p class="go-sub">貼心提醒：避免您的帳戶成為詐騙集團犯罪工具，請勿隨意將您的帳戶交予不明人士使用。</p>
+</section>
+</main>
+
+<footer>
+  <div class="f-logo"><img src="https://newnewbank.com.tw/images/UBOT-logo_.png" alt="聯邦數位銀行 New New Bank"></div>
+  <div class="f-cols">
+    <div>
+      <h4>謹慎理財 信用至上</h4>
+      ．銀行業務服務專線：<a href="tel:0225451788">(02)2545-1788</a><br>
+      ．信用卡業務服務專線：(02)2545-5168、(07)226-9393<br>
+      ．循環利率：5%~15%　．循環利率之基準日為104年9月1日<br>
+      ．預借現金手續費：預借金額×3.5%+100元
+    </div>
+    <div>
+      <h4>聯邦數位銀行</h4>
+      本國18歲以上成年人且非聯邦銀行既有存戶即可申辦。<br>
+      <a href="https://newnewbank.com.tw/" target="_blank" rel="noopener">newnewbank.com.tw</a>
+    </div>
+  </div>
+  <p class="copy">© 聯邦銀行 All Rights Reserved. 臺北市松山區民生東路三段109號</p>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dT">
+  <div class="dwrap">
+    <div class="dtop"><span class="kick" id="dK"></span><button type="button" class="dx" id="dX" aria-label="關閉">✕ 關閉</button></div>
+    <div id="dBody"></div>
+    <a class="btn lg" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener">線上開戶 ↗</a>
+  </div>
+</dialog>
+
+<script>
+(function(){
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const fine=matchMedia('(pointer:fine)').matches;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+
+/* ─── data: single source for stickers + cards + dialog（新活動排最前） ─── */
+const P6='116/1/1–6/30（六個月）';
+const GN={a:'存款優惠',b:'投資手續費優惠',c:'回饋・轉帳・活動'};
+const ITEMS=[
+ {g:'a',isNew:1,hot:1,n:'台幣定儲',pre:'最高',v:'2.3',u:'%',lab:'台幣定儲',d:214,c:'w',per:P6,note:'13 個月期・限新資金',
+  info:'<b>台幣定儲（新活動）</b>｜最高 2.3% 固定利率，13 個月期，限新資金。',
+  terms:['透過 NNB APP 以新資金申辦「13 個月期」台幣定存，享 2.3% 優惠固定利率。','單筆 5 千～300 萬，每人上限 300 萬，逾額依牌告利率；專案上限 150 億。','新資金：存戶申請定存當下，於本行台幣總存款餘額較 115/12/31 之淨增加部分（須扣除活動期間已承作本專案之金額）。']},
+ {g:'a',n:'台幣活儲',pre:'最高',v:'10',u:'%',lab:'台幣活儲',d:190,c:'d',per:'116/1/21–116/7/20（六個月）',note:'新戶 10%（1 個月）限額 15 萬｜舊戶 1.5% 限額 100 萬',
+  info:'<b>台幣活儲</b>｜新戶 10%（1 個月），限額 15 萬；舊戶 1.5%，限額 100 萬。',
+  terms:['新戶：10%（1 個月），限額 15 萬；其他月份依牌告利率計息。','舊戶：1.5%，限額 100 萬。']},
+ {g:'a',n:'美金定存',pre:'最高',v:'10',u:'%',lab:'美金定存',d:172,c:'k',per:P6,note:'3 個月期 10%・6 個月期 6%・限新資金',
+  info:'<b>美金定存</b>｜最高 10%，限新資金；3 個月期 10%（美金 2,000 元）、6 個月期 6%（美金 3,000 元）。',
+  terms:['三個月期：10%（美金 2,000 元）。','六個月期：6%（美金 3,000 元）。','新資金：活動期間於 NNB「臺幣結購美金」扣除「美金結售為臺幣」之美金淨增加（須扣除已承作本專案金額）。']},
+ {g:'b',n:'台股定期定額',pre:'手續費',v:'1',u:'元',lab:'台股定期定額',d:142,c:'p',per:P6,note:'單筆新台幣 2 萬（含）以下',
+  info:'<b>證券交易・台股定期定額</b>｜扣款單筆新台幣 2 萬（含）以下，手續費 1 元。',
+  terms:['台股定期定額扣款單筆新台幣 2 萬（含）以下，享手續費 1 元。']},
+ {g:'b',n:'海股／ETF',pre:'手續費最低',v:'0.45',u:'%',lab:'海股/ETF',d:152,c:'w',per:P6,note:'申購 ≧ 2 萬美元：0.45%（3 折）',
+  info:'<b>海股／ETF</b>｜手續費最低 0.45%（3 折）；申購未滿 2 萬美元為 0.6%（4 折）。',
+  terms:['申購金額 ≧ 2 萬美元，手續費 0.45%（3 折）。','申購金額 ＜ 2 萬美元，手續費 0.6%（4 折）。','購回金額，手續費 0.45%（3 折）。']},
+ {g:'b',n:'基金交易',pre:'手續費',v:'0',u:'元',lab:'基金交易',d:134,c:'k',per:P6,note:'含單筆、定期定額交易',
+  info:'<b>基金交易</b>｜NNB 扣款基金交易（含單筆、定期定額），每筆手續費 0 元。',
+  terms:['NNB 扣款基金交易（含單筆、定期定額交易），每筆手續費 0 元。']},
+ {g:'c',n:'聯邦卡自扣',pre:'自扣成功金額',v:'10',u:'%',lab:'聯邦卡自扣',d:156,c:'d',per:P6,note:'NNB 新戶＋自扣・每次上限 300 元・歸戶限領 3 次',
+  info:'<b>聯邦卡自扣</b>｜NNB 新戶＋自扣，自扣成功金額 10% 刷卡金回饋（每次上限 300 元，歸戶限領 3 次）。',
+  terms:['NNB 新戶＋自扣，自扣成功金額 10% 刷卡金回饋。','每次上限 300 元，歸戶限領 3 次。']},
+ {g:'c',n:'跨提／跨轉',pre:'手續費',v:'0',u:'元',lab:'跨提跨轉',d:136,c:'p',per:P6,note:'每月各 10 次',
+  info:'<b>跨提／跨轉</b>｜NNB 存戶每月各最高 10 次手續費 0 元。',
+  terms:['NNB 存戶享跨提／跨轉最高享每月各 10 次手續費 0 元。']},
+ {g:'c',n:'普發 1 萬',pre:'登記聯邦 最高抽',v:'5',u:'萬',lab:'普發1萬抽獎',d:150,c:'w',per:'116/1/1–6/30（實際依政府頒布為準）',note:'登記聯邦入帳，最高樂抽 5 萬元',
+  info:'<b>普發 1 萬</b>｜登記聯邦入帳並於 6/30 前入帳、綁定 LINE 官方帳號個人化服務，最高樂抽 5 萬元。',
+  terms:['登記聯邦入帳（含實體／數位，惟數位帳戶登記入帳抽獎機會 ×2），且於 6/30 前入帳。','並擇一綁定 LINE 官方帳號個人化服務，最高樂抽 5 萬元。','活動期間實際依政府頒布為準。']},
+ {g:'c',n:'MaiCoin 開戶禮',pre:'虛幣等值',v:'200',u:'元',lab:'MaiCoin 開戶禮',d:138,c:'k',per:P6,note:'新戶透過 MaiCoin 指定連結開戶',
+  info:'<b>MaiCoin 開戶禮</b>｜新戶透過 MaiCoin 指定連結開立 NNB，送等值 200 元虛幣兌換序號。',
+  terms:['新戶透過 MaiCoin 指定連結開立 NNB，送等值 200 元虛幣兌換序號。']}
+];
+const valHTML=i=>'<i class="pre">'+i.pre+'</i>'+i.v+(i.u?'<small>'+i.u+'</small>':'');
+
+/* ─── split headline letters ─── */
+$$('[data-split]').forEach(el=>{
+  const txt=el.dataset.split,base=+(el.dataset.d||0);el.textContent='';
+  [...txt].forEach((ch,i)=>{
+    const s=document.createElement('span');s.className='c';s.textContent=ch;
+    s.style.animationDelay=(.15+(base+i)*.07)+'s';
+    el.appendChild(s);
+  });
+});
+
+/* ─── tapes ─── */
+const TAPE=['新！台幣定儲最高 2.3%','台幣活儲 新戶 10%','美金定存最高 10%','台股定期定額 手續費 1 元','海股/ETF 最低 0.45%','基金交易 0 元','聯邦卡自扣 10% 回饋','跨提跨轉 0 元','普發 1 萬 登記抽 5 萬','MaiCoin 開戶禮 200 元'];
+function fillTape(el,rev){
+  const arr=rev?[...TAPE].reverse():TAPE;
+  let h='';for(let k=0;k<2;k++)arr.forEach(t=>{h+='<span>'+t+'</span><span class="s">✦</span>';});
+  el.innerHTML=h;
+}
+fillTape($('#tA'),false);fillTape($('#tB'),true);
+const tapes=[{el:$('#tA'),dir:1,pos:0},{el:$('#tB'),dir:-1,pos:0}];
+
+/* ─── statement ─── */
+const SEG=[['免出門、免臨櫃。準備好手機與雙證件，',0],['5 分鐘',1],['完成開戶申請。',0]];
+const stmt=$('#stmt'),chs=[];
+SEG.forEach(([t,hi])=>[...t].forEach(c=>{const s=document.createElement('span');s.className='ch'+(hi?' hi':'');s.textContent=c;stmt.appendChild(s);chs.push(s);}));
+let lastN=-1;
+
+/* ─── dialog ─── */
+const dlg=$('#dlg'),dBody=$('#dBody'),dK=$('#dK');
+let lastFocus=null;
+function openInfo(i){
+  const it=ITEMS[i];lastFocus=document.activeElement;
+  dK.textContent=GN[it.g];
+  dBody.innerHTML='<h3 id="dT">'+it.n+(it.isNew?'<em class="nw">新活動</em>':'')+'</h3><div class="dv">'+valHTML(it)+'</div><p class="dp">活動期間　'+it.per+'</p><ul class="dl">'+it.terms.map(t=>'<li>'+t+'</li>').join('')+'</ul>';
+  if(typeof dlg.showModal==='function')dlg.showModal();else dlg.setAttribute('open','');
+  document.documentElement.style.overflow='hidden';
+}
+dlg.addEventListener('close',()=>{document.documentElement.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();});
+$('#dX').addEventListener('click',()=>{if(dlg.close)dlg.close();else dlg.removeAttribute('open');});
+dlg.addEventListener('click',e=>{if(e.target===dlg&&dlg.close)dlg.close();});
+
+/* ─── offer cards ─── */
+const GROUPS=[['a','存款優惠'],['b','投資手續費優惠'],['c','回饋・轉帳・活動']];
+const rows=$('#rows');
+GROUPS.forEach(([k,title])=>{
+  const list=ITEMS.map((it,idx)=>({it,idx})).filter(o=>o.it.g===k);
+  const g=document.createElement('div');g.className='grp';
+  g.innerHTML='<h3>'+title+' <em>'+list.length+' 項</em></h3>';
+  const wrap=document.createElement('div');wrap.className='offers';
+  list.forEach(({it,idx})=>{
+    const r=document.createElement('button');r.type='button';r.className='oc'+(it.hot?' hot':'');
+    r.setAttribute('data-cur','＋');r.setAttribute('aria-label',it.n+'，點選查看完整辦法');
+    r.innerHTML='<div class="oh"><span class="on">'+it.n+(it.isNew?'<em class="nw">新活動</em>':'')+'</span><span class="oa" aria-hidden="true">＋</span></div>'
+      +'<div class="ov">'+valHTML(it)+'</div><div class="ot">'+it.note+'<br><span class="od">'+it.per.replace('（六個月）','')+'</span></div>';
+    r.addEventListener('click',()=>openInfo(idx));
+    wrap.appendChild(r);
+  });
+  if(k==='c'){
+    const c=document.createElement('div');c.className='oc cta';
+    c.innerHTML='<span class="on">還在猶豫嗎？</span><div class="ot">24 小時線上開戶，免出門、免臨櫃，5 分鐘完成申請。</div><a class="btn" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO">線上開戶 ↗</a>';
+    wrap.appendChild(c);
+  }
+  g.appendChild(wrap);rows.appendChild(g);
+});
+
+/* ─── playground ─── */
+const arena=$('#arena'),pbT=$('#pbT'),moreBtn=$('#more');
+const bodies=[];let AW=0,AH=0,K=1,started=false,inView=false,selIdx=-1;
+function select(i){selIdx=i;pbT.innerHTML=ITEMS[i].info;moreBtn.hidden=false;}
+moreBtn.addEventListener('click',()=>{if(selIdx>=0)openInfo(selIdx);});
+ITEMS.forEach((it,i)=>{
+  const el=document.createElement('div');
+  el.className='stk '+it.c;el.tabIndex=0;el.setAttribute('role','button');
+  el.setAttribute('aria-label',it.n+' '+it.pre+' '+it.v+(it.u||''));
+  el.setAttribute('data-cur','拖');
+  el.innerHTML=(it.isNew?'<span class="nw">新</span>':'')+'<b>'+it.v+(it.u?'<small>'+it.u+'</small>':'')+'</b><span>'+it.lab+'</span>';
+  arena.appendChild(el);
+  bodies.push({el,it,d:it.d,r:it.d/2,x:0,y:-999,vx:0,vy:0,drag:false,tx:0,ty:0,ox:0,oy:0,rot:0,entered:false});
+  el.addEventListener('mouseenter',()=>select(i));el.addEventListener('focus',()=>select(i));
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(i);openInfo(i);}});
+  el.addEventListener('pointerdown',e=>{
+    if(RM)return;
+    const b=bodies[i],r=arena.getBoundingClientRect();
+    b.drag=true;el.classList.add('drag');el.setPointerCapture(e.pointerId);
+    b.ox=e.clientX-r.left-b.x;b.oy=e.clientY-r.top-b.y;b.tx=b.x;b.ty=b.y;b.vx=b.vy=0;
+    select(i);e.preventDefault();
+  });
+  el.addEventListener('pointermove',e=>{
+    const b=bodies[i];if(!b.drag)return;
+    const r=arena.getBoundingClientRect();
+    b.tx=clamp(e.clientX-r.left-b.ox,b.r,AW-b.r);b.ty=clamp(e.clientY-r.top-b.oy,b.r,AH-b.r);
+  });
+  const up=()=>{const b=bodies[i];if(!b.drag)return;b.drag=false;el.classList.remove('drag');
+    b.vx=clamp(b.vx,-2800,2800);b.vy=clamp(b.vy,-2800,2800);};
+  el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);
+  if(RM)el.addEventListener('click',()=>select(i));
+});
+function measure(){
+  if(RM){arena.classList.add('static');bodies.forEach(b=>{b.el.style.setProperty('--d',b.d*.9+'px');});return;}
+  const r=arena.getBoundingClientRect();AW=r.width;AH=r.height;
+  K=clamp(AW/900,.55,1);
+  bodies.forEach(b=>{b.r=b.d*K/2;b.el.style.setProperty('--d',(b.d*K)+'px');
+    if(b.x>AW-b.r)b.x=AW-b.r;if(b.y>AH-b.r)b.y=AH-b.r;});
+}
+function drop(){
+  bodies.forEach((b,i)=>{
+    b.x=b.r+Math.random()*(AW-2*b.r);b.y=-b.r*2-i*b.r*1.15;
+    b.vx=(Math.random()-.5)*500;b.vy=0;b.entered=false;b.drag=false;b.el.classList.remove('drag');
+  });
+  pbT.textContent='點住任一顆，看優惠細節。';moreBtn.hidden=true;selIdx=-1;
+}
+function physics(dt){
+  const S=3,h=dt/S,G=2300,E=.52;
+  for(let s=0;s<S;s++){
+    for(const b of bodies){
+      if(b.drag){
+        const nx=b.x+(b.tx-b.x)*Math.min(1,h*26),ny=b.y+(b.ty-b.y)*Math.min(1,h*26);
+        const ivx=(nx-b.x)/h,ivy=(ny-b.y)/h;
+        b.vx+=(ivx-b.vx)*.25;b.vy+=(ivy-b.vy)*.25;b.x=nx;b.y=ny;
+      }else{
+        b.vy+=G*h;b.vx*=.9994;b.x+=b.vx*h;b.y+=b.vy*h;
+        if(b.x<b.r){b.x=b.r;b.vx=-b.vx*E;}
+        if(b.x>AW-b.r){b.x=AW-b.r;b.vx=-b.vx*E;}
+        if(b.y>AH-b.r){b.y=AH-b.r;b.vy=-b.vy*.42;b.vx*=.982;if(Math.abs(b.vy)<60)b.vy=0;}
+        if(b.y>b.r)b.entered=true;
+        if(b.entered&&b.y<b.r){b.y=b.r;b.vy=-b.vy*E;}
+      }
+    }
+    for(let i=0;i<bodies.length;i++)for(let j=i+1;j<bodies.length;j++){
+      const a=bodies[i],c=bodies[j];
+      const dx=c.x-a.x,dy=c.y-a.y,min=a.r+c.r,d2=dx*dx+dy*dy;
+      if(d2>=min*min||d2===0)continue;
+      const dist=Math.sqrt(d2),nx=dx/dist,ny=dy/dist,ov=min-dist;
+      const ia=a.drag?0:1/(a.r*a.r),ic=c.drag?0:1/(c.r*c.r),sum=ia+ic;
+      if(!sum)continue;
+      a.x-=nx*ov*ia/sum;a.y-=ny*ov*ia/sum;c.x+=nx*ov*ic/sum;c.y+=ny*ov*ic/sum;
+      const rv=(c.vx-a.vx)*nx+(c.vy-a.vy)*ny;
+      if(rv<0){const j2=-(1+E)*rv/sum;a.vx-=j2*ia*nx;a.vy-=j2*ia*ny;c.vx+=j2*ic*nx;c.vy+=j2*ic*ny;}
+    }
+  }
+  for(const b of bodies){
+    b.rot+=b.vx*dt/b.r*57.3*.6;
+    const tilt=clamp(b.vx*.012,-9,9);
+    b.el.style.transform='translate3d('+(b.x-b.r)+'px,'+(b.y-b.r)+'px,0) rotate('+tilt+'deg)';
+    b.el.style.setProperty('--rot',b.rot+'deg');
+  }
+}
+$('#shuffle').addEventListener('click',()=>{if(!RM)drop();});
+new ResizeObserver(measure).observe(arena);
+measure();
+new IntersectionObserver(es=>{es.forEach(e=>{
+  inView=e.isIntersecting;
+  if(inView&&!started&&!RM){started=true;measure();drop();}
+});},{threshold:0,rootMargin:'0px 0px -30% 0px'}).observe(arena);
+
+/* ─── blob ─── */
+const blobP=$('#blobP');
+let bmx=0,bmy=0,tmx=0,tmy=0;
+function blobPath(t){
+  const N=10,pts=[];
+  for(let i=0;i<N;i++){
+    const a=i/N*Math.PI*2,r=330*(1+.1*Math.sin(t*1.1+i*1.7)+.07*Math.sin(t*.7+i*2.9));
+    pts.push([500+bmx*60+Math.cos(a)*r,500+bmy*60+Math.sin(a)*r]);
+  }
+  let d='M'+((pts[0][0]+pts[N-1][0])/2)+','+((pts[0][1]+pts[N-1][1])/2);
+  for(let i=0;i<N;i++){const p=pts[i],n=pts[(i+1)%N];d+=' Q'+p[0]+','+p[1]+' '+((p[0]+n[0])/2)+','+((p[1]+n[1])/2);}
+  return d+'Z';
+}
+blobP.setAttribute('d',blobPath(0));
+
+/* ─── pointer: cursor + parallax ─── */
+const cur=$('#cur');let cx=-100,cy=-100,px=-100,py=-100;
+if(fine){
+  addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;tmx=px/innerWidth-.5;tmy=py/innerHeight-.5;},{passive:true});
+  document.addEventListener('pointerover',e=>{const t=e.target.closest&&e.target.closest('[data-cur]');if(t){cur.textContent=t.dataset.cur;cur.classList.add('grow');}else{cur.textContent='';cur.classList.remove('grow');}});
+}
+$$('.logo img,.f-logo img').forEach(i=>{const h=()=>{i.style.visibility='hidden';};i.addEventListener('error',h);if(i.complete&&i.naturalWidth===0)h();});
+const coins=$$('.coin');
+if(fine&&!RM){
+  $$('.btn,.go-btn').forEach(el=>{
+    el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.translate=((e.clientX-(r.left+r.width/2))*.22)+'px '+((e.clientY-(r.top+r.height/2))*.28)+'px';});
+    el.addEventListener('pointerleave',()=>{el.style.translate='';});
+  });
+}
+
+/* ─── calc (定儲 / 新戶活儲 / 舊戶活儲) ─── */
+const MODES={
+ td:{min:50000,max:3000000,step:50000,def:1000000,limit:3000000,chips:[500000,1000000,1500000,2000000,3000000],
+   calc:a=>a*.023*13/12,
+   sub:()=>'13 個月到期，約可領利息（固定利率 2.3%）',
+   leg:['300 萬內享 2.3%'],
+   note:'<b>新活動・13 個月期固定利率 2.3%。</b>限新資金，單筆 5 千～300 萬，每人上限 300 萬。'},
+ nw:{min:10000,max:150000,step:10000,def:150000,limit:150000,chips:[30000,50000,80000,100000,150000],
+   calc:a=>a*.10/12,
+   sub:()=>'新戶 10%，只有 1 個月，約可領利息',
+   leg:['15 萬內享 10%'],
+   note:'<b>新戶 10% 只有 1 個月。</b>限額 15 萬。'},
+ od:{min:100000,max:1000000,step:100000,def:1000000,limit:1000000,chips:[100000,300000,500000,700000,1000000],
+   calc:a=>a*.015/12,
+   sub:a=>'舊戶 1.5%，每月約可領；六個月合計約 NT$ '+fmt(a*.015/12*6),
+   leg:['100 萬內享 1.5%'],
+   note:'<b>舊戶 1.5%，限額 100 萬。</b>活動期間六個月（116/1/21–116/7/20）。'}
+};
+const amt=$('#amt'),amtV=$('#amtV'),bigN=$('#bigN'),bigSub=$('#bigSub'),mA=$('#mA'),bigBox=$('#big'),chipsBox=$('#chips'),legA=$('#legA'),noteMain=$('#noteMain');
+let mode='td',shown=0,target=0;
+function calc(instant){
+  const M=MODES[mode],a=+amt.value,el=Math.min(a,M.limit);
+  target=M.calc(a);
+  amtV.textContent='NT$ '+fmt(a);
+  bigSub.textContent=M.sub(a);
+  mA.style.width=(el/M.max*100)+'%';
+  $$('#chips button').forEach(c=>c.classList.toggle('on',+c.dataset.v===a));
+  if(!instant){bigBox.classList.remove('pop');void bigBox.offsetWidth;bigBox.classList.add('pop');}
+  if(RM||instant){shown=target;bigN.textContent=fmt(target);}
+}
+function setMode(m,instant){
+  mode=m;const M=MODES[m];
+  $$('#seg button').forEach(b=>{const on=b.dataset.m===m;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});
+  amt.min=M.min;amt.max=M.max;amt.step=M.step;amt.value=M.def;
+  chipsBox.innerHTML='';
+  M.chips.forEach(v=>{const b=document.createElement('button');b.type='button';b.dataset.v=v;b.textContent=(v/10000)+' 萬';
+    b.addEventListener('click',()=>{amt.value=v;calc();});chipsBox.appendChild(b);});
+  legA.textContent=M.leg[0];noteMain.innerHTML=M.note;
+  calc(instant);
+}
+$$('#seg button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.m)));
+amt.addEventListener('input',()=>calc());
+setMode('td',true);
+
+/* ─── reveal / nav ─── */
+$$('.play-h,.list .grp,.calc-grid,.sgrid').forEach(e=>e.classList.add('rv'));
+const rvIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvIO.unobserve(e.target);}}),{threshold:.12});
+$$('.rv').forEach(e=>rvIO.observe(e));
+const links=$$('.dock a'),secs=links.map(a=>$(a.getAttribute('href')));
+const navIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',$(a.getAttribute('href'))===e.target));}}),{rootMargin:'-45% 0px -45% 0px'});
+secs.forEach(s=>s&&navIO.observe(s));
+
+/* ─── master loop ─── */
+let last=performance.now(),sy=scrollY,vel=0;
+function tick(now){
+  const dt=Math.min(.033,(now-last)/1000);last=now;
+  vel+=((scrollY-sy)-vel)*.2;sy=scrollY;
+  if(!RM){
+    bmx+=(tmx-bmx)*.04;bmy+=(tmy-bmy)*.04;
+    if(scrollY<innerHeight*1.3)blobP.setAttribute('d',blobPath(now/1000));
+    coins.forEach(c=>{const k=+c.dataset.k;c.style.setProperty('--x',(bmx*k)+'px');c.style.setProperty('--y',(bmy*k)+'px');});
+    tapes.forEach(t=>{
+      const w=t.el.scrollWidth/2;if(!w)return;
+      t.pos=((t.pos+t.dir*(80+Math.abs(vel)*16)*dt)%w+w)%w;
+      t.el.style.transform='translate3d('+(-t.pos)+'px,0,0)';
+    });
+    if(started&&inView)physics(dt);
+    if(shown!==target){shown+=(target-shown)*Math.min(1,dt*12);if(Math.abs(target-shown)<.5)shown=target;bigN.textContent=fmt(shown);}
+  }
+  const sr=stmt.getBoundingClientRect(),p=clamp((innerHeight*.88-sr.top)/(sr.height+innerHeight*.35));
+  const n=RM?chs.length:Math.floor(p*chs.length*1.04);
+  if(n!==lastN){chs.forEach((c,i)=>c.classList.toggle('on',i<n));lastN=n;}
+  if(fine){cx+=(px-cx)*.22;cy+=(py-cy)*.22;cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)';}
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
