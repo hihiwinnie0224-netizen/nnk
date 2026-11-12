@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.setAttribute('data-view','dep');</script>
+<script>document.documentElement.className+=' js js-wait';setTimeout(function(){document.documentElement.classList.remove('js-wait')},3000);setTimeout(function(){if(!window.__nnb)document.documentElement.classList.remove('js')},3500);</script>
+<title>聯邦數位銀行 New New Bank｜台幣活儲專案 新戶 10%</title>
+<meta name="description" content="聯邦數位銀行 New New Bank 台幣活儲專案｜新戶限時享台幣活儲最高 10%（限額 15 萬內）。活動期間 115/07/21～116/01/20。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://newnewbank.com.tw/deposits.htm">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="聯邦銀行">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="聯邦數位銀行 New New Bank｜台幣活儲專案">
+<meta property="og:description" content="聯邦數位銀行 New New Bank │ 新戶限時享台幣活儲最高10%(限額15萬內）">
+<meta property="og:url" content="https://newnewbank.com.tw/deposits.htm">
+<meta property="og:image" content="https://newnewbank.com.tw/images/deposits.gif">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  /* 介面配色：青藍 RGB 66,189,216 (C65 Y15)／灰 RGB 114,113,113 (K70)／白 */
+  --b:#42BDD8; --bd:#1F8FA9; --bdk:#727171; --bpl:#E6F7FB; --blg:#C5ECF5;
+  --wh:#fff; --pg:#F7FCFD; --tx:#2B2A2A; --md:#5C5B5B; --mu:#727171;
+  --ink:2.5px solid var(--tx);
+  --disp:'Space Grotesk','Noto Sans TC',sans-serif;
+  --cn:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+body{font-family:var(--cn);background:var(--pg);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+::selection{background:var(--b);color:var(--tx)}
+:focus-visible{outline:3px solid var(--tx);outline-offset:3px}
+
+/* grain */
+body::after{content:'';position:fixed;inset:0;z-index:800;pointer-events:none;opacity:.08;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.16 0 0 0 0 0.16 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
+
+/* cursor */
+.cur{position:fixed;left:0;top:0;z-index:900;width:34px;height:34px;margin:-17px 0 0 -17px;border:var(--ink);border-radius:50%;pointer-events:none;display:none;place-items:center;font:900 12px var(--cn);color:var(--tx);transition:width .22s,height .22s,margin .22s,background .22s;}
+.cur.grow{width:76px;height:76px;margin:-38px 0 0 -38px;background:var(--b)}
+@media (pointer:fine){.cur{display:grid}}
+
+/* top bar + dock */
+.top{position:fixed;left:0;right:0;top:0;z-index:700;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 4vw 0;pointer-events:none}
+.top>*{pointer-events:auto}
+.logo{display:flex;align-items:center;justify-content:center;min-width:128px;min-height:52px;padding:8px 18px;background:#fff;border:var(--ink);border-radius:999px;box-shadow:4px 4px 0 var(--tx)}
+.logo img{display:block;height:32px;width:auto;max-width:100%;font-size:0;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:var(--ink);border-radius:999px;background:var(--b);color:var(--tx);font-weight:900;font-size:16px;box-shadow:5px 5px 0 var(--tx);transition:transform .15s,box-shadow .15s,background .15s;will-change:transform}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--tx)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--tx)}
+.btn.w{background:#fff}
+.btn.sm{padding:11px 20px;font-size:16px;box-shadow:3px 3px 0 var(--tx)}
+.btn.lg{padding:17px 34px;font-size:21px;box-shadow:6px 6px 0 var(--tx)}
+.btn.lg:hover{box-shadow:9px 9px 0 var(--tx)}
+.dock{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:700;display:flex;gap:6px;width:min(680px,calc(100% - 24px));padding:7px;border:var(--ink);border-radius:999px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:5px 5px 0 var(--tx)}
+.dock a{flex:1;text-align:center;padding:15px 8px;border-radius:999px;font-weight:900;font-size:20px;line-height:1.2;white-space:nowrap;transition:background .2s,color .2s}
+.dock a:hover{background:var(--bpl)}
+.dock a.on{background:var(--tx);color:#fff}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:112px 5vw max(124px,14vh);overflow:hidden}
+.blob{position:absolute;right:-8vw;top:6vh;width:min(86vmin,980px);aspect-ratio:1;z-index:0}
+.hero-t{position:relative;z-index:2;font-family:var(--cn);font-weight:900;font-size:clamp(52px,min(9.4vw,15.5vh),190px);line-height:1;letter-spacing:-.04em}
+.ln{display:block;overflow:hidden;padding:.04em .04em .08em;white-space:nowrap}
+.ln .c{display:inline-block;transform:translateY(115%);animation:up .9s cubic-bezier(.2,.9,.2,1) forwards}
+@keyframes up{to{transform:none}}
+.ln.o{color:var(--bdk)}
+.ln.bl{color:var(--b);text-shadow:.035em .035em 0 var(--tx)}
+.l2{display:flex;align-items:center;flex-wrap:wrap}
+.l2 .ln{display:inline-block}
+.tag{display:inline-block;margin-left:2.2vw;padding:.4em .9em;font-family:var(--cn);font-weight:900;font-size:clamp(16px,1.9vw,30px);letter-spacing:0;line-height:1.2;background:#fff;border:var(--ink);border-radius:999px;box-shadow:6px 6px 0 var(--b);transform:rotate(-4deg);white-space:normal;opacity:0;animation:fade .6s 1.5s forwards;-webkit-text-stroke:0}
+@keyframes fade{to{opacity:1}}
+.hero-foot{position:relative;z-index:2;margin-top:4vh;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.hero-p{max-width:600px;font-size:clamp(18px,1.7vw,23px);font-weight:500;color:var(--md);line-height:1.7}
+.hero-p b{color:var(--tx);font-weight:900}
+.hero-p .nw{margin:0 6px 0 0;font-size:16px;transform:rotate(-3deg)}
+.hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.hero-btns .btn{padding:16px 30px;font-size:19px}
+.spin{position:absolute;z-index:3;right:7vw;top:15vh;width:clamp(120px,15vw,210px);aspect-ratio:1}
+.spin svg{position:absolute;inset:0;width:100%;height:100%;animation:rot 16s linear infinite;overflow:visible}
+.spin text{font:700 15px var(--cn);fill:var(--tx);letter-spacing:.04em}
+.spin b{position:absolute;inset:18%;display:flex;align-items:center;justify-content:center;background:var(--b);border:var(--ink);border-radius:50%;font:700 clamp(28px,4vw,58px)/1 var(--disp);letter-spacing:-.04em;box-shadow:4px 4px 0 var(--tx)}
+.spin b small{font-size:.5em;margin-left:2px}
+@keyframes rot{to{transform:rotate(360deg)}}
+.coin{--s:clamp(98px,9vw,134px);position:absolute;z-index:3;width:var(--s);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:calc(var(--s)*.06);border:var(--ink);border-radius:50%;box-shadow:4px 4px 0 var(--tx);transform:translate(var(--x,0),var(--y,0)) rotate(var(--r,0deg));will-change:transform;text-align:center}
+.coin i{font-style:normal;font-weight:900;font-size:calc(var(--s)*.135);line-height:1.1;white-space:nowrap}
+.coin b{font:700 calc(var(--s)*.3)/1 var(--disp);letter-spacing:-.04em}
+.coin b small{font-size:.55em;margin-left:1px;letter-spacing:0}
+.coin.c1{background:#fff;right:31vw;top:13vh;--r:-10deg}
+.coin.c2{background:var(--tx);color:#fff;right:2.5vw;top:46vh;--r:9deg}
+.coin.c3{background:var(--bdk);color:#fff;right:2.5vw;bottom:24vh;--r:6deg}
+
+/* TAPES */
+.tapes{position:relative;height:300px;overflow:hidden;margin-top:-2px}
+.tape{position:absolute;left:-6%;width:112%;border-block:var(--ink);overflow:hidden;white-space:nowrap;padding:14px 0}
+.tape.a{top:40px;background:var(--bdk);color:#fff;transform:rotate(2.6deg)}
+.tape.b{top:128px;background:#fff;transform:rotate(-2.6deg)}
+.tape-in{display:inline-flex;will-change:transform}
+.tape-in span{font:700 clamp(22px,3vw,40px)/1 var(--cn);letter-spacing:-.02em;padding-right:34px}
+.tape.a .tape-in span.s{color:var(--blg)}
+.tape-in span.s{color:var(--b)}
+
+/* STATEMENT */
+.stmt{padding:10vh 6vw 12vh}
+.stmt p{max-width:1100px;margin:auto;font-weight:900;font-size:clamp(24px,3.5vw,54px);line-height:1.4;letter-spacing:-.02em}
+.stmt .ch{color:var(--blg);transition:color .35s}
+.stmt .ch.on{color:var(--tx)}
+.stmt .ch.hi.on{color:var(--bd)}
+
+/* PLAYGROUND */
+.play{position:relative;background:var(--b);border-block:var(--ink);padding:10vh 4vw 14vh;overflow:hidden}
+.kick{display:inline-block;border:var(--ink);border-radius:999px;padding:7px 18px;font-weight:900;font-size:16px;background:#fff;transform:rotate(-2deg);margin-bottom:22px}
+.h2{font-weight:900;font-size:clamp(38px,6.6vw,118px);line-height:.98;letter-spacing:-.045em}
+.h2.sm{font-size:clamp(32px,4.6vw,64px)}
+.play-h{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:3.5vh}
+.play-h p{max-width:380px;font-weight:700;font-size:19px;line-height:1.6}
+.arena{position:relative;height:min(72vh,660px);min-height:480px;border:var(--ink);border-radius:36px;background:rgba(255,255,255,.16);overflow:hidden;touch-action:pan-y}
+.arena::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(43,42,42,.28) 1.6px,transparent 1.7px);background-size:26px 26px;pointer-events:none}
+.stk{position:absolute;left:0;top:0;width:var(--d,120px);height:var(--d,120px);border-radius:50%;display:grid;place-content:center;text-align:center;border:var(--ink);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;will-change:transform;box-shadow:5px 5px 0 rgba(43,42,42,.9)}
+.stk.drag{cursor:grabbing;box-shadow:9px 9px 0 rgba(43,42,42,.9);z-index:5}
+.stk::after{content:'';position:absolute;inset:6px;border:2px dashed currentColor;border-radius:50%;opacity:.35;transform:rotate(var(--rot,0deg));pointer-events:none}
+.stk b{font:700 calc(var(--d)*.27)/1 var(--disp);letter-spacing:-.05em}
+.stk b small{font-size:.5em;letter-spacing:0;margin-left:1px}
+.stk span{display:block;margin-top:.35em;font-weight:900;font-size:max(11px,calc(var(--d)*.095));line-height:1.2}
+.stk .nw{position:absolute;top:3%;right:2%;margin:0;padding:2px 10px;border-radius:999px;background:var(--tx);color:#fff;font-size:max(11px,calc(var(--d)*.07));transform:rotate(12deg);z-index:2}
+.stk.w{background:#fff;color:var(--tx)}
+.stk.d{background:var(--tx);color:#fff}
+.stk.k{background:var(--bdk);color:#fff}
+.stk.p{background:var(--bpl);color:var(--tx)}
+.arena.static{height:auto;min-height:0;display:flex;flex-wrap:wrap;gap:16px;padding:24px;justify-content:center}
+.arena.static .stk{position:relative}
+.play-bar{margin-top:22px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--bdk);color:#fff;border-radius:22px;padding:16px 20px 16px 26px}
+.play-bar #pbT{font-weight:700;font-size:clamp(17px,1.7vw,22px);min-height:1.5em;flex:1 1 280px}
+.play-bar #pbT b{color:var(--blg)}
+.play-bar .acts{display:flex;gap:12px;flex-wrap:wrap}
+
+/* LIST */
+.list{padding:12vh 5vw 8vh;max-width:1400px;margin:auto}
+.grp{margin-top:6vh}
+.grp h3{display:flex;align-items:center;gap:14px;font-weight:900;font-size:clamp(26px,2.8vw,40px);margin-bottom:22px}
+.grp h3 em{font:700 16px var(--cn);font-style:normal;border:var(--ink);border-radius:999px;padding:3px 14px;background:#fff}
+.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.oc{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:250px;width:100%;padding:24px;text-align:left;background:#fff;border:var(--ink);border-radius:28px;box-shadow:6px 6px 0 var(--tx);transition:transform .2s,box-shadow .2s,background .2s}
+button.oc:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 var(--tx);background:var(--bpl)}
+.oc.hot{background:var(--b)}
+button.oc.hot:hover{background:var(--blg)}
+.oc .oh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.oc .on{font-weight:900;font-size:clamp(21px,2vw,28px);line-height:1.25}
+.nw{display:inline-block;font-style:normal;font-weight:900;font-size:14px;line-height:1.3;padding:2px 10px;border-radius:999px;background:var(--tx);color:#fff;vertical-align:middle;margin-left:6px;transform:rotate(-4deg)}
+.oc .oa{flex:0 0 auto;width:42px;height:42px;border:var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:22px;line-height:1;background:#fff;transition:transform .25s}
+button.oc:hover .oa{transform:rotate(90deg);background:var(--tx);color:#fff}
+.oc .ov{font:700 clamp(54px,5.8vw,88px)/1 var(--disp);letter-spacing:-.05em}
+.oc .ov small{font-size:.4em;letter-spacing:0;margin-left:3px}
+.pre{display:block;font:900 clamp(16px,1.4vw,19px)/1.2 var(--cn);letter-spacing:0;margin-bottom:8px;color:var(--md)}
+.oc.hot .pre{color:var(--tx)}
+.oc .ot{font-size:17px;color:var(--md);font-weight:500;line-height:1.55}
+.oc.hot .ot{color:var(--tx)}
+.od{display:inline-block;margin-top:8px;font:700 14px var(--cn);color:var(--tx);border:2px solid var(--tx);border-radius:999px;padding:1px 12px;background:rgba(255,255,255,.7)}
+.oc.cta{grid-column:span 2;background:var(--bdk);color:#fff;justify-content:center;align-items:flex-start;gap:12px}
+.oc.cta .on{font-size:clamp(24px,2.4vw,34px)}
+.oc.cta .ot{color:#fff;font-size:19px}
+.oc.cta .btn{margin-top:6px}
+.fine{margin-top:52px;font-size:16px;line-height:1.9;color:var(--md);max-width:920px;border-left:6px solid var(--b);padding-left:18px}
+.fine b{color:var(--tx)}
+
+/* DIALOG */
+dialog{border:var(--ink);border-radius:30px;padding:0;width:min(700px,calc(100% - 24px));max-height:calc(100svh - 24px);overflow:auto;background:#fff;color:var(--tx);box-shadow:10px 10px 0 var(--tx);margin:auto}
+dialog::backdrop{background:rgba(43,42,42,.6)}
+.dwrap{padding:28px 30px 30px}
+.dtop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+.dtop .kick{margin:0}
+.dx{padding:12px 22px;border:var(--ink);border-radius:999px;background:#fff;font-weight:900;font-size:18px;box-shadow:3px 3px 0 var(--tx)}
+.dx:hover{background:var(--bpl)}
+dialog h3{font-weight:900;font-size:clamp(28px,4vw,40px);line-height:1.2;margin-top:10px}
+.dv{font:700 clamp(64px,10vw,104px)/1 var(--disp);letter-spacing:-.05em;margin:10px 0 4px}
+.dv small{font-size:.4em;letter-spacing:0;margin-left:3px}
+.dv .pre{font-size:20px;margin-bottom:6px}
+.dp{display:inline-block;font:900 17px var(--cn);border:var(--ink);border-radius:999px;padding:5px 16px;background:var(--bpl);margin:10px 0 6px}
+.dl{margin:14px 0 22px 1.2em;font-size:19px;line-height:1.85}
+.dl li{margin-bottom:8px}
+
+/* CALC */
+.calc{background:var(--bpl);border-block:var(--ink);padding:12vh 5vw 14vh;position:relative;overflow:hidden}
+.calc-in{max-width:1300px;margin:auto}
+.seg{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 4px}
+.seg button{padding:14px 24px;border:var(--ink);border-radius:999px;background:#fff;font-weight:900;font-size:clamp(17px,1.6vw,21px);box-shadow:4px 4px 0 var(--tx);transition:transform .15s,box-shadow .15s,background .15s}
+.seg button:hover{transform:translate(-1px,-1px)}
+.seg button.on{background:var(--b);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--tx)}
+.seg em{font-style:normal;background:var(--tx);color:#fff;border-radius:999px;padding:1px 10px;font-size:.72em;margin-left:6px;vertical-align:2px}
+.big{font:700 clamp(84px,15vw,260px)/.86 var(--disp);letter-spacing:-.06em;margin:4vh 0 1.5vh;display:flex;align-items:flex-start}
+.big small{font-size:.22em;letter-spacing:-.02em;margin:.25em .12em 0 0;font-weight:700}
+.big.pop{animation:pop .25s}
+@keyframes pop{50%{transform:scale(1.02)}}
+.big-sub{font-weight:900;font-size:clamp(18px,2vw,26px);margin:0 0 4vh;color:var(--md)}
+.calc-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:5vw;align-items:start}
+.amt-l{font-weight:900;font-size:clamp(18px,2vw,26px);display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.amt-l b{font:700 clamp(28px,3.4vw,48px)/1 var(--disp);letter-spacing:-.04em}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:22px;margin:26px 0 14px;background:#fff;border:var(--ink);border-radius:999px;outline-offset:6px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:54px;height:54px;border-radius:50%;background:var(--b);border:var(--ink);box-shadow:3px 3px 0 var(--tx)}
+input[type=range]::-moz-range-thumb{width:50px;height:50px;border-radius:50%;background:var(--b);border:var(--ink);box-shadow:3px 3px 0 var(--tx)}
+.meter{height:30px;border:var(--ink);border-radius:999px;background:#fff;overflow:hidden;display:flex}
+.meter i{display:block;height:100%;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.meter .a{background:var(--b)}
+.meter .x{background:repeating-linear-gradient(45deg,var(--blg) 0 8px,#fff 8px 16px)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:17px;font-weight:700}
+.legend span::before{content:'';display:inline-block;width:14px;height:14px;border:2px solid var(--tx);border-radius:4px;margin-right:6px;vertical-align:-2px;background:var(--b)}
+.legend span.x::before{background:repeating-linear-gradient(45deg,var(--blg) 0 3px,#fff 3px 6px)}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.chips button{padding:11px 20px;border:var(--ink);border-radius:999px;background:#fff;font-weight:900;font-size:19px;transition:background .15s,transform .15s}
+.chips button:hover{transform:translateY(-2px)}
+.chips button.on{background:var(--b)}
+.note{background:#fff;border:var(--ink);border-radius:24px;padding:24px 26px;box-shadow:6px 6px 0 var(--tx);font-size:18px;line-height:1.7;color:var(--md)}
+.note b{color:var(--tx)}
+.note .usd{margin-top:14px;padding-top:14px;border-top:2px dashed var(--tx);font-weight:700;color:var(--tx);font-size:17px}
+.note .usd strong{font:700 26px var(--disp);letter-spacing:-.03em}
+.note small{display:block;margin-top:14px;font-size:14px;line-height:1.7}
+
+/* STEPS */
+.steps{padding:9vh 5vw 10vh;max-width:1400px;margin:auto}
+.sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:4vh}
+.pan{background:#fff;border:var(--ink);border-radius:26px;padding:24px;box-shadow:6px 6px 0 var(--tx)}
+.pan:nth-child(2){background:var(--b)}
+.pan:nth-child(3){background:var(--bpl)}
+.pan .n{width:56px;height:56px;border:var(--ink);border-radius:50%;display:grid;place-items:center;font:700 26px var(--disp);background:#fff;margin-bottom:14px}
+.pan h3{font-weight:900;font-size:clamp(22px,2vw,28px);line-height:1.3}
+.pan p{margin-top:8px;font-size:18px;font-weight:500;line-height:1.7}
+.pan:nth-child(2) p{font-weight:700}
+
+/* GO */
+.go{position:relative;background:var(--b);border-top:var(--ink);padding:16vh 5vw 14vh;text-align:center;overflow:hidden}
+.go h2{font-weight:900;font-size:clamp(56px,15vw,260px);line-height:.92;letter-spacing:-.06em}
+.go h2 .o2{color:#fff;-webkit-text-stroke:max(3px,.02em) var(--tx);paint-order:stroke fill;text-shadow:.05em .05em 0 var(--tx)}
+.go-btn{position:relative;margin:6vh auto 0;width:clamp(170px,17vw,240px);aspect-ratio:1;border-radius:50%;background:#fff;border:var(--ink);display:grid;place-items:center;font-weight:900;font-size:clamp(20px,2vw,28px);box-shadow:8px 8px 0 var(--tx);transition:transform .15s,box-shadow .15s;will-change:transform}
+.go-btn:hover{box-shadow:12px 12px 0 var(--tx)}
+.go-btn svg{position:absolute;inset:-26px;width:calc(100% + 52px);height:calc(100% + 52px);animation:rot 14s linear infinite}
+.go-btn svg text{font:700 14px var(--cn);fill:var(--tx);letter-spacing:.06em}
+.go-sub{margin-top:6vh;font-weight:700;font-size:18px;line-height:1.7;max-width:640px;margin-inline:auto}
+
+/* FOOTER */
+footer{padding:9vh 5vw calc(130px + env(safe-area-inset-bottom,0px));position:relative;overflow:hidden;background:var(--pg)}
+.f-logo{display:inline-flex;align-items:center;justify-content:center;min-width:200px;min-height:84px;padding:14px 30px;background:#fff;border:var(--ink);border-radius:999px;box-shadow:6px 6px 0 var(--tx);margin-bottom:5vh}
+.f-logo img{display:block;height:56px;width:auto;max-width:100%;font-size:0;color:transparent}
+.f-cols{display:grid;grid-template-columns:1.2fr 1fr;gap:5vw;font-size:16px;color:var(--md);line-height:1.9}
+.f-cols h4{font-weight:900;color:var(--tx);font-size:18px;margin-bottom:6px}
+.f-cols a{border-bottom:2px solid var(--b)}
+.copy{margin-top:30px;font-size:14px;color:var(--md)}
+
+/* reveal（僅在 JS 可用時才先隱藏，避免無 JS 時內容不可見） */
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.js-wait .ln[data-split],.js-wait #stmt{visibility:hidden}
+#stmt mark{background:none;color:var(--bd)}
+
+@media (max-width:860px){
+  .calc-grid,.f-cols{grid-template-columns:1fr}
+  .hero{padding-top:104px}
+  .hero-t{font-size:min(17vw,19vh)}
+  .coin.c1{right:auto;left:5vw;top:12vh}
+  .coin.c2,.coin.c3{display:none}
+  .spin{right:4vw;top:14vh}
+  .tapes{height:250px}
+  .tape.b{top:112px}
+  .arena{min-height:520px;height:72svh}
+  .tag{margin-left:0;margin-top:2vh}
+}
+@media (max-width:760px){
+  .offers,.sgrid{grid-template-columns:1fr;gap:16px}
+  .oc{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;min-height:0;padding:18px}
+  .oc .oh{display:contents}
+  .oc .on{grid-column:1;grid-row:1}
+  .oc .oa{display:none}
+  .oc .ot{grid-column:1;grid-row:2}
+  .oc .ov{grid-column:2;grid-row:1/3;text-align:right;font-size:clamp(44px,13vw,60px)}
+  .oc .pre{margin-bottom:4px;font-size:15px}
+  .oc.cta{display:flex;flex-direction:column;align-items:flex-start;padding:22px;grid-column:auto}
+  .pan{display:grid;grid-template-columns:auto 1fr;gap:0 16px;padding:20px}
+  .pan .n{margin:0}
+  .list{padding-top:9vh}
+  .dwrap{padding:20px 18px 24px}
+}
+@media (max-width:560px){
+  .top{padding-left:12px;padding-right:12px}
+  .logo{min-width:104px;min-height:46px;padding:6px 14px}
+  .logo img{height:26px}
+  .btn.lg{padding:12px 20px;font-size:18px;box-shadow:4px 4px 0 var(--tx)}
+  .dock{gap:3px;padding:5px}
+  .dock a{font-size:18px;padding:14px 2px}
+  .hero-btns{width:100%}
+  .hero-btns .btn{flex:1;justify-content:center;padding:15px 12px;font-size:18px}
+  .play-bar{padding:16px}
+  .play-bar .acts{width:100%}
+  .play-bar .acts .btn{flex:1;justify-content:center}
+  .seg button{flex:1 1 100%;text-align:center}
+  .chips button{font-size:18px;padding:11px 16px}
+  .note{font-size:17px}
+  .f-logo{min-width:0;width:100%}
+}
+/* ═══ 分頁切換（首頁／活儲專案） ═══ */
+html:not([data-view="dep"]) #v-dep,html:not([data-view="dep"]) [data-only="dep"]{display:none!important}
+html[data-view="dep"] #v-home,html[data-view="dep"] [data-only="home"]{display:none!important}
+
+/* ═══ 活儲專案頁 ═══ */
+.rd{color:#D6362B;font-weight:900}
+.rt{color:#D6362B}
+.inl{border-bottom:2px solid var(--b);font-weight:700;color:var(--tx)}
+.inl:hover{background:var(--bpl)}
+.dep-head{position:relative;background:var(--b);border-bottom:var(--ink);padding:128px 5vw 9vh;overflow:hidden}
+.dep-head .h2{position:relative;z-index:2;max-width:900px}
+.dep-head .lead{position:relative;z-index:2;margin-top:22px;max-width:620px;font-weight:700;font-size:clamp(17px,1.7vw,22px);line-height:1.7}
+.dep-head .hero-btns{position:relative;z-index:2;margin-top:28px}
+.dep-head .spin{top:auto;bottom:6vh;right:6vw}
+.dep-sec{padding:9vh 5vw 3vh;max-width:1400px;margin:auto}
+.dep-sec>.h2.sm{margin-bottom:3.5vh}
+.dep-h3{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:7vh;font-weight:900;font-size:clamp(26px,2.8vw,40px)}
+.dep-h3 em{font:700 16px var(--cn);font-style:normal;border:var(--ink);border-radius:999px;padding:3px 14px;background:#fff}
+.dep-acts{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.dinfo{display:grid;grid-template-columns:auto 1fr;gap:16px 22px;align-items:start;background:#fff;border:var(--ink);border-radius:26px;box-shadow:6px 6px 0 var(--tx);padding:26px 28px;font-size:18px;line-height:1.75;color:var(--md)}
+.dinfo dt{font-weight:900;color:var(--tx);border:var(--ink);border-radius:999px;padding:3px 16px;background:var(--bpl);white-space:nowrap}
+.dinfo ol{list-style:none;margin-top:8px}
+.dinfo li{margin-bottom:6px}
+.oc.long .ot{font-size:17px}
+.pan .inl{display:inline-block;margin-top:10px}
+.seg+.tp,.tp{display:none;margin-top:26px}
+.tp.on{display:block}
+.stepimg{display:block;width:100%;height:auto;border:var(--ink);border-radius:22px;background:#fff}
+.stepm{gap:14px}
+.only-m{display:none}
+.twrap{overflow-x:auto;border:var(--ink);border-radius:22px;background:#fff;box-shadow:6px 6px 0 var(--tx)}
+.dtable{width:100%;border-collapse:collapse;font-size:17px;line-height:1.7;color:var(--md)}
+.dtable th{background:var(--bdk);color:#fff;font-weight:900;padding:12px 14px;text-align:center}
+.dtable td{padding:12px 14px;border-top:2px solid rgba(43,42,42,.18);vertical-align:middle}
+.dtable td+td,.dtable th+th{border-left:2px solid rgba(43,42,42,.18)}
+.dtable td.c{text-align:center;font-weight:900;color:var(--tx)}
+.dtable.ctr td{text-align:center}
+.dtable.cmp{min-width:600px}
+.dtable.cmp td:first-child{white-space:nowrap}
+.dtable.cmp td+td{min-width:210px}
+.dtable.cmp td:last-child,.dtable.cmp td:nth-child(2){text-align:left}
+.dtable.cmp td.c{text-align:center}
+.dtable .big-r{font:700 30px var(--disp);letter-spacing:-.04em;color:#D6362B}
+.dtable small{font-weight:500;font-size:.8em}
+.fimg{max-width:100%;height:auto;border-radius:12px}
+.fq{background:#fff;border:var(--ink);border-radius:22px;box-shadow:5px 5px 0 var(--tx);margin-bottom:16px;overflow:hidden}
+.fq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 22px;font-weight:900;font-size:clamp(17px,1.6vw,20px);line-height:1.5}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary::after{content:'＋';flex:0 0 auto;width:38px;height:38px;border:var(--ink);border-radius:50%;display:grid;place-items:center;font-size:20px;background:#fff;transition:transform .25s}
+.fq summary:hover{background:var(--bpl)}
+.fq[open] summary{background:var(--bpl)}
+.fq[open] summary::after{content:'−';background:var(--tx);color:#fff;transform:rotate(180deg)}
+.fq .fb{padding:8px 24px 24px;font-size:18px;line-height:1.85;color:var(--md)}
+.fq .fb p{margin-top:12px}
+.fq .fb b{color:var(--tx)}
+.nts{list-style:none;counter-reset:n;display:grid;gap:18px;font-size:17px;line-height:1.85;color:var(--md)}
+.nts>li{position:relative;counter-increment:n;padding:22px 24px 22px 74px;background:#fff;border:var(--ink);border-radius:22px;box-shadow:5px 5px 0 var(--tx)}
+.nts>li::before{content:counter(n);position:absolute;left:20px;top:20px;width:40px;height:40px;border:var(--ink);border-radius:50%;display:grid;place-items:center;font:700 19px var(--disp);background:var(--b);color:var(--tx)}
+.nts ul{list-style:none;margin-top:10px}
+.nts ul li{margin-top:10px}
+.nts .eg{margin-top:12px;padding:12px 16px;border-left:6px solid var(--b);background:var(--bpl);border-radius:0 14px 14px 0;font-size:16px;line-height:1.8;color:var(--tx)}
+.nts .sub{display:block;margin-top:8px;padding-left:1em}
+dialog.wide{width:min(960px,calc(100% - 24px))}
+.dlg-cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:18px;text-align:center;font-size:18px;line-height:1.7}
+.dlg-box{border:var(--ink);border-radius:22px;padding:22px;background:var(--bpl)}
+.dlg-box .qr{display:block;width:min(220px,100%);height:auto;margin:10px auto;background:#fff;border:var(--ink);border-radius:14px}
+
+@media (max-width:860px){
+  .dep-head .spin{display:none}
+  .dep-head .h2{max-width:none}
+}
+@media (max-width:760px){
+  .dep-head{padding-top:130px}
+  .dinfo{grid-template-columns:1fr;gap:10px;padding:20px 18px}
+  .dinfo dt{justify-self:start}
+  .oc.long{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+  .oc.long .oh{display:flex}
+  .oc.long .ov{text-align:left;font-size:clamp(54px,16vw,72px)}
+  .only-pc{display:none}
+  .only-m{display:grid}
+  .dtable.stack thead{display:none}
+  .dtable.stack,.dtable.stack tbody,.dtable.stack tr,.dtable.stack td{display:block;width:100%}
+  .dtable.stack tr{border-top:var(--ink)}
+  .dtable.stack tr:first-child{border-top:0}
+  .dtable.stack td{border:0!important;border-top:2px solid rgba(43,42,42,.12)!important;padding:10px 14px;text-align:left!important}
+  .dtable.stack td::before{content:attr(data-l);display:block;margin-bottom:2px;font-size:14px;font-weight:900;color:var(--bd)}
+  .dtable.stack td.c{background:var(--bpl);border-top:0!important}
+  .nts>li{padding:20px 16px 20px 62px}
+  .nts>li::before{left:14px;width:36px;height:36px;font-size:17px}
+  .fq summary{padding:15px 16px}
+  .fq .fb{padding:6px 16px 20px;font-size:17px}
+  .dlg-cols{grid-template-columns:1fr}
+  .dtable{font-size:15px}
+}
+@media (max-width:560px){
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .ln .c{transform:none}.tag{opacity:1}.js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="logo" href="index.html" aria-label="聯邦數位銀行 New New Bank"><img src="https://newnewbank.com.tw/images/UBOT-logo_.png" alt="聯邦數位銀行 New New Bank 標誌" width="160" height="32"></a>
+  <a class="btn lg" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO">線上開戶 ↗</a>
+</header>
+
+<nav class="dock" aria-label="活儲專案頁面導覽">
+  <a href="#dep-plan">辦法</a><a href="#dep-steps">流程</a><a href="#dep-faq">問答</a><a href="#dep-notice">注意</a>
+</nav>
+
+<!-- ═══════════ 分頁二：台幣活儲專案 ═══════════ -->
+<main id="v-dep" aria-label="台幣活儲專案">
+
+<!-- DEP HEAD -->
+<section class="dep-head" id="dep-top">
+  <div class="spin" aria-hidden="true">
+    <svg viewBox="0 0 200 200"><defs><path id="circD" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs>
+      <text><textPath href="#circD" textLength="496" lengthAdjust="spacing">新戶限時 ・ 高利活儲最高 10% ・ 限額 15 萬內 ・ 每人限享一次 ・</textPath></text></svg>
+    <b>10<small>%</small></b>
+  </div>
+  <span class="kick">活儲專案 115/07/21–116/01/20</span>
+  <h1 class="h2">台幣活儲<br>新戶 10%<span class="sr">聯邦數位銀行 New New Bank 台幣活儲專案</span></h1>
+  <p class="lead">新戶限時享台幣活儲最高 10%（限額 15 萬內）。舊戶依會員分級享高利活儲 1.5%／3%（限額 40 萬內）。</p>
+  <div class="hero-btns">
+    <a class="btn" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO">立刻開戶 ↗</a>
+    <button type="button" class="btn w" data-open="dlgCmp" data-cur="＋">專案對照表 ＋</button>
+  </div>
+</section>
+
+<!-- 活動辦法 -->
+<section class="dep-sec" id="dep-plan">
+  <span class="kick">活動辦法</span>
+  <h2 class="h2 sm">誰能領？領多少？</h2>
+
+  <dl class="dinfo rv">
+    <dt>活動對象</dt>
+    <dd>
+      New New Bank 數位帳戶之存戶，本專案依存戶身份而異。（限本國人，年滿 18 歲即可開戶）
+      <ol>
+        <li>1. <span class="rd">新戶</span>：從未申辦並於 115/07/01～115/12/31 首次申辦成功開立 New New Bank 之存戶。</li>
+        <li>2. <span class="rd">舊戶</span>：「115/06/30(含)前已成功開立 New New Bank 存戶」及「符合本專案新戶身分且已逾『成功開戶之次一月份利息結算日』之存戶」。</li>
+      </ol>
+    </dd>
+    <dt>活動期間</dt>
+    <dd>115/07/21～116/01/20。</dd>
+    <dt>活動辦法</dt>
+    <dd>活動期間 New New Bank 存戶依身分別享以下優惠內容（各優惠計息限額依各身分別有所不同）。</dd>
+  </dl>
+
+  <div class="offers rv" style="margin-top:34px">
+    <div class="oc hot long">
+      <div class="oh"><span class="on">新戶專案<em class="nw">限一次</em></span></div>
+      <div class="ov"><i class="pre">年利率</i>10<small>%</small></div>
+      <div class="ot"><span class="rd">每人限享一次，新戶於 115 年 7 月至 12 月任一月份成功開戶者</span>，享「成功開戶次一月份利息結算日」（結算「開戶當月 21 日~次月 20 日」利息）<span class="rd">限額 15 萬(含)內</span>年利率「<span class="rd">高利活儲 10%</span>」，<span class="rd">逾 15 萬元部分依牌告利率計息</span>。（適用利率範例請參閱下方注意事項第 3 點）</div>
+    </div>
+    <div class="oc long">
+      <div class="oh"><span class="on">舊戶專案・初級會員</span></div>
+      <div class="ov"><i class="pre">年利率</i>1.5<small>%</small></div>
+      <div class="ot">符合舊戶定義即具初級會員身分，享「<span class="rd">高利活儲 1.5%</span>」，<span class="rd">逾 40 萬元部分依牌告利率計息。</span></div>
+    </div>
+    <div class="oc long">
+      <div class="oh"><span class="on">舊戶專案・金級會員</span></div>
+      <div class="ov"><i class="pre">年利率</i>3<small>%</small></div>
+      <div class="ot">舊戶於 <span class="rd">115 年 7 月至 12 月</span>擇一完成「證券／推薦開戶／金融卡」任務，即可升級成為金級會員（會員身分逐月檢視），於完成任務之次一月份利息結算日，享限額內年利率「<span class="rd">高利活儲 3%</span>」，<span class="rd">逾 40 萬元部分依牌告利率計息。</span></div>
+    </div>
+  </div>
+
+  <p class="fine rv" style="margin-top:34px">
+    <b>【註】會員分級制度：</b>New New Bank 之新戶，於開戶次月 21 日起轉換為舊戶之「初級會員」身分，舊戶若於 115 年 7 月至 12 月任一月份擇一完成「證券或推薦開戶或金融卡任務」將於次月升級為「金級會員」身分享「高利活儲 3%」（逐月檢視，<span class="rd">當月未完成任務者，次月利息結算日即恢復為初級會員享「高利活儲 1.5%」</span>）。
+  </p>
+
+  <h3 class="dep-h3 rv">金級會員任務<em>擇一完成</em></h3>
+  <div class="sgrid rv" style="margin-top:2vh">
+    <article class="pan"><div class="n">1</div><div><h3>證券任務</h3><p>約定 3 筆「證券定期定額（台股或台股 ETF 皆適用）」並於當月使用 New New Bank 交割成功扣款。<br><a class="inl" href="#dep-faq" data-faq="fq-7">看定期定額說明 →</a></p></div></article>
+    <article class="pan"><div class="n">2</div><div><h3>推薦開戶任務</h3><p>當月成功推薦 2 位新戶首次成功開立 New New Bank 數位帳戶。<br><a class="inl" href="#dep-faq" data-faq="fq-8">看推薦碼說明 →</a></p></div></article>
+    <article class="pan"><div class="n">3</div><div><h3>金融卡任務</h3><p>金融卡消費當月使用 New New Bank 扣款金額滿新台幣 1 萬元（含）以上。<br><a class="inl" href="#dep-faq" data-faq="fq-9">看扣款計算說明 →</a></p></div></article>
+  </div>
+</section>
+
+<!-- 操作流程 -->
+<section class="dep-sec" id="dep-steps">
+  <span class="kick">操作流程</span>
+  <h2 class="h2 sm">跟著步驟，完成任務。</h2>
+  <div class="seg" id="stepSeg" role="group" aria-label="選擇操作流程">
+    <button type="button" data-t="a" class="on" aria-pressed="true">證券定期定額</button>
+    <button type="button" data-t="b" aria-pressed="false">推薦開戶</button>
+  </div>
+
+  <div class="tp on" data-t="a">
+    <div class="only-pc"><img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/dca-step-pc.gif" alt="證券定期定額操作流程（共 4 步）"></div>
+    <div class="only-m stepm">
+      <img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/dca-step_01.gif" alt="證券定期定額 步驟 1">
+      <img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/dca-step_02.gif" alt="證券定期定額 步驟 2">
+      <img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/dca-step_03.gif" alt="證券定期定額 步驟 3">
+      <img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/dca-step_04.gif" alt="證券定期定額 步驟 4">
+    </div>
+  </div>
+  <div class="tp" data-t="b">
+    <div class="only-pc"><img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/recom-step-pc.gif" alt="推薦開戶操作流程（共 4 步）"></div>
+    <div class="only-m stepm">
+      <img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/recom-step-01.gif" alt="推薦開戶 步驟 1">
+      <img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/recom-step-02.gif" alt="推薦開戶 步驟 2">
+      <img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/recom-step-03.gif" alt="推薦開戶 步驟 3">
+      <img class="stepimg" loading="lazy" src="https://newnewbank.com.tw/images/ImgStep/recom-step-04.gif" alt="推薦開戶 步驟 4">
+    </div>
+  </div>
+
+  <div class="dep-acts">
+    <button type="button" class="btn" data-open="dlgOrder" data-cur="＋">證券下單</button>
+    <button type="button" class="btn w" data-open="dlgLeave" data-cur="＋">證券線上開戶</button>
+    <a class="btn w" href="https://newnewbank.ubot.com.tw/web/#/Y0901001" target="_blank" rel="noopener" data-cur="GO">推薦開戶 ↗</a>
+  </div>
+</section>
+
+<!-- 常見問題 -->
+<section class="dep-sec" id="dep-faq">
+  <span class="kick">常見問題</span>
+  <h2 class="h2 sm">先看這裡。</h2>
+  <div id="faqList">
+
+    <details class="fq" id="fq-1" name="fq"><summary>Q1. 請問申請開戶之後，如何確定成功開戶，並可開始存款？</summary>
+      <div class="fb"><p>只要收到本行「成功開戶通知簡訊」即表示您已成功開戶可以存款，若金融卡尚未寄達或未開卡者，亦可透過其他網路銀行、數位帳戶轉帳或他行匯款等方式存入存款。</p></div></details>
+
+    <details class="fq" id="fq-2" name="fq"><summary>Q2. 本活動優惠存款利率是多少？存款利率優惠有上限限額嗎？</summary>
+      <div class="fb">
+        <p>1. 活動期間 New New Bank 存戶之台幣活儲數位帳戶享限額內年利率「高利活儲 1.5%」（包含牌告利率）優惠，並依「身分別不同」於指定時間享限額內年利率「新戶高利活儲最高 10%」、「舊戶高利活儲最高 3%」專案優惠。</p>
+        <p>2. 本活動各優惠計息新戶限額以「當期存款平均餘額新台幣 15 萬元」為上限，逾 15 萬元部分依牌告利率計息；舊戶限額以「當期存款平均餘額新台幣 40 萬元」為上限，逾 40 萬元部分依牌告利率計息。</p>
+      </div></details>
+
+    <details class="fq" id="fq-3" name="fq"><summary>Q3. 「新戶高利活儲最高 10%」須要完成指定任務嗎？10% 優惠計息期間為何時？</summary>
+      <div class="fb">
+        <p>1. 凡符合此專案活動對象「新戶」定義者，即適用此優惠專案。</p>
+        <p>2. 「新戶高利活儲最高 10%」每人限享一次優惠，優惠計息期間為新戶「成功開戶次一月份利息結算日」時（結算「開戶當月 21 日~次月 20 日」利息；註※），享限額內年利率「高利活儲最高 10%」（此利率含高利活儲 1.5% 優惠）。</p>
+        <p>※新戶開戶時間為當月 21 日~31 日期間者，存戶僅享開戶當日至次月 20 日未滿一個月之畸零天數優惠利息。</p>
+      </div></details>
+
+    <details class="fq" id="fq-4" name="fq"><summary>Q4. 「舊戶高利活儲最高 3%」須要完成指定任務嗎？3% 優惠計息期間為何時？</summary>
+      <div class="fb">
+        <p>1. 凡符合此專案活動對象「舊戶」定義者，須再完成「證券或推薦開戶或金融卡」任一指定任務，始適用此優惠專案。</p>
+        <p>2. 「舊戶高利活儲最高 3%」每月檢視優惠資格，優惠計息期間為舊戶完成「證券或推薦開戶或金融卡」任一指定任務之次一月份利息結算日時（結算「完成任務當月 21 日~次月 20 日」利息），享限額內年利率「高利活儲最高 3%」（此利率含高利活儲 1.5% 優惠）。</p>
+      </div></details>
+
+    <details class="fq" id="fq-5" name="fq"><summary>Q5. New New Bank 要存多少錢才開始計算利息？</summary>
+      <div class="fb"><p>台幣活期儲蓄存款起息點為新臺幣 100 元。</p></div></details>
+
+    <details class="fq" id="fq-6" name="fq"><summary>Q6. New New Bank 何時撥付利息？分一筆或兩筆撥付？</summary>
+      <div class="fb">
+        <p>1. 每月付息（每月 20 日為利息結算日，結算「前一月份 21 日至當月 20 日期間」之利息）。</p>
+        <p>2. 為利存戶辨識，利息分成「既有牌告利息」及「優惠加碼利息」兩筆撥付，牌告利息預定每月 21 日撥付，優惠加碼利息（既有牌告利息與本專案優惠利息間之差息）預訂於牌告利息入帳後三個營業日內撥付。</p>
+      </div></details>
+
+    <details class="fq" id="fq-7" name="fq"><summary>Q7. 定期定額買股時間？</summary>
+      <div class="fb">
+        <p>台股定期定額：每月 8 日、18 日及 28 日等三個買進日供客戶自行選擇約定（遇例假日或其他非有價證券市場交易日，則順延至次一營業日；遇春節假期則不執行）。</p>
+        <p>定期定額申請（含申購、變更、終止），最晚於約定買進日的前兩個交易日（T-2）下午兩點半前送出申請並於當日將約定金額存入交割帳戶，若超過兩點半才做異動，則算是下一次的交易異動，將於前一營業日進行款項圈存；並於交易日之次二營業日依成交分配進行款項扣款。</p>
+        <p>範例 1：約定 7/8(三)，需在 7/6(一)下午兩點半前送出申請並於當日存入約定金額，7/10(五)依成交分配進行款項扣款。</p>
+        <p>範例 2：扣款日為次月（8 月、9 月、11 月）：約定 8/28(五)，需在 8/26(三)下午兩點半前送出申請並於當日存入約定金額，9/2(三)依成交分配進行款項扣款。</p>
+        <p><b>★台幣加碼任務－定期定額約定 3 筆★</b></p>
+        <p>範例 1：「同一檔」股票約定 3 筆「不同」交易日且當月用 New New Bank 扣款成功，視同約定 3 筆<span class="rd">符合</span>回饋資格<br>
+        範例 2：「同一檔」股票約定 3 筆「同一」交易日且當月用 New New Bank 扣款成功，視同約定 1 筆<span class="rd">不符合</span>回饋資格<br>
+        範例 3：「不同檔」股票約定 3 筆「不同」交易日且當月用 New New Bank 扣款成功，視同約定 3 筆<span class="rd">符合</span>回饋資格<br>
+        範例 4：「不同檔」股票約定 3 筆「同一」交易日且當月用 New New Bank 扣款成功，視同約定 3 筆<span class="rd">符合</span>回饋資格</p>
+        <p><b>★台幣加碼任務－定期定額查詢路徑★</b></p>
+        <p>New New Bank APP：總覽／證券服務／台股定期定額專區／右上角「≡」／台股定期定額約定紀錄。</p>
+        <p>聯邦發發發 APP：定期定額／定期定額約定變更</p>
+        <div class="twrap" style="margin-top:14px"><table class="dtable ctr">
+          <thead><tr><th>符合活儲最高 3%</th><th>不符合活儲最高 3%</th></tr></thead>
+          <tbody><tr>
+            <td><img class="fimg" loading="lazy" src="https://newnewbank.com.tw/images/deposits_newnew_conform.png" alt="符合活儲最高 3% 的約定紀錄範例"></td>
+            <td><img class="fimg" loading="lazy" src="https://newnewbank.com.tw/images/deposits_newnew_unconform.png" alt="不符合活儲最高 3% 的約定紀錄範例"></td>
+          </tr></tbody></table></div>
+      </div></details>
+
+    <details class="fq" id="fq-8" name="fq"><summary>Q8. 推薦開戶查詢推薦碼</summary>
+      <div class="fb">
+        <p>「推薦人」身份依「被推薦人」開戶時填寫「朋友推薦碼」為準，填寫位置：線上開戶流程→「選擇開戶類型」頁面→該頁「推廣活動參與」項下「朋友推薦碼」欄位；開戶時未填寫「朋友推薦碼」或填寫錯誤，恕無法於事後增補、更新推薦碼，相關範例可參閱<a class="inl" href="#dep-notice">注意事項第 5 點</a>。</p>
+        <p>※推薦開戶活動專區（含查詢、分享推薦人專屬推薦碼）：New New Bank APP 首頁／設定／New New Bank 推薦活動專區。</p>
+      </div></details>
+
+    <details class="fq" id="fq-9" name="fq"><summary>Q9. 金融卡消費扣款</summary>
+      <div class="fb"><p>依 New New Bank 存戶 VISA 金融卡（亦即一卡通 Debit 卡）之消費扣款帳戶歸戶計算，持卡人當月「刷卡消費及自動加值」交易以消費商店於當月月底前完成請款之交易為準（亦即已自存戶 VISA 金融卡之消費扣款帳戶完成扣款）。</p></div></details>
+
+  </div>
+</section>
+
+<!-- 注意事項 -->
+<section class="dep-sec" id="dep-notice" style="padding-bottom:8vh">
+  <span class="kick">注意事項</span>
+  <h2 class="h2 sm">細節都在這。</h2>
+  <ol class="nts">
+
+    <li>本專案優惠計息方式：
+      <ul>
+        <li>(1) 本專案之優惠利率，皆依存戶 New New Bank 台幣活儲數位帳戶（以下簡稱台幣活儲）「當期存款平均餘額」計息並有優惠計息限額，「當期（前月 21 日至當月 20 日）存款平均餘額」於 40 萬元(含)以下部分，初級會員按年利率 1.5%、金級會員按年利率 3% 計息，另新戶「當期存款平均餘額」於 15 萬元(含)以下部分，按年利率 10% 優惠利率計息，本專案逾限額部份，按本行一般活期儲蓄存款牌告利率計息。</li>
+        <li class="rt">(2) 本專案為每月付息（當月 20 日為利息結算日，結算「前月 21 日至當月 20 日期間」之利息），為利存戶辨識，利息分成「既有牌告利息」及「優惠加碼利息」兩筆撥付，牌告利息預定每月 21 日撥付，優惠加碼利息（既有牌告利息與本專案優惠利息間之差息）預定於牌告利息入帳後三個營業日內撥付。</li>
+        <li>(3) 每月付息日前，若存戶之 New New Bank 數位帳戶已辦理結清銷戶或其他本行依「聯邦商業銀行線上開立數位綜合存款帳戶約定書」暫時停止、終止 New New Bank 數位帳戶業務關係或暫時停止、終止指定任務聯邦信用卡業務關係，視同放棄本專案優惠利率計息資格。</li>
+        <li class="rt">(4) 開戶未足月者，依實際天數計算。</li>
+      </ul>
+    </li>
+
+    <li>本專案之活動對象：
+      <ul>
+        <li>(1) 本專案所稱之「成功開立」 New New Bank 數位帳戶，係指「申請開戶且經聯邦銀行審核通過發送開戶完成通知簡訊者」；僅申請開戶未於活動期間審核通過者，非屬本活動認定「成功開立」。</li>
+        <li>(2) 活動對象之新戶，係指 115/07/01~115/12/31「首次申辦且成功開立 New New Bank 數位帳戶之新戶」，活動前曾申辦、或已申辦 New New Bank 數位帳戶者，若銷戶再重新申辦 New New Bank 數位帳戶，恕不符合活動資格。</li>
+      </ul>
+    </li>
+
+    <li>「新戶高利活儲最高 10%」活動條件：
+      <ul>
+        <li>(1) 「成功開戶之次一月份利息結算」（該月 20 日為利息結算日）各時點說明如下：
+          <div class="twrap" style="margin-top:12px"><table class="dtable stack">
+            <thead><tr><th>開戶時間</th><th>高利活儲最高 10% 適用期間</th><th>其他時點適用利率</th></tr></thead>
+            <tbody>
+              <tr><td data-l="開戶時間" class="c">115/06/01~06/30<br>成功開戶者</td>
+                  <td data-l="高利活儲最高 10% 適用期間">115 年 7 月利息結算日（結算 115/06/21~115/07/20，共 30 天）享 115 上半年度推出之「<a class="inl" href="https://newnewbank.com.tw/deposits15.htm?openExternalBrowser=1" target="_blank" rel="noopener">高利活儲最高 15%</a>」。</td>
+                  <td data-l="其他時點適用利率">．115 年 6 月成功開戶日起~115/06/20 享「高利活儲最高 1.5%」。<br>．115/07/21 起完成指定任務適用「高利活儲最高 3%」。</td></tr>
+              <tr><td data-l="開戶時間" class="c">115/07/01~07/31<br>成功開戶者</td>
+                  <td data-l="高利活儲最高 10% 適用期間">8 月利息結算日（結算 115/07/21~115/08/20，共 31 天）享限額 15 萬(含)內「高利活儲 10%」，逾依牌告計息。</td>
+                  <td data-l="其他時點適用利率">．7 月成功開戶日起~115/07/20 享「高利活儲最高 1.5%」。<br>．115/08/21 起完成指定任務適用「高利活儲最高 3%」。</td></tr>
+              <tr><td data-l="開戶時間" class="c">115/08/01~08/31<br>成功開戶者</td>
+                  <td data-l="高利活儲最高 10% 適用期間">9 月利息結算日（結算 115/08/21~115/09/20，共 31 天）享限額 15 萬(含)內「高利活儲 10%」，逾依牌告計息。</td>
+                  <td data-l="其他時點適用利率">．8 月成功開戶日起~115/08/20 享「高利活儲最高 1.5%」。<br>．115/09/21 起完成指定任務適用「高利活儲最高 3%」。</td></tr>
+              <tr><td data-l="開戶時間" class="c">115/09/01~09/30<br>成功開戶者</td>
+                  <td data-l="高利活儲最高 10% 適用期間">10 月利息結算日（結算 115/09/21~115/10/20，共 30 天）享限額 15 萬(含)內「高利活儲 10%」，逾依牌告計息。</td>
+                  <td data-l="其他時點適用利率">．9 月成功開戶日起~115/09/20 享「高利活儲最高 1.5%」。<br>．115/10/21 起完成指定任務適用「高利活儲最高 3%」。</td></tr>
+              <tr><td data-l="開戶時間" class="c">115/10/01~10/31<br>成功開戶者</td>
+                  <td data-l="高利活儲最高 10% 適用期間">11 月利息結算日（結算 115/10/21~115/11/20，共 31 天）享限額 15 萬(含)內「高利活儲 10%」，逾依牌告計息。</td>
+                  <td data-l="其他時點適用利率">．10 月成功開戶日起~115/10/20 享「高利活儲最高 1.5%」。<br>．115/11/21 起完成指定任務適用「高利活儲最高 3%」。</td></tr>
+              <tr><td data-l="開戶時間" class="c">115/11/01~11/30<br>成功開戶者</td>
+                  <td data-l="高利活儲最高 10% 適用期間">12 月利息結算日（結算 115/11/21~115/12/20，共 30 天）享限額 15 萬(含)內「高利活儲 10%」，逾依牌告計息。</td>
+                  <td data-l="其他時點適用利率">．11 月成功開戶日起~115/11/20 享「高利活儲最高 1.5%」。<br>．115/12/21 起完成指定任務適用「高利活儲最高 3%」。</td></tr>
+              <tr><td data-l="開戶時間" class="c">115/12/01~12/31<br>成功開戶者</td>
+                  <td data-l="高利活儲最高 10% 適用期間">1 月利息結算日（結算 115/12/21~116/01/20，共 31 天）享限額 15 萬(含)內「高利活儲 10%」，逾依牌告計息。</td>
+                  <td data-l="其他時點適用利率">．12 月成功開戶日起~115/12/20 享「高利活儲最高 1.5%」。</td></tr>
+            </tbody></table></div>
+        </li>
+        <li>(2) 於利息結算時若存戶並無存款或存款不足未達起息，該次利息結算仍屬本專案所稱之「成功開戶之次一月份利息結算」定義，優惠資格不可累積或順延。</li>
+        <li>(3) 新戶凡逾「成功開戶之次一月份利息結算日」之後（即該月 21 日起），新戶身分即轉變為舊戶身分，之後依據「高利活儲最高 3%」活動條件辦理，須完成金級會員任一指定任務，始享年利率最高 3%。
+          <div class="eg">Ⓞ範例：小黑符合本專案新戶身分，並於 115/07/15 首次成功開戶，因此小黑「成功開戶之次一月份利息結算日」（115/08/21 結算 115/07/21~115/08/20 利息），無條件享限額 15 萬(含)內年利率 10%，惟自 115/08/21 起（即逾利息結算日 115/08/20 之後），小黑即轉為舊戶身分，須完成金級會員任一指定任務，如：「證券任務」或「推薦開戶任務」或「金融卡任務」（擇一完成，逐月檢視），方享限額內年利率 3%。</div>
+        </li>
+      </ul>
+    </li>
+
+    <li>「舊戶會員分級制度」係「逐月檢視」存戶會員身分，活動期間 7 月至 12 月任一月份當月完成指定「證券／推薦開戶／金融卡」任務（擇一完成），即可成為金級會員，於次一月份依「當期存款平均餘額」計息時享限額內年利率 3%。未完成指定任務者，為初級會員身分，享限額內年利率 1.5%。
+      <div class="eg">Ⓞ範例一：小白為金級會員，享台幣活儲年利率最高 3%<br>小白 9 月完成指定任務，為金級會員等級，其 New New Bank 台幣活儲數位帳戶於 115/09/21~115/10/20 之存款平均餘額剛好為 40 萬元，因此次一月份（即 10 月份）撥息時小白享年利率最高 3%（優惠限額「存款平均餘額」新臺幣 40 萬元），本行分別於 115/10/21 入帳牌告利息及 115/10/22 入帳優惠加碼利息。</div>
+      <div class="eg">Ⓞ範例二：小黑為初級會員，享台幣活儲年利率最高 1.5%<br>小黑 9 月並未完成指定任務，為初級會員等級，其 New New Bank 台幣活儲數位帳戶於 115/09/21~115/10/20 之存款平均餘額亦剛好 40 萬元，因此次一月份（即 10 月份）撥息時小黑僅享年利率最高 1.5%（優惠限額「存款平均餘額」新臺幣 40 萬元），本行分別於 115/10/21 入帳牌告利息及 115/10/22 入帳優惠加碼利息。</div>
+    </li>
+
+    <li class="rt">「金級會員高利活儲最高 3%」之年利率指定任務活動條件：
+      <ul>
+        <li>(1) 證券任務：逐月檢視，當月「證券定期定額（台股或台股 ETF 皆適用）」使用 New New Bank 交割成功扣款三筆。</li>
+        <li>(2) 推薦開戶任務：逐月檢視，完成推薦開戶任務條件時間，依推薦人所成功推薦的被推薦人成功開戶當月為準（銷戶重開不符資格），不可累積或順延至下個月，若開戶時未填寫或填寫錯誤之朋友推薦碼，恕無法於事後要求補上推薦碼。
+          <span class="sub">A. 完成任務時間依據「推薦人」所成功推薦之「被推薦人」首次成功開戶月份為準（範例：小白為「推薦人」，小黑為「被推薦人」，小黑 115/08/31 申請開戶並於 115/09/02 審核通過首次成功開戶，則小白完成推薦開戶任務時間為 9 月份）。</span>
+          <span class="sub">B. 完成推薦開戶任務僅「推薦人」享指定時間活儲最高 3% 優惠，優惠不適用於「被推薦人」。</span>
+          <span class="sub">C. 「推薦人」之身分認定係依據「被推薦人」於開戶流程頁面填寫「朋友推薦碼」列屬之「推薦人」資料為準，「被推薦人」未填寫或填寫錯誤者（例如：填寫位置錯誤、填寫推薦碼有誤等），恕無法於事後要求增補、更新資料。</span>
+          <span class="sub">D. 推薦人數計算係依據「推薦人」之存款帳戶歸戶計算，若「推薦人」重新開立本行 New New Bank 數位帳戶，重新開戶前之推薦人數則將歸零重新計算，不可回朔先前推薦人數。（範例：小白 115/11/09 結清銷戶並於 115/11/19 重新開戶，原本小白已於 115/11/01~115/11/09 成功推薦 1 戶成功開戶，則該記錄亦將歸零重新計算，小白 11 月若想完成推薦開戶任務，須於 115/11/19~115/11/30 重新成功推薦 2 位新戶首次成功開立 New New Bank 數位帳戶）。</span>
+          <span class="sub">E. 「推薦人」所推薦之「被推薦人」，若有結清銷戶、結清銷戶後再重新開戶、曾經參加任何 New New Bank 數位帳戶「開戶輸入優惠代碼」等各類推薦開戶優惠活動者，恕不符合本活動「被推薦人」資格定義，亦不計入「推薦人」之推薦人數。</span>
+          <span class="sub">F. 本推薦開戶任務活動不得與本行其他推薦優惠活動併用。</span>
+        </li>
+        <li>(3) 金融卡任務：金融卡消費當月使用 New New Bank 扣款金額滿新台幣 1 萬元(含)以上。
+          <span class="sub">A. 依 New New Bank 存戶 VISA 金融卡（亦即一卡通 Debit 卡）之消費扣款帳戶歸戶計算。</span>
+          <span class="sub">B. 本活動定義之 VISA 金融卡刷卡消費回饋及達成前述金融卡任務金額計算排除退款(貨)、爭議款、各項手續費及代收費用等非消費性款項，及特定行銷專案或其他經本行公告不納入刷卡消費回饋之交易。</span>
+          <span class="sub">C. 持卡人當月「刷卡消費及自動加值」交易以消費商店於當月月底前完成請款之交易為準（亦即已自存戶 VISA 金融卡之消費扣款帳戶完成扣款）。</span>
+        </li>
+        <li>(4) 金級會員存戶，若於本行資格檢核時或利息撥付前，已辦理結清銷戶或其他原因暫時停止或終止業務關係者，或有任何原因中途取消或註銷 New New Bank 數位帳戶為本人聯邦證券交割帳戶，則不符合加碼優惠資格，亦不得事後重新設定後再要求回饋。</li>
+      </ul>
+    </li>
+
+    <li>本專案優惠不適用於「有聯邦銀行行員儲蓄存款帳戶」者。</li>
+    <li>本專案優惠利率計息起息點為新臺幣 100 元。</li>
+    <li>如欲申請拒絕行銷，請撥打本行免付費專線 <a class="inl" href="tel:0800089888">0800-089-888</a> 或<a class="inl" href="https://smartub.ubot.com.tw/Webhook/?eservice=nnbweb" target="_blank" rel="noopener">智能好邦手</a>協助辦理。</li>
+    <li>本行保留隨時取消、修改或終止本活動之權利，亦有權對本活動之所有事宜做出解釋或決定，並於本行網站(www.ubot.com.tw)公告後實施。如有未盡事宜，悉依本行相關規範辦理。</li>
+  </ol>
+
+  <div class="dep-acts" style="margin-top:44px">
+    <a class="btn" href="https://newnewbank.ubot.com.tw/web/?openExternalBrowser=1#/S0101001" target="_blank" rel="noopener" data-cur="GO">線上開戶 ↗</a>
+    <a class="btn w" href="index.html" data-cur="→">回優惠首頁 →</a>
+  </div>
+</section>
+
+</main>
+
+
+<footer>
+  <div class="f-logo"><img src="https://newnewbank.com.tw/images/UBOT-logo_.png" alt="聯邦數位銀行 New New Bank 標誌" width="280" height="56"></div>
+  <div class="f-cols">
+    <div>
+      <h4>謹慎理財 信用至上</h4>
+      ．銀行業務服務專線：<a href="tel:0225451788">(02)2545-1788</a><br>
+      ．信用卡業務服務專線：(02)2545-5168、(07)226-9393<br>
+      ．循環利率：5%~15%　．循環利率之基準日為104年9月1日<br>
+      ．預借現金手續費：預借金額×3.5%+100元
+    </div>
+    <div>
+      <h4>聯邦數位銀行</h4>
+      本國18歲以上成年人且非聯邦銀行既有存戶即可申辦。<br>
+      <a href="https://newnewbank.com.tw/" target="_blank" rel="noopener">newnewbank.com.tw</a>
+    </div>
+  </div>
+  <p class="copy">聯邦證券股份有限公司｜臺北市中山區南京東路二段137號2樓｜電話(02)2504-0066｜115年金管證總字第0018號</p>
+  <p class="copy">© 聯邦銀行 All Rights Reserved. 臺北市松山區民生東路三段109號</p>
+</footer>
+
+<!-- 活儲專案：專案對照表 -->
+<dialog id="dlgCmp" class="wide" aria-labelledby="cmpT">
+  <div class="dwrap">
+    <div class="dtop"><span class="kick">活儲專案</span><button type="button" class="dx" data-close aria-label="關閉">✕ 關閉</button></div>
+    <h3 id="cmpT">New New Bank「台幣活儲」專案對照表</h3>
+    <div class="twrap" style="margin:18px 0 22px"><table class="dtable ctr cmp">
+      <thead><tr><th>項目</th><th>115/01/21～115/07/20</th><th>115/07/21～116/01/20<br>（本頁現行專案）</th></tr></thead>
+      <tbody>
+        <tr><td class="c">新戶專案<br><small>逾限額依牌告計息</small></td>
+            <td class="c"><span class="big-r" style="color:var(--tx)">15%</span><br>（限額 10 萬）</td>
+            <td class="c"><span class="big-r">10%</span><br>（限額 <span class="rd">15 萬</span>）</td></tr>
+        <tr><td class="c">舊戶專案<br><small>會員等級</small></td>
+            <td class="c">最高 <span class="big-r" style="color:var(--tx)">4%</span><br>基本 1.5% + 任務 2.5%<br>（限額 30 萬）</td>
+            <td class="c">最高 <span class="big-r">3%</span><br><span class="rd">基本 1.5% + 任務 1.5%</span><br>（限額 <span class="rd">40 萬</span>）</td></tr>
+        <tr><td class="c">開戶日期</td><td class="c">115/01/01～115/06/30</td><td class="c">115/07/01～115/12/31</td></tr>
+        <tr><td class="c">金級會員<br>活儲加碼任務</td>
+            <td>完成指定任務（擇一完成，逐月檢視）<br>(1) 證券－約定 2 筆「證券定期定額（台股或台股 ETF 皆適用）」並於當月使用 New New Bank 交割成功扣款。<br>(2) 推薦開戶－2 位新戶首次成功開立 New New Bank<br>(3) 金融卡－金融卡消費使用 New New Bank 扣款金額滿新台幣 1 萬元(含)以上。</td>
+            <td>完成指定任務（擇一完成，逐月檢視）<br>(1) 證券－約定 <span class="rd">3 筆</span>「證券定期定額（台股或台股 ETF 皆適用）」並於當月使用 New New Bank 交割成功扣款。<br>(2) 推薦開戶－2 位新戶首次成功開立 New New Bank<br>(3) 金融卡－金融卡消費使用 New New Bank 扣款金額滿新台幣 1 萬元(含)以上。</td></tr>
+      </tbody></table></div>
+    <p class="fine" style="margin:0 0 22px">116/1/21 起的新一期台幣活儲，請至<a class="inl" href="index.html" data-cur="→">優惠首頁</a>查看。</p>
+    <button type="button" class="btn lg w" data-close>關閉</button>
+  </div>
+</dialog>
+
+<!-- 活儲專案：轉跳提醒（證券線上開戶） -->
+<dialog id="dlgLeave" aria-labelledby="lvT">
+  <div class="dwrap">
+    <div class="dtop"><span class="kick">提醒您</span><button type="button" class="dx" data-close aria-label="關閉">✕ 關閉</button></div>
+    <h3 id="lvT">即將前往聯邦證券</h3>
+    <div class="dl" style="list-style:none;margin-left:0">
+      <p>您即將離開聯邦銀行網站，前往「聯邦證券股份有限公司」網站。</p>
+      <p style="margin-top:10px">所有其他業者所經營之網站均由各該業者自行負責（包括但不限於客戶隱私保護及客戶個人資訊安全等），不屬聯邦銀行控制及負責範圍之內。</p>
+      <p style="margin-top:10px"><b>您是否同意繼續前往該網站？</b></p>
+    </div>
+    <div class="dep-acts" style="margin-top:0">
+      <a class="btn lg" id="leaveYes" href="https://eopen.usot.com.tw/?openExternalBrowser=1" target="_blank" rel="noopener">YES ↗</a>
+      <button type="button" class="btn lg w" data-close>NO</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- 活儲專案：證券下單 -->
+<dialog id="dlgOrder" class="wide" aria-labelledby="odT">
+  <div class="dwrap">
+    <div class="dtop"><span class="kick">證券下單</span><button type="button" class="dx" data-close aria-label="關閉">✕ 關閉</button></div>
+    <h3 id="odT">用 New New Bank 交割，下單更方便</h3>
+    <div class="dlg-cols">
+      <div class="dlg-box">
+        <p>聯邦 e 路發，係聯邦證券網頁下單入口，交割帳戶綁定「New New Bank」數位帳戶享專屬優惠，立即前往。</p>
+        <a class="btn" style="margin:14px 0 18px" href="https://stock2.ubot.com.tw/SystexWTS/" target="_blank" rel="noopener" data-cur="GO">聯邦 e 路發 ↗</a>
+        <img class="qr" loading="lazy" src="https://newnewbank.com.tw/images/imgQR/2025e68.png" alt="聯邦發發發 APP QR code">
+        <p><b>聯邦發發發</b></p>
+      </div>
+      <div class="dlg-box">
+        <p><b>下載或開啟 New New Bank</b></p>
+        <img class="qr" loading="lazy" src="https://newnewbank.com.tw/images/imgQR/2025e68_2.png" alt="New New Bank APP 台股定期定額 QR code">
+        <p><b>台股定期定額</b></p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+
+<script>
+(function(){
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const fine=matchMedia('(pointer:fine)').matches;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+window.__nnb=1;document.documentElement.classList.remove('js-wait');
+let lastFocus=null;
+function closeD(d){if(!d)return;if(d.close)d.close();else d.removeAttribute('open');}
+function openDlg(id){const d=document.getElementById(id);if(!d)return;lastFocus=document.activeElement;if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');document.documentElement.style.overflow='hidden';}
+$$('dialog').forEach(d=>{
+  d.addEventListener('close',()=>{document.documentElement.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();});
+  d.addEventListener('click',e=>{if(e.target===d)closeD(d);});
+});
+$$('[data-open]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openDlg(b.dataset.open);}));
+$$('[data-close]').forEach(b=>b.addEventListener('click',()=>closeD(b.closest('dialog'))));
+$('#leaveYes').addEventListener('click',()=>closeD($('#dlgLeave')));
+
+function openFaq(id){
+  $$('.fq').forEach(f=>{f.open=(f.id===id);});
+  const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
+}
+$$('[data-faq]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openFaq(a.dataset.faq);}));
+$$('.fq').forEach(f=>f.addEventListener('toggle',()=>{if(f.open)$$('.fq').forEach(o=>{if(o!==f&&o.open)o.open=false;});}));
+if(/^#fq-\d/.test(location.hash))setTimeout(()=>openFaq(location.hash.slice(1)),300);
+
+$$('#stepSeg button').forEach(b=>b.addEventListener('click',()=>{
+  $$('#stepSeg button').forEach(x=>{const on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on?'true':'false');});
+  $$('.tp').forEach(p=>p.classList.toggle('on',p.dataset.t===b.dataset.t));
+}));
+$$('#v-dep img').forEach(img=>{const h=()=>{img.style.display='none';};img.addEventListener('error',h);if(img.complete&&img.naturalWidth===0&&img.getAttribute('src')&&img.loading!=='lazy')h();});
+$$('.logo img,.f-logo img').forEach(i=>{const h=()=>{i.style.visibility='hidden';};i.addEventListener('error',h);if(i.complete&&i.naturalWidth===0)h();});
+
+const rvIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvIO.unobserve(e.target);}}),{threshold:.12});
+$$('.rv').forEach(e=>rvIO.observe(e));
+const links=$$('.dock a'),secs=links.map(a=>$(a.getAttribute('href')));
+const navIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',$(a.getAttribute('href'))===e.target));}}),{rootMargin:'-45% 0px -45% 0px'});
+secs.forEach(s=>s&&navIO.observe(s));
+
+const cur=$('#cur');let cx=-100,cy=-100,px=-100,py=-100;
+if(fine){
+  addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;},{passive:true});
+  document.addEventListener('pointerover',e=>{const t=e.target.closest&&e.target.closest('[data-cur]');if(t){cur.textContent=t.dataset.cur;cur.classList.add('grow');}else{cur.textContent='';cur.classList.remove('grow');}});
+  if(!RM)$$('.btn').forEach(el=>{
+    el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.translate=((e.clientX-(r.left+r.width/2))*.22)+'px '+((e.clientY-(r.top+r.height/2))*.28)+'px';});
+    el.addEventListener('pointerleave',()=>{el.style.translate='';});
+  });
+  (function tick(){cx+=(px-cx)*.22;cy+=(py-cy)*.22;cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)';requestAnimationFrame(tick);})();
+}
+})();
+</script>
+</body>
+</html>
