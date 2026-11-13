@@ -402,6 +402,8 @@ dialog.wide{width:min(960px,calc(100% - 24px))}
 
 .show-m{display:none}
 @media (max-width:760px){.hide-m{display:none!important}.show-m{display:inline-flex}}
+.offers.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:860px){.offers.two{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .ln .c{transform:none}.tag{opacity:1}.js .rv{opacity:1;transform:none}
@@ -453,7 +455,7 @@ dialog.wide{width:min(960px,calc(100% - 24px))}
     <dd>活動期間於 New New Bank 換匯指定幣別之新資金，可享下列外幣高利定存限額優惠專案，若逾優惠限額，則依牌告利率計息。</dd>
   </dl>
 
-  <div class="offers rv" style="margin-top:34px;grid-template-columns:repeat(2,minmax(0,1fr))">
+  <div class="offers two rv" style="margin-top:34px">
     <div class="oc hot long">
       <div class="oh"><span class="on">美金定存<br>三個月期</span></div>
       <div class="ov"><i class="pre">優惠年利率</i>10<small>%</small></div>
@@ -487,7 +489,7 @@ dialog.wide{width:min(960px,calc(100% - 24px))}
   <div class="dep-acts">
     <button type="button" class="btn hide-m" data-open="dlgQR1" data-cur="＋">買賣外幣</button>
     <a class="btn show-m" href="https://newnewbank.ubot.com.tw/web/page/toApp.html?pageName=C0601001&openExternalBrowser=1" target="_blank" rel="noopener">買賣外幣 ↗</a>
-    <a class="btn w" href="https://newnewbank.com.tw/foreignexchange.htm?openExternalBrowser=1" target="_blank" rel="noopener" data-cur="GO">結匯優惠 ↗</a>
+    <a class="btn w" href="foreignexchange.htm" data-cur="→">結匯優惠 →</a>
     <button type="button" class="btn w hide-m" data-open="dlgQR2" data-cur="＋">開立定存</button>
     <a class="btn w show-m" href="https://newnewbank.ubot.com.tw/web/page/toApp.html?pageName=B0102001&openExternalBrowser=1" target="_blank" rel="noopener">開立定存 ↗</a>
     <a class="btn w show-m" href="https://page.line.me/633gatyv?oat__id=1658611&openQrModal=true&openExternalBrowser=1" target="_blank" rel="noopener">LINE 匯率到價通知 ↗</a>
